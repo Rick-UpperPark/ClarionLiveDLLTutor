@@ -1,0 +1,6 @@
+[MODULE]
+NAME 'allfiles.lib'
+NOPOPULATE 
+[COMMON]
+FROM ABC ExternalDLL
+[END]

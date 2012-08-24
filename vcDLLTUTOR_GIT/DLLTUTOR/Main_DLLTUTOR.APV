@@ -1,0 +1,715 @@
+[MODULE]
+NAME 'Main_DLLTUTOR.clw'
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME Main
+[COMMON]
+DESCRIPTION 'main MDI frame'
+FROM ABC Frame
+MODIFIED '2011/12/22' '14:21:03'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('1c2d1bef-83e1-49b5-a66c-a22a7b2ecf53'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
+[PROMPTS]
+%INISaveWindow LONG  (1)
+%ButtonAction DEPEND %Control DEFAULT TIMES 36
+WHEN  ('') ('No Special Action')
+WHEN  ('?Arrange') ('No Special Action')
+WHEN  ('?Cascade') ('No Special Action')
+WHEN  ('?Copy') ('No Special Action')
+WHEN  ('?CustomerButton') ('Call a Procedure')
+WHEN  ('?Cut') ('No Special Action')
+WHEN  ('?Exit') ('No Special Action')
+WHEN  ('?FilePrintAllInvoices') ('Call a Procedure')
+WHEN  ('?FilePrintCustomerList') ('Call a Procedure')
+WHEN  ('?FilePrintOneCustomersInvoices') ('Call a Procedure')
+WHEN  ('?HelpOnHelp') ('No Special Action')
+WHEN  ('?HelpSearch') ('No Special Action')
+WHEN  ('?Helpindex') ('No Special Action')
+WHEN  ('?MainMenu') ('No Special Action')
+WHEN  ('?OrdersButton') ('Call a Procedure')
+WHEN  ('?Paste') ('No Special Action')
+WHEN  ('?PrintSetup') ('No Special Action')
+WHEN  ('?ProductsButton') ('No Special Action')
+WHEN  ('?Tile') ('No Special Action')
+WHEN  ('?Toolbar:Bottom') ('No Special Action')
+WHEN  ('?Toolbar:Change') ('No Special Action')
+WHEN  ('?Toolbar:Delete') ('No Special Action')
+WHEN  ('?Toolbar:Down') ('No Special Action')
+WHEN  ('?Toolbar:Help') ('No Special Action')
+WHEN  ('?Toolbar:History') ('No Special Action')
+WHEN  ('?Toolbar:Insert') ('No Special Action')
+WHEN  ('?Toolbar:Locate') ('No Special Action')
+WHEN  ('?Toolbar:PageDown') ('No Special Action')
+WHEN  ('?Toolbar:PageUp') ('No Special Action')
+WHEN  ('?Toolbar:Select') ('No Special Action')
+WHEN  ('?Toolbar:Top') ('No Special Action')
+WHEN  ('?Toolbar:Up') ('No Special Action')
+WHEN  ('?View') ('No Special Action')
+WHEN  ('?ViewCustomers') ('Call a Procedure')
+WHEN  ('?ViewOrders') ('Call a Procedure')
+WHEN  ('?ViewProducts') ('No Special Action')
+
+%MenuAction DEPEND %Control STRING TIMES 1
+WHEN  ('?Exit') ('No Special Action')
+
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%Parameters DEFAULT  ('')
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%SplashProcedure PROCEDURE  (SplashScreen)
+%ButtonRunName DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?CustomerButton') ('')
+WHEN  ('?FilePrintAllInvoices') ('')
+WHEN  ('?FilePrintCustomerList') ('')
+WHEN  ('?FilePrintOneCustomersInvoices') ('')
+WHEN  ('?OrdersButton') ('')
+WHEN  ('?PrintSetup') ('')
+WHEN  ('?ProductsButton') ('')
+WHEN  ('?ViewCustomers') ('')
+WHEN  ('?ViewOrders') ('')
+WHEN  ('?ViewProducts') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?CustomerButton') ('')
+WHEN  ('?FilePrintAllInvoices') ('')
+WHEN  ('?FilePrintCustomerList') ('')
+WHEN  ('?FilePrintOneCustomersInvoices') ('')
+WHEN  ('?OrdersButton') ('')
+WHEN  ('?PrintSetup') ('')
+WHEN  ('?ProductsButton') ('')
+WHEN  ('?ViewCustomers') ('')
+WHEN  ('?ViewOrders') ('')
+WHEN  ('?ViewProducts') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 10
+WHEN  ('?CustomerButton') (ViewCustomers)
+WHEN  ('?FilePrintAllInvoices') (InvoiceReport)
+WHEN  ('?FilePrintCustomerList') (CustReport)
+WHEN  ('?FilePrintOneCustomersInvoices') (CustInvoiceReport)
+WHEN  ('?OrdersButton') (ViewOrders)
+WHEN  ('?PrintSetup') ()
+WHEN  ('?ProductsButton') ()
+WHEN  ('?ViewCustomers') (ViewCustomers)
+WHEN  ('?ViewOrders') (ViewOrders)
+WHEN  ('?ViewProducts') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 10
+WHEN  ('?CustomerButton') (1)
+WHEN  ('?FilePrintAllInvoices') (1)
+WHEN  ('?FilePrintCustomerList') (1)
+WHEN  ('?FilePrintOneCustomersInvoices') (1)
+WHEN  ('?OrdersButton') (1)
+WHEN  ('?PrintSetup') (0)
+WHEN  ('?ProductsButton') (0)
+WHEN  ('?ViewCustomers') (1)
+WHEN  ('?ViewOrders') (1)
+WHEN  ('?ViewProducts') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 36
+WHEN  ('') ('25000')
+WHEN  ('?Arrange') ('25000')
+WHEN  ('?Cascade') ('25000')
+WHEN  ('?Copy') ('25000')
+WHEN  ('?CustomerButton') ('25000')
+WHEN  ('?Cut') ('25000')
+WHEN  ('?Exit') ('25000')
+WHEN  ('?FilePrintAllInvoices') ('25000')
+WHEN  ('?FilePrintCustomerList') ('25000')
+WHEN  ('?FilePrintOneCustomersInvoices') ('25000')
+WHEN  ('?HelpOnHelp') ('25000')
+WHEN  ('?HelpSearch') ('25000')
+WHEN  ('?Helpindex') ('25000')
+WHEN  ('?MainMenu') ('25000')
+WHEN  ('?OrdersButton') ('25000')
+WHEN  ('?Paste') ('25000')
+WHEN  ('?PrintSetup') ('25000')
+WHEN  ('?ProductsButton') ('25000')
+WHEN  ('?Tile') ('25000')
+WHEN  ('?Toolbar:Bottom') ('25000')
+WHEN  ('?Toolbar:Change') ('25000')
+WHEN  ('?Toolbar:Delete') ('25000')
+WHEN  ('?Toolbar:Down') ('25000')
+WHEN  ('?Toolbar:Help') ('25000')
+WHEN  ('?Toolbar:History') ('25000')
+WHEN  ('?Toolbar:Insert') ('25000')
+WHEN  ('?Toolbar:Locate') ('25000')
+WHEN  ('?Toolbar:PageDown') ('25000')
+WHEN  ('?Toolbar:PageUp') ('25000')
+WHEN  ('?Toolbar:Select') ('25000')
+WHEN  ('?Toolbar:Top') ('25000')
+WHEN  ('?Toolbar:Up') ('25000')
+WHEN  ('?View') ('25000')
+WHEN  ('?ViewCustomers') ('25000')
+WHEN  ('?ViewOrders') ('25000')
+WHEN  ('?ViewProducts') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 7
+WHEN  ('?CustomerButton') ('')
+WHEN  ('?FilePrintAllInvoices') ('')
+WHEN  ('?FilePrintCustomerList') ('')
+WHEN  ('?FilePrintOneCustomersInvoices') ('')
+WHEN  ('?OrdersButton') ('')
+WHEN  ('?ViewCustomers') ('')
+WHEN  ('?ViewOrders') ('')
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 36
+WHEN  ('') ('None')
+WHEN  ('?Arrange') ('None')
+WHEN  ('?Cascade') ('None')
+WHEN  ('?Copy') ('None')
+WHEN  ('?CustomerButton') ('None')
+WHEN  ('?Cut') ('None')
+WHEN  ('?Exit') ('None')
+WHEN  ('?FilePrintAllInvoices') ('None')
+WHEN  ('?FilePrintCustomerList') ('None')
+WHEN  ('?FilePrintOneCustomersInvoices') ('None')
+WHEN  ('?HelpOnHelp') ('None')
+WHEN  ('?HelpSearch') ('None')
+WHEN  ('?Helpindex') ('None')
+WHEN  ('?MainMenu') ('None')
+WHEN  ('?OrdersButton') ('None')
+WHEN  ('?Paste') ('None')
+WHEN  ('?PrintSetup') ('None')
+WHEN  ('?ProductsButton') ('None')
+WHEN  ('?Tile') ('None')
+WHEN  ('?Toolbar:Bottom') ('None')
+WHEN  ('?Toolbar:Change') ('None')
+WHEN  ('?Toolbar:Delete') ('None')
+WHEN  ('?Toolbar:Down') ('None')
+WHEN  ('?Toolbar:Help') ('None')
+WHEN  ('?Toolbar:History') ('None')
+WHEN  ('?Toolbar:Insert') ('None')
+WHEN  ('?Toolbar:Locate') ('None')
+WHEN  ('?Toolbar:PageDown') ('None')
+WHEN  ('?Toolbar:PageUp') ('None')
+WHEN  ('?Toolbar:Select') ('None')
+WHEN  ('?Toolbar:Top') ('None')
+WHEN  ('?Toolbar:Up') ('None')
+WHEN  ('?View') ('None')
+WHEN  ('?ViewCustomers') ('None')
+WHEN  ('?ViewOrders') ('None')
+WHEN  ('?ViewProducts') ('None')
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 15
+WHEN  ('') (1)
+WHEN  ('?CustomerButton') (1)
+WHEN  ('?FilePrintAllInvoices') (1)
+WHEN  ('?FilePrintCustomerList') (1)
+WHEN  ('?FilePrintOneCustomersInvoices') (1)
+WHEN  ('?HelpOnHelp') (1)
+WHEN  ('?MainMenu') (1)
+WHEN  ('?OrdersButton') (1)
+WHEN  ('?PrintSetup') (1)
+WHEN  ('?ProductsButton') (1)
+WHEN  ('?Toolbar:Help') (1)
+WHEN  ('?View') (1)
+WHEN  ('?ViewCustomers') (1)
+WHEN  ('?ViewOrders') (1)
+WHEN  ('?ViewProducts') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?CustomerButton')TIMES 0
+WHEN  ('?FilePrintAllInvoices')TIMES 0
+WHEN  ('?FilePrintCustomerList')TIMES 0
+WHEN  ('?FilePrintOneCustomersInvoices')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+WHEN  ('?MainMenu')TIMES 0
+WHEN  ('?OrdersButton')TIMES 0
+WHEN  ('?PrintSetup')TIMES 0
+WHEN  ('?ProductsButton')TIMES 0
+WHEN  ('?Toolbar:Help')TIMES 0
+WHEN  ('?View')TIMES 0
+WHEN  ('?ViewCustomers')TIMES 0
+WHEN  ('?ViewOrders')TIMES 0
+WHEN  ('?ViewProducts')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?CustomerButton')TIMES 0
+WHEN  ('?FilePrintAllInvoices')TIMES 0
+WHEN  ('?FilePrintCustomerList')TIMES 0
+WHEN  ('?FilePrintOneCustomersInvoices')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+WHEN  ('?MainMenu')TIMES 0
+WHEN  ('?OrdersButton')TIMES 0
+WHEN  ('?PrintSetup')TIMES 0
+WHEN  ('?ProductsButton')TIMES 0
+WHEN  ('?Toolbar:Help')TIMES 0
+WHEN  ('?View')TIMES 0
+WHEN  ('?ViewCustomers')TIMES 0
+WHEN  ('?ViewOrders')TIMES 0
+WHEN  ('?ViewProducts')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?CustomerButton')TIMES 0
+WHEN  ('?FilePrintAllInvoices')TIMES 0
+WHEN  ('?FilePrintCustomerList')TIMES 0
+WHEN  ('?FilePrintOneCustomersInvoices')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+WHEN  ('?MainMenu')TIMES 0
+WHEN  ('?OrdersButton')TIMES 0
+WHEN  ('?PrintSetup')TIMES 0
+WHEN  ('?ProductsButton')TIMES 0
+WHEN  ('?Toolbar:Help')TIMES 0
+WHEN  ('?View')TIMES 0
+WHEN  ('?ViewCustomers')TIMES 0
+WHEN  ('?ViewOrders')TIMES 0
+WHEN  ('?ViewProducts')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 15
+WHEN  ('')TIMES 0
+WHEN  ('?CustomerButton')TIMES 0
+WHEN  ('?FilePrintAllInvoices')TIMES 0
+WHEN  ('?FilePrintCustomerList')TIMES 0
+WHEN  ('?FilePrintOneCustomersInvoices')TIMES 0
+WHEN  ('?HelpOnHelp')TIMES 0
+WHEN  ('?MainMenu')TIMES 0
+WHEN  ('?OrdersButton')TIMES 0
+WHEN  ('?PrintSetup')TIMES 0
+WHEN  ('?ProductsButton')TIMES 0
+WHEN  ('?Toolbar:Help')TIMES 0
+WHEN  ('?View')TIMES 0
+WHEN  ('?ViewCustomers')TIMES 0
+WHEN  ('?ViewOrders')TIMES 0
+WHEN  ('?ViewProducts')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureParameters MULTI LONG  ()
+%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
+
+%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 3
+WHEN  ('') ('Default')
+WHEN  ('?MainMenu') ('Default')
+WHEN  ('?Toolbar:Help') ('Default')
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?MainMenu')TIMES 0
+WHEN  ('?Toolbar:Help')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?MainMenu')TIMES 0
+WHEN  ('?Toolbar:Help')TIMES 0
+
+%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
+
+[EMBED]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?ViewProducts'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 4000
+INSTANCE 3
+[END]
+[END]
+WHEN '?ProductsButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 4000
+INSTANCE 4
+[END]
+[END]
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!Test
+[END]
+[END]
+[ADDITION]
+NAME ABC DateTimeDisplay
+[INSTANCE]
+INSTANCE 1
+PROCPROP
+[PROMPTS]
+%DisplayDate LONG  (0)
+%DatePicture DEFAULT  ('October 31, 1959')
+%OtherDatePicture DEFAULT  ('')
+%ShowDayOfWeek LONG  (1)
+%DateDisplayLocation DEFAULT  ('Status Bar')
+%DateStatusSection DEFAULT  ('')
+%DateControl DEFAULT  ('')
+%DisplayTime LONG  (0)
+%TimePicture DEFAULT  ('5:30PM')
+%OtherTimePicture DEFAULT  ('')
+%TimeDisplayLocation DEFAULT  ('Status Bar')
+%TimeStatusSection DEFAULT  ('')
+%TimeControl DEFAULT  ('')
+[ADDITION]
+NAME ABC FrameBrowseControl
+[INSTANCE]
+INSTANCE 2
+[ADDITION]
+NAME ABC InitiateThread
+[INSTANCE]
+INSTANCE 3
+[PROMPTS]
+%ThreadProcedure PROCEDURE  (ViewProducts)
+%ThreadStack DEFAULT  ('25000')
+%ThreadError DEFAULT  ('')
+[INSTANCE]
+INSTANCE 4
+[PROMPTS]
+%ThreadProcedure PROCEDURE  (ViewProducts)
+%ThreadStack DEFAULT  ('25000')
+%ThreadError DEFAULT  ('')
+[WINDOW]
+AppFrame APPLICATION('Tutorial Application '),AT(,,310,225),RESIZE,MAX,STATUS(-1,80,120,45), |
+          SYSTEM
+          MENUBAR,USE(?MainMenu)
+            MENU('&File'),USE(?FileMenu)
+              ITEM('P&rint Setup...'),USE(?PrintSetup),MSG('Setup Printer'),STD(STD:PrintSetup)
+              ITEM('Print &Customer List'),USE(?FilePrintCustomerList)
+              ITEM('Print &All Invoices'),USE(?FilePrintAllInvoices)
+              ITEM('Print &One Customer''s Invoices'),USE(?FilePrintOneCustomersInvoices)
+              ITEM,SEPARATOR
+              ITEM('E&xit'),USE(?Exit),MSG('Exit this application'),STD(STD:Close)
+            END
+            MENU('&Edit'),USE(?EditMenu)
+              ITEM('Cu&t'),USE(?Cut),MSG('Remove item to Windows Clipboard'),STD(STD:Cut)
+              ITEM('&Copy'),USE(?Copy),MSG('Copy item to Windows Clipboard'),STD(STD:Copy)
+              ITEM('&Paste'),USE(?Paste),MSG('Paste contents of Windows Clipboard'),STD(STD:Paste)
+            END
+            MENU('&View'),USE(?View)
+              ITEM('&Customers'),USE(?ViewCustomers)
+              ITEM('&Products'),USE(?ViewProducts)
+              ITEM('&Orders'),USE(?ViewOrders)
+            END
+            MENU('&Window'),MSG('Create and Arrange windows'),STD(STD:WindowList)
+              ITEM('T&ile'),USE(?Tile),MSG('Make all open windows visible'),STD(STD:TileWindow)
+              ITEM('&Cascade'),USE(?Cascade),MSG('Stack all open windows'),STD(STD:CascadeWindow)
+              ITEM('&Arrange Icons'),USE(?Arrange),MSG('Align all window icons'),STD(STD:ArrangeIcons)
+            END
+            MENU('&Help'),MSG('Windows Help')
+              ITEM('&Contents'),USE(?Helpindex),MSG('View the contents of the help file'), |
+                STD(STD:HelpIndex)
+              ITEM('&Search for Help On...'),USE(?HelpSearch),MSG('Search for help on a subject'), |
+                STD(STD:HelpSearch)
+              ITEM('&How to Use Help'),USE(?HelpOnHelp),MSG('How to use Windows Help'),STD(STD:HelpOnHelp)
+            END
+          END
+          TOOLBAR,AT(0,0,,26)
+            BUTTON,AT(3,4,16,14),USE(?CustomerButton),ICON('CUSTOMER.GIF'),FLAT,TIP('Browse Customers'), |
+              #ORIG(?Button1)
+            BUTTON,AT(21,4,16,14),USE(?ProductsButton),ICON('PRODUCTS.GIF'),FLAT,TIP('Browse Products'), |
+              #ORIG(?Button2)
+            BUTTON,AT(39,4,16,14),USE(?OrdersButton),ICON('ORDERS.GIF'),FLAT,TIP('Browse Orders'), |
+              #ORIG(?Button3)
+            BUTTON,AT(61,4,16,14),USE(?Toolbar:Top,Toolbar:Top),ICON('VCRFIRST.ICO'),DISABLE, |
+              FLAT,TIP('Go to the First Page'),#ORIG(?Toolbar:Top),#SEQ(2)
+            BUTTON,AT(77,4,16,14),USE(?Toolbar:PageUp,Toolbar:PageUp),ICON('VCRPRIOR.ICO'), |
+              DISABLE,FLAT,TIP('Go to the Prior Page'),#ORIG(?Toolbar:PageUp),#SEQ(2)
+            BUTTON,AT(93,4,16,14),USE(?Toolbar:Up,Toolbar:Up),ICON('VCRUP.ICO'),DISABLE,FLAT, |
+              TIP('Go to the Prior Record'),#ORIG(?Toolbar:Up),#SEQ(2)
+            BUTTON,AT(109,4,16,14),USE(?Toolbar:Locate,Toolbar:Locate),ICON('FIND.ICO'),DISABLE, |
+              FLAT,TIP('Locate record'),#ORIG(?Toolbar:Locate),#SEQ(2)
+            BUTTON,AT(125,4,16,14),USE(?Toolbar:Down,Toolbar:Down),ICON('VCRDOWN.ICO'),DISABLE, |
+              FLAT,TIP('Go to the Next Record'),#ORIG(?Toolbar:Down),#SEQ(2)
+            BUTTON,AT(141,4,16,14),USE(?Toolbar:PageDown,Toolbar:PageDown),ICON('VCRNEXT.ICO'), |
+              DISABLE,FLAT,TIP('Go to the Next Page'),#ORIG(?Toolbar:PageDown),#SEQ(2)
+            BUTTON,AT(157,4,16,14),USE(?Toolbar:Bottom,Toolbar:Bottom),ICON('VCRLAST.ICO'), |
+              DISABLE,FLAT,TIP('Go to the Last Page'),#ORIG(?Toolbar:Bottom),#SEQ(2)
+            BUTTON,AT(177,4,16,14),USE(?Toolbar:Select,Toolbar:Select),ICON('MARK.ICO'),DISABLE, |
+              FLAT,TIP('Select This Record'),#ORIG(?Toolbar:Select),#SEQ(2)
+            BUTTON,AT(193,4,16,14),USE(?Toolbar:Insert,Toolbar:Insert),ICON('INSERT.ICO'), |
+              DISABLE,FLAT,TIP('Insert a New Record'),#ORIG(?Toolbar:Insert),#SEQ(2)
+            BUTTON,AT(209,4,16,14),USE(?Toolbar:Change,Toolbar:Change),ICON('EDIT.ICO'),DISABLE, |
+              FLAT,TIP('Edit This Record'),#ORIG(?Toolbar:Change),#SEQ(2)
+            BUTTON,AT(225,4,16,14),USE(?Toolbar:Delete,Toolbar:Delete),ICON('DELETE.ICO'), |
+              DISABLE,FLAT,TIP('Delete This Record'),#ORIG(?Toolbar:Delete),#SEQ(2)
+            BUTTON,AT(245,4,16,14),USE(?Toolbar:History,Toolbar:History),ICON('DITTO.ICO'), |
+              DISABLE,FLAT,TIP('Previous value'),#ORIG(?Toolbar:History),#SEQ(2)
+            BUTTON,AT(261,4,16,14),USE(?Toolbar:Help,Toolbar:Help),ICON('HELP.ICO'),DISABLE, |
+              FLAT,TIP('Get Help'),#ORIG(?Toolbar:Help),#SEQ(2)
+          END
+        END
+
+[END]

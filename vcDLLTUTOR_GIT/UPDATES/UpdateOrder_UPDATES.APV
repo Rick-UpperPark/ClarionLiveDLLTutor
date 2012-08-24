@@ -1,0 +1,2183 @@
+[MODULE]
+NAME 'UpdateOrder_UPDATES.clw'
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME UpdateOrder
+NOEXPORT
+[COMMON]
+FROM ABC Window
+CATEGORY 'Form'
+MODIFIED '2010/08/01' '10:09:10'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('f23de7b9-29bd-492e-b4d7-45b4ea2c0d16'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
+ActionMessage            CSTRING(40)
+!!> GUID('cd73f5f1-568c-4f70-8996-13203c5c5afc')
+[SCREENCONTROLS]
+! PROMPT('Item Total:'),USE(?ItemTotal:Prompt)
+! ENTRY(@n-10.2),USE(ItemTotal),DECIMAL(12)
+[REPORTCONTROLS]
+! STRING(@n-10.2),USE(ItemTotal),DECIMAL(12)
+ItemTotal                DECIMAL(7,2)
+!!> GUID('4da269f9-c8a0-4f48-a593-479c0eb6a20e'),PROMPT('Item Total:'),HEADER('Item Total'),PICTURE(@n-10.2),JUSTIFY(DECIMAL,12)
+[FILES]
+[PRIMARY]
+Detail
+[INSTANCE]
+5
+[KEY]
+DTL:KeyOrderNumber
+[SECONDARY]
+Products Detail
+[PRIMARY]
+Orders
+[INSTANCE]
+1
+[SECONDARY]
+Customer Orders
+[PROMPTS]
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', |
+  'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', 'Run {20}PROCEDURE(USHORT Number,BYTE Request),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeCloseEvent         PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeSelected {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%Parameters DEFAULT  ('')
+%ReturnValue FIELD  ()
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('Default')TIMES 0
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 11
+WHEN  ('') ('No Special Action')
+WHEN  ('?ActionMessage') ('No Special Action')
+WHEN  ('?CUS:Company') ('No Special Action')
+WHEN  ('?Cancel') ('No Special Action')
+WHEN  ('?Change') ('No Special Action')
+WHEN  ('?Delete') ('No Special Action')
+WHEN  ('?Insert') ('No Special Action')
+WHEN  ('?List') ('No Special Action')
+WHEN  ('?OK') ('No Special Action')
+WHEN  ('?ORD:CustNumber') ('No Special Action')
+WHEN  ('?ORD:InvoiceAmount') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Delete') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Delete') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?Delete') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 1
+WHEN  ('?Delete') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 11
+WHEN  ('') ('25000')
+WHEN  ('?ActionMessage') ('25000')
+WHEN  ('?CUS:Company') ('25000')
+WHEN  ('?Cancel') ('25000')
+WHEN  ('?Change') ('25000')
+WHEN  ('?Delete') ('25000')
+WHEN  ('?Insert') ('25000')
+WHEN  ('?List') ('25000')
+WHEN  ('?OK') ('25000')
+WHEN  ('?ORD:CustNumber') ('25000')
+WHEN  ('?ORD:InvoiceAmount') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 11
+WHEN  ('') ('None')
+WHEN  ('?ActionMessage') ('None')
+WHEN  ('?CUS:Company') ('None')
+WHEN  ('?Cancel') ('None')
+WHEN  ('?Change') ('None')
+WHEN  ('?Delete') ('None')
+WHEN  ('?Insert') ('None')
+WHEN  ('?List') ('None')
+WHEN  ('?OK') ('None')
+WHEN  ('?ORD:CustNumber') ('None')
+WHEN  ('?ORD:InvoiceAmount') ('None')
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 1
+WHEN  ('?ORD:CustNumber') ()
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?ORD:CustNumber') ()
+
+%PostLookupKey DEPEND %Control KEY TIMES 1
+WHEN  ('?ORD:CustNumber') (CUS:KeyCustNumber)
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 1
+WHEN  ('?ORD:CustNumber') (CUS:CustNumber)
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 1
+WHEN  ('?ORD:CustNumber') (ViewCustomers)
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 11
+WHEN  ('') (1)
+WHEN  ('?ActionMessage') (1)
+WHEN  ('?CUS:Company') (1)
+WHEN  ('?Change') (1)
+WHEN  ('?Delete') (1)
+WHEN  ('?List') (1)
+WHEN  ('?ORD:CustNumber') (1)
+WHEN  ('?ORD:InvoiceAmount') (1)
+WHEN  ('?ORD:OrderDate') (1)
+WHEN  ('?ORD:OrderNote') (1)
+WHEN  ('?ORD:OrderNote:2') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 1
+WHEN  ('?ORD:CustNumber') (1)
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?CUS:Company')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?Delete')TIMES 0
+WHEN  ('?List')TIMES 0
+WHEN  ('?ORD:CustNumber')TIMES 0
+WHEN  ('?ORD:InvoiceAmount')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?CUS:Company')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?Delete')TIMES 0
+WHEN  ('?List')TIMES 0
+WHEN  ('?ORD:CustNumber')TIMES 0
+WHEN  ('?ORD:InvoiceAmount')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?CUS:Company')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?Delete')TIMES 0
+WHEN  ('?List')TIMES 0
+WHEN  ('?ORD:CustNumber')TIMES 0
+WHEN  ('?ORD:InvoiceAmount')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?CUS:Company')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?Delete')TIMES 0
+WHEN  ('?List')TIMES 0
+WHEN  ('?ORD:CustNumber')TIMES 0
+WHEN  ('?ORD:InvoiceAmount')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  (1)
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 1
+WHEN  (1) ('ItemTotal')
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 1
+WHEN  (1) ('BrowseBox(ABC)')
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureParameters MULTI LONG  ()
+%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
+
+%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('Default')
+WHEN  ('?ActionMessage') ('Default')
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+
+%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
+
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 7500
+PROPERTY:END
+!RSMTest more
+LocalErrGroup   GROUP
+                    USHORT(1)
+                    USHORT(99)
+                    BYTE(Level:Notify)
+                    PSTRING('Save the Order!')
+                    PSTRING('Some Item changed -- Press the OK button.')
+                END
+SaveTotal       LIKE(ORD:InvoiceAmount)
+[END]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'Init'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5600
+PROPERTY:END
+  GlobalErrors.AddErrors(LocalErrGroup)           !Add custom error
+  IF SELF.Request = ChangeRecord                  !If Changing a record
+      SaveTotal = ORD:InvoiceAmount               !Save the original order total
+  END
+[END]
+[END]
+WHEN 'Kill'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 2500
+PROPERTY:END
+  GlobalErrors.RemoveErrors(LocalErrGroup)            !Remove custom error
+[END]
+[END]
+WHEN 'TakeCloseEvent'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 7500
+PROPERTY:END
+If SELF.OriginalRequest = InsertRecord AND SELF.Response = RequestCancelled and ReturnValue = Level:Benign
+  Message('We are cancelling insert')
+END
+
+[END]
+[END]
+[END]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?ORD:CustNumber'
+[INSTANCES]
+WHEN 'Selected'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+?ORD:CustNumber{PROP:Touched} = TRUE
+[END]
+[END]
+WHEN '?ORD:OrderNote'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4499
+PROPERTY:END
+! Comment for original Order Note
+[END]
+[END]
+WHEN '?ORD:OrderNote:2'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4499
+PROPERTY:END
+! Comment for second Order Note
+[END]
+[END]
+[END]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'CloseWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 2500
+PROPERTY:END
+IF SELF.Request = ChangeRecord                  AND |   !If Changing a record
+ SELF.Response <> RequestCompleted               AND |   ! and OK button not pressed
+ SaveTotal <> ORD:InvoiceAmount                         ! and detail recs changed
+GlobalErrors.Throw(99)                                  !Display custom error
+SELECT(?OK)                                             ! then select the OK button
+CYCLE
+END
+[END]
+[END]
+EMBED %EditInPlaceManagerMethodDataSection
+[INSTANCES]
+WHEN '6'
+[INSTANCES]
+WHEN '2'
+[INSTANCES]
+WHEN 'Init'
+[INSTANCES]
+WHEN '(UNSIGNED FieldNumber,UNSIGNED ListBox,*? UseVar)'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+!  SELF.Feq = CREATE(0,CREATE:Spin)                     !Create a SPIN control
+!  ASSERT(~ERRORCODE())                                 !Assumes no errors
+!  SELF.Feq{PROP:Text} = ListBox{PROPLIST:Picture,FieldNumber}
+!                                                       !Set entry picture token
+!  SELF.Feq{PROP:Use} = UseVar                          !Set USE to passed *? parameter
+!  SELF.Feq{PROP:Alrt,1} = TabKey                       !Alert standard field navigation
+!  SELF.Feq{PROP:Alrt,2} = ShiftTab                     ! keys for TakeEvent to handle
+!  SELF.Feq{PROP:Alrt,3} = EnterKey
+!  SELF.Feq{PROP:Alrt,4} = EscKey
+!  SELF.Feq{PROP:RangeLow} = 1                          !Set RANGE values for the SPIN
+!  SELF.Feq{PROP:RangeHigh} = 9999
+!  RETURN                                                !Return before Parent method call
+[END]
+[END]
+[END]
+[END]
+[END]
+EMBED %EditInPlaceManagerMethodCodeSection
+[INSTANCES]
+WHEN '6'
+[INSTANCES]
+WHEN '1'
+[INSTANCES]
+WHEN 'TakeEvent'
+[INSTANCES]
+WHEN '(UNSIGNED Event),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 7500
+PROPERTY:END
+UPDATE(SELF.Feq)                                              !Update Q field
+IF (ReturnValue AND ReturnValue <> EditAction:Cancel) OR |
+   EVENT() = EVENT:Accepted
+                                                              !Parent return an action?
+  PRD:ProdNumber = BRW5.Q.DTL:ProdNumber                      !Set for lookup
+  IF Access:Products.Fetch(PRD:KeyProdNumber)                 !Lookup Products rec
+      GlobalRequest = SelectRecord                            !If no rec, set for select
+      ViewProducts                                            ! then call Lookup proc
+      IF GlobalResponse <> RequestCompleted                   !Rec selected?
+          CLEAR(PRD:Record)                                   ! if not, clear the buffer
+          ReturnValue = EditAction:None                       ! and set the action to
+      END                                                     ! stay on same entry field
+   END
+   BRW5.Q.DTL:ProdNumber = PRD:ProdNumber                     !Assign Products file
+   BRW5.Q.DTL:ProdAmount = PRD:ProdAmount                     ! values to Browse QUEUE
+   BRW5.Q.PRD:ProdDesc = PRD:ProdDesc                         ! fields
+   DISPLAY                                                    ! and display them
+ END
+
+[END]
+[END]
+[END]
+WHEN '2'
+[INSTANCES]
+WHEN 'Init'
+[INSTANCES]
+WHEN '(UNSIGNED FieldNumber,UNSIGNED ListBox,*? UseVar)'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 2500
+PROPERTY:END
+SELF.Feq = CREATE(0,CREATE:Spin)                     !Create a SPIN control
+ASSERT(~ERRORCODE())                                 !Assumes no errors
+SELF.Feq{PROP:Text} = ListBox{PROPLIST:Picture,FieldNumber}
+                                                     !Set entry picture token
+SELF.Feq{PROP:Use} = UseVar                          !Set USE to passed *? parameter
+SELF.Feq{PROP:Alrt,1} = TabKey                       !Alert standard field navigation
+SELF.Feq{PROP:Alrt,2} = ShiftTab                     ! keys for TakeEvent to handle
+SELF.Feq{PROP:Alrt,3} = EnterKey
+SELF.Feq{PROP:Alrt,4} = EscKey
+SELF.Feq{PROP:RangeLow} = 1                          !Set RANGE values for the SPIN
+SELF.Feq{PROP:RangeHigh} = 9999
+RETURN                                                !Return before Parent method call
+[END]
+[END]
+WHEN 'TakeEvent'
+[INSTANCES]
+WHEN '(UNSIGNED Event),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 2500
+PROPERTY:END
+CASE Event                                            !Evaluate passed in event
+OF EVENT:AlertKey                                     ! and handle only AlertKey events
+  CASE KEYCODE()
+  OF EnterKey                                         !On Enter
+      RETURN(EditAction:Complete)                     ! set action complete
+  OF EscKey                                           !On Escape
+      RETURN(EditAction:Cancel)                       ! set action cancelled
+  OF TabKey                                           !On Tab
+      RETURN(EditAction:Forward)                      ! set action forward
+  OF ShiftTab                                         !On Shift+Tab
+      RETURN(EditAction:Backward)                     ! set action backward
+  END
+END
+RETURN(EditAction:None)                               !No action for everything else
+[END]
+[END]
+[END]
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABC SaveButton
+[INSTANCE]
+INSTANCE 1
+PROCPROP
+[PROMPTS]
+%InsertAllowed LONG  (1)
+%InsertMessage DEFAULT  ('Record will be Added')
+%ChangeAllowed LONG  (1)
+%ChangeMessage DEFAULT  ('Record will be Changed')
+%DeleteAllowed LONG  (1)
+%DeleteMessage DEFAULT  ('Record will be Deleted')
+%MessageHeader LONG  (0)
+%HistoryKey DEFAULT  ('734')
+%PrimingFields MULTI LONG  ()
+%PrimedField DEPEND %PrimingFields FIELD TIMES 0
+
+%PrimedValue DEPEND %PrimingFields DEFAULT TIMES 0
+
+%ActionOnCancel DEFAULT  ('Offer to save changes')
+%ActionOnDelete DEFAULT  ('Standard Warning')
+%AfterGoodInsert DEFAULT  ('Return to caller')
+%AskAfterAdd LONG  (0)
+%MessageLocation DEFAULT  ('None/Window Control')
+%MessageStatusSection DEFAULT  ('')
+%AppendToTitle LONG  (0)
+%AppendToTitleID DEFAULT  ('')
+%ViewMessage DEFAULT  ('View Record')
+[ADDITION]
+NAME ABC CancelButton
+[INSTANCE]
+INSTANCE 2
+[ADDITION]
+NAME ABC RecordValidation
+[INSTANCE]
+INSTANCE 3
+PROCPROP
+[PROMPTS]
+%ValidateOnAccept LONG  (1)
+%ValidateOnNonStopSelect LONG  (1)
+%ControlsExcluded MULTI LONG  ()
+%ControlToExclude DEPEND %ControlsExcluded DEFAULT TIMES 0
+
+%ValidateUsingColoration LONG  (0)
+%InvalidFieldColor LONG  (255)
+%InvalidPromptColor LONG  (255)
+%UseValidateMessage LONG  (0)
+%ValidationMessage DEFAULT  ('The values of Colored Fields are invalid, Please correct this information.')
+%MessageControl FIELD  ()
+[ADDITION]
+NAME ABC FormVCRControls
+[INSTANCE]
+INSTANCE 4
+[PROMPTS]
+%AllowVCRAccess LONG  (0)
+%ClassItem UNIQUE DEFAULT  ('Default')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('ToolbarUpdateClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
+
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('ToolbarForm')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 1
+WHEN  ('Default') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 1
+WHEN  ('Default') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 1
+WHEN  ('Default') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('Default')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('Default')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 1
+WHEN  ('Default') ('NO')
+
+[ADDITION]
+NAME ABC BrowseBox
+[INSTANCE]
+INSTANCE 5
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('Default', 'Locator', 'Locator0', 'Step', 'Step0')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('BrowseClass')
+WHEN  ('Locator0') ('StepLocatorClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('')
+WHEN  ('Locator0') ('')
+WHEN  ('Step0') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Q {22}&Queue:Browse {18}!Reference to browse queue', 'Init {19}PROCEDURE(SIGNED ListBox,*STRING Posit,VIEW V,QUEUE Q,RelationManager RM,WindowManager WM)', |
+  'ResetFromView {10}PROCEDURE(),DERIVED', 'SetQueueRecord         PROCEDURE(),DERIVED')
+
+%EnableQuickScan LONG  (0)
+%LocatorType DEFAULT  ('Step')
+%OverrideDefaultLocator LONG  (0)
+%OverrideLocator DEFAULT  ('')
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('BRW5')
+WHEN  ('Locator0') ('BRW5::Sort0:Locator')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 5
+WHEN  ('Default') (1)
+WHEN  ('Locator') (1)
+WHEN  ('Locator0') (1)
+WHEN  ('Step') (1)
+WHEN  ('Step0') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 5
+WHEN  ('Default') (1)
+WHEN  ('Locator') (1)
+WHEN  ('Locator0') (1)
+WHEN  ('Step') (1)
+WHEN  ('Step0') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 5
+WHEN  ('Default') ('')
+WHEN  ('Locator') ('')
+WHEN  ('Locator0') ('')
+WHEN  ('Step') ('')
+WHEN  ('Step0') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 5
+WHEN  ('Default') (0)
+WHEN  ('Locator') (0)
+WHEN  ('Locator0') (0)
+WHEN  ('Step') (0)
+WHEN  ('Step0') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 5
+WHEN  ('Default')TIMES 0
+WHEN  ('Locator')TIMES 0
+WHEN  ('Locator0')TIMES 0
+WHEN  ('Step')TIMES 0
+WHEN  ('Step0')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 5
+WHEN  ('Default')TIMES 0
+WHEN  ('Locator')TIMES 0
+WHEN  ('Locator0')TIMES 0
+WHEN  ('Step')TIMES 0
+WHEN  ('Step0')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%AcceptToolBarControl LONG  (1)
+%RecordFilter DEFAULT  ('')
+%RangeField COMPONENT  (DTL:OrderNumber)
+%RangeLimitType DEFAULT  ('File Relationship')
+%RangeLimit FIELD  ()
+%RangeLow FIELD  ()
+%RangeHigh FIELD  ()
+%RangeFile FILE  (Orders)
+%AddSortFields DEFAULT  ('')
+%ResetFields MULTI LONG  ()
+%ResetField DEPEND %ResetFields FIELD TIMES 0
+
+%ScrollBehavior DEFAULT  ('Fixed Thumb')
+%ScrollKeyDistribution DEFAULT  ('Alpha')
+%CustomKeyDistribution MULTI LONG  ()
+%KeyDistributionValue DEPEND %CustomKeyDistribution DEFAULT TIMES 0
+
+%ScrollAlpha LONG  (1)
+%ScrollNumeric LONG  (0)
+%ScrollAlt LONG  (0)
+%SortOrder MULTI LONG  ()
+%SortCondition DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortKey DEPEND %SortOrder KEY TIMES 0
+
+%SortLocatorType DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortOverrideDefaultLocator DEPEND %SortOrder LONG TIMES 0
+
+%SortOverrideLocator DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortRecordFilter DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortRangeField DEPEND %SortOrder COMPONENT TIMES 0
+
+%SortRangeLimitType DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortRangeLimit DEPEND %SortOrder FIELD TIMES 0
+
+%SortRangeLow DEPEND %SortOrder FIELD TIMES 0
+
+%SortRangeHigh DEPEND %SortOrder FIELD TIMES 0
+
+%SortRangeFile DEPEND %SortOrder FILE TIMES 0
+
+%SortAddSortFields DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortResetFields DEPEND %SortOrder MULTI LONG TIMES 0
+
+%SortResetField DEPEND %SortResetFields FIELD TIMES 0
+
+%SortScrollBehavior DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortScrollKeyDistribution DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortCustomKeyDistribution DEPEND %SortOrder MULTI LONG TIMES 0
+
+%SortKeyDistributionValue DEPEND %SortCustomKeyDistribution DEFAULT TIMES 0
+
+%SortScrollAlpha DEPEND %SortOrder LONG TIMES 0
+
+%SortScrollNumeric DEPEND %SortOrder LONG TIMES 0
+
+%SortScrollAlt DEPEND %SortOrder LONG TIMES 0
+
+%HotFields MULTI LONG  ()
+%HotField DEPEND %HotFields FIELD TIMES 0
+
+%HotFieldBound DEPEND %HotFields LONG TIMES 0
+
+%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%ConditionalColors DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%ColorCondition DEPEND %ConditionalColors DEFAULT TIMES 0
+
+%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 0
+
+%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 0
+
+%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 0
+
+%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 0
+
+%ControlFieldIcon DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%ConditionalIcons DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%IconCondition DEPEND %ConditionalIcons DEFAULT TIMES 0
+
+%ConditionalControlFieldIcon DEPEND %ConditionalIcons DEFAULT TIMES 0
+
+%BrowseTotals MULTI LONG  (1)
+%BrowseTotalTarget DEPEND %BrowseTotals FIELD TIMES 1
+WHEN  (1) (ORD:InvoiceAmount)
+
+%BrowseTotalType DEPEND %BrowseTotals DEFAULT TIMES 1
+WHEN  (1) ('Sum')
+
+%BrowseTotalField DEPEND %BrowseTotals DEFAULT TIMES 1
+WHEN  (1) ('ItemTotal')
+
+%BrowseTotalBasedOn DEPEND %BrowseTotals DEFAULT TIMES 1
+WHEN  (1) ('Each Record Read')
+
+%BrowseTotalCondition DEPEND %BrowseTotals DEFAULT TIMES 1
+WHEN  (1) ('')
+
+%LoadMethod DEFAULT  ('Page')
+%FindDefaultAnywhere LONG  (0)
+%SortFindAnywhere DEPEND %SortOrder LONG TIMES 0
+
+%HotFieldBindOnly DEPEND %HotFields LONG TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 3
+WHEN  ('Default') ('NO')
+WHEN  ('Locator0') ('NO')
+WHEN  ('Step0') ('NO')
+
+%ControlFieldStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%ConditionalStyles DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%StyleCondition DEPEND %ConditionalStyles DEFAULT TIMES 0
+
+%ConditionalControlFieldStyle DEPEND %ConditionalStyles DEFAULT TIMES 0
+
+%SQLViewFields MULTI DEFAULT  ()
+%InterLine DEFAULT  ('0')
+%HigherKeys MULTI LONG  ()
+%HigherKey DEPEND %HigherKeys COMPONENT TIMES 0
+
+%HigherKeyField DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueType DEPEND %HigherKeys DEFAULT TIMES 0
+
+%HigherKeyValueVariable DEPEND %HigherKeys FIELD TIMES 0
+
+%HigherKeyValueFixed DEPEND %HigherKeys DEFAULT TIMES 0
+
+%AdditionalSortType DEFAULT  ('Manual')
+%AddSortFieldsAssisted MULTI LONG  ()
+%AddSortFieldAssisted DEPEND %AddSortFieldsAssisted FIELD TIMES 0
+
+%AddSortFieldAssistedOrder DEPEND %AddSortFieldsAssisted DEFAULT TIMES 0
+
+%SortHigherKeys DEPEND %SortOrder MULTI LONG TIMES 0
+
+%SortHigherKey DEPEND %SortHigherKeys COMPONENT TIMES 0
+
+%SortHigherKeyField DEPEND %SortOrder DEPEND %SortHigherKeys FIELD TIMES 0
+
+%SortHigherKeyValueType DEPEND %SortOrder DEPEND %SortHigherKeys DEFAULT TIMES 0
+
+%SortHigherKeyValueVariable DEPEND %SortOrder DEPEND %SortHigherKeys FIELD TIMES 0
+
+%SortHigherKeyValueFixed DEPEND %SortOrder DEPEND %SortHigherKeys DEFAULT TIMES 0
+
+%SortAdditionalSortType DEPEND %SortOrder DEFAULT TIMES 0
+
+%SortAddSortFieldsAssisted DEPEND %SortOrder MULTI LONG TIMES 0
+
+%SortAddSortFieldAssisted DEPEND %SortAddSortFieldsAssisted FIELD TIMES 0
+
+%SortAddSortFieldAssistedOrder DEPEND %SortAddSortFieldsAssisted DEFAULT TIMES 0
+
+%UseSameColorForAll LONG  (0)
+%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%AllControlGreenBarColor LONG  (0)
+%AllControlGreenBarColorAlternate LONG  (0)
+%AllControlFieldForegroundNormal LONG  (-1)
+%AllControlFieldBackgroundNormal LONG  (-1)
+%AllControlFieldForegroundSelected LONG  (-1)
+%AllControlFieldBackgroundSelected LONG  (-1)
+%ConditionalColorsAll MULTI LONG  ()
+%ColorConditionAll DEPEND %ConditionalColorsAll DEFAULT TIMES 0
+
+%ConditionalAllControlFieldForegroundNormal DEPEND %ConditionalColorsAll LONG TIMES 0
+
+%ConditionalAllControlFieldBackgroundNormal DEPEND %ConditionalColorsAll LONG TIMES 0
+
+%ConditionalAllControlFieldForegroundSelected DEPEND %ConditionalColorsAll LONG TIMES 0
+
+%ConditionalAllControlFieldBackgroundSelected DEPEND %ConditionalColorsAll LONG TIMES 0
+
+%AllGreenBarOnForegroundNormal LONG  (-1)
+%AllGreenBarOnBackgroundNormal LONG  (-1)
+%AllGreenBarOnForegroundSelected LONG  (-1)
+%AllGreenBarOnBackgroundSelected LONG  (-1)
+%AllGreenBarOffForegroundNormal LONG  (-1)
+%AllGreenBarOffBackgroundNormal LONG  (-1)
+%AllGreenBarOffForegroundSelected LONG  (-1)
+%AllGreenBarOffBackgroundSelected LONG  (-1)
+%ControlFieldIconIsNumber DEPEND %Control DEPEND %ControlField LONG TIMES 0
+
+%ConditionalControlFieldIconIsNumber DEPEND %ConditionalIcons LONG TIMES 0
+
+%UseSameStyleForAll LONG  (0)
+%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('Local List')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Local List')
+WHEN  ('DTL:ProdNumber') ('Local List')
+WHEN  ('DTL:Quantity') ('Local List')
+WHEN  ('ItemTotal') ('Local List')
+WHEN  ('PRD:ProdDesc') ('Local List')
+
+%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('')
+WHEN  ('DTL:ProdNumber') ('')
+WHEN  ('DTL:Quantity') ('')
+WHEN  ('ItemTotal') ('')
+WHEN  ('PRD:ProdDesc') ('')
+
+%GreenBarOnStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('Local List')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Local List')
+WHEN  ('DTL:ProdNumber') ('Local List')
+WHEN  ('DTL:Quantity') ('Local List')
+WHEN  ('ItemTotal') ('Local List')
+WHEN  ('PRD:ProdDesc') ('Local List')
+
+%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('')
+WHEN  ('DTL:ProdNumber') ('')
+WHEN  ('DTL:Quantity') ('')
+WHEN  ('ItemTotal') ('')
+WHEN  ('PRD:ProdDesc') ('')
+
+%GreenBarOffStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('Local List')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Local List')
+WHEN  ('DTL:ProdNumber') ('Local List')
+WHEN  ('DTL:Quantity') ('Local List')
+WHEN  ('ItemTotal') ('Local List')
+WHEN  ('PRD:ProdDesc') ('Local List')
+
+%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') ('')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('')
+WHEN  ('DTL:ProdNumber') ('')
+WHEN  ('DTL:Quantity') ('')
+WHEN  ('ItemTotal') ('')
+WHEN  ('PRD:ProdDesc') ('')
+
+%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 0
+
+%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 0
+
+%AllControlGreenBarStyle LONG  (0)
+%AllControlGreenBarStyleAlternate LONG  (0)
+%AllControlFieldStyleType DEFAULT  ('Local List')
+%AllControlFieldStyleLocalList DEFAULT  ('')
+%AllControlFieldStyle DEFAULT  ('')
+%ConditionalStylesAll MULTI LONG  ()
+%StyleConditionAll DEPEND %ConditionalStylesAll DEFAULT TIMES 0
+
+%ConditionalAllControlFieldStyleType DEPEND %ConditionalStylesAll DEFAULT TIMES 0
+
+%ConditionalAllControlFieldStyleLocalList DEPEND %ConditionalStylesAll DEFAULT TIMES 0
+
+%ConditionalAllControlFieldStyle DEPEND %ConditionalStylesAll DEFAULT TIMES 0
+
+%AllGreenBarOnStyleType DEFAULT  ('Local List')
+%AllGreenBarOnStyleLocalList DEFAULT  ('')
+%AllGreenBarOnStyle DEFAULT  ('')
+%AllGreenBarOffStyleType DEFAULT  ('Local List')
+%AllGreenBarOffStyleLocalList DEFAULT  ('')
+%AllGreenBarOffStyle DEFAULT  ('')
+%ControlFieldTipField DEPEND %Control DEPEND %ControlField FIELD TIMES 0
+
+%BrowseAllTotalOnOff LONG  (1)
+%BrowseAllTotalOnOffCondition DEFAULT  ('')
+%EnableSortHeader LONG  (0)
+%DisableAutoSizeColumn LONG  (0)
+%DisableListFormatManager LONG  (0)
+%ListFormatManagerAllowPopupInEmptyList DEFAULT  ('Enable')
+%ListFormatManagerCheckType DEFAULT  ('Icon')
+%ListFormatManagerItemsSortBy DEFAULT  ('Alpha')
+%ListFormatManagerUseIdentificationTip DEFAULT  ('Enable')
+%ListFormatManagerSaveWindowPosition DEFAULT  ('Enable')
+%ListFormatManagerSortOrder LONG  (1)
+%ListFormatManagerSave LONG  (1)
+%AddPopUp MULTI LONG  ()
+%AddPopUpChoice DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpControl DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpAction DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpProcedure DEPEND %AddPopUp PROCEDURE TIMES 0
+
+%AddPopUpThreadProcedure DEPEND %AddPopUp LONG TIMES 0
+
+%AddPopUpThreadStack DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpText DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpIcon DEPEND %AddPopUp DEFAULT TIMES 0
+
+%TypeAddPopupIcon DEPEND %AddPopUp DEFAULT TIMES 0
+
+%OtherPopupIcon DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpDisable DEPEND %AddPopUp DEFAULT TIMES 0
+
+%AddPopUpSeparate DEPEND %AddPopUp LONG TIMES 0
+
+%SQLAssignments MULTI LONG  ()
+%SQLViewField DEPEND %SQLAssignments DEFAULT TIMES 0
+
+%SQLViewFieldAssignment DEPEND %SQLAssignments DEFAULT TIMES 0
+
+%SQLHasGroupBy LONG  (0)
+%SQLGrouping DEFAULT  ('')
+%SQLHasHaving LONG  (0)
+%SQLHas DEFAULT  ('')
+%TableSchematicsDescription DEFAULT  ('')
+%BrowseBoxDoNotIncludePrimaryKey LONG  (0)
+%DisableUsePopup LONG  (0)
+%ControlFieldSortHeaderSave LONG  (0)
+%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%ControlFieldSortHeaderFields DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%ControlFieldSortHeaderField DEPEND %ControlFieldSortHeaderFields FIELD TIMES 0
+
+%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 2
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+
+%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 2
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+
+%ListFormatManagerMenuAppendSortOrder LONG  (1)
+%ControlFieldSortHeaderMulti LONG  (1)
+%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%UseMRP LONG  (1)
+[ADDITION]
+NAME ABC BrowseUpdateButtons
+[INSTANCE]
+INSTANCE 6
+PARENT 5
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP1', 'EIP2', 'EIP3', 'EIP_DTL:ProdNumber', |
+  'EIP_ItemTotal')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
+WHEN  ('EIP1') ('EditEntryClass')
+WHEN  ('EIP2') ('EditEntryClass')
+WHEN  ('EIP3') ('EditEntryClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('BrowseEIPManager') ('')
+WHEN  ('EIP1') ('')
+WHEN  ('EIP2') ('')
+WHEN  ('EIP3') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
+WHEN  ('EIP1') ('TakeEvent {14}PROCEDURE(UNSIGNED Event),BYTE,DERIVED')
+WHEN  ('EIP2') ('Init {19}PROCEDURE(UNSIGNED FieldNumber,UNSIGNED ListBox,*? UseVar),DERIVED', |
+  'TakeEvent {14}PROCEDURE(UNSIGNED Event),BYTE,DERIVED')
+
+%EIPTabAction DEFAULT  ('Default')
+%EIPTabRemain LONG  (0)
+%EIPEnterAction DEFAULT  ('Default')
+%EIPEnterRemain LONG  (0)
+%EIPArrowAction DEFAULT  ('Default')
+%EIPArrowRemain LONG  (1)
+%EIPArrowRetain LONG  (1)
+%EIPFocusAction DEFAULT  ('Default')
+%EditInPlaceList MULTI LONG  (1, 2, 3)
+%EditInPlaceField DEPEND %EditInPlaceList FIELD TIMES 3
+WHEN  (1) (DTL:ProdNumber)
+WHEN  (2) (DTL:Quantity)
+WHEN  (3) (DTL:ProdAmount)
+
+%AllowEIP DEPEND %EditInPlaceList LONG TIMES 3
+WHEN  (1) (1)
+WHEN  (2) (1)
+WHEN  (3) (0)
+
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 4
+WHEN  ('BrowseEIPManager') ('BRW5::EIPManager')
+WHEN  ('EIP1') ('EditInPlace::DTL:ProdNumber')
+WHEN  ('EIP2') ('EditInPlace::DTL:Quantity')
+WHEN  ('EIP3') ('EditInPlace::DTL:ProdAmount')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 6
+WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP1') (1)
+WHEN  ('EIP2') (1)
+WHEN  ('EIP3') (1)
+WHEN  ('EIP_DTL:ProdNumber') (1)
+WHEN  ('EIP_ItemTotal') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 6
+WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP1') (1)
+WHEN  ('EIP2') (1)
+WHEN  ('EIP3') (1)
+WHEN  ('EIP_DTL:ProdNumber') (1)
+WHEN  ('EIP_ItemTotal') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 6
+WHEN  ('BrowseEIPManager') ('AStringValue')
+WHEN  ('EIP1') ('')
+WHEN  ('EIP2') ('')
+WHEN  ('EIP3') ('')
+WHEN  ('EIP_DTL:ProdNumber') ('ADOBlob')
+WHEN  ('EIP_ItemTotal') ('ADOBlob')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 6
+WHEN  ('BrowseEIPManager') (0)
+WHEN  ('EIP1') (0)
+WHEN  ('EIP2') (0)
+WHEN  ('EIP3') (0)
+WHEN  ('EIP_DTL:ProdNumber') (0)
+WHEN  ('EIP_ItemTotal') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 3
+WHEN  ('BrowseEIPManager')TIMES 0
+WHEN  ('EIP2')TIMES 0
+WHEN  ('EIP3')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 3
+WHEN  ('BrowseEIPManager')TIMES 0
+WHEN  ('EIP2')TIMES 0
+WHEN  ('EIP3')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%EditInPlace LONG  (1)
+%UpdateProcedure PROCEDURE  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 6
+WHEN  ('BrowseEIPManager') ('NO')
+WHEN  ('EIP1') ('NO')
+WHEN  ('EIP2') ('NO')
+WHEN  ('EIP3') ('NO')
+WHEN  ('EIP_DTL:ProdNumber') ('NO')
+WHEN  ('EIP_ItemTotal') ('NO')
+
+%EIPInsertionPoint DEFAULT  ('After')
+%EIPAskOnDelete DEFAULT  ('Always')
+%PrimingFields MULTI LONG  ()
+%PrimedField DEPEND %PrimingFields FIELD TIMES 0
+
+%PrimedValue DEPEND %PrimingFields DEFAULT TIMES 0
+
+%AllowEIPExt DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (1)
+WHEN  ('DTL:ProdNumber') (1)
+WHEN  ('DTL:Quantity') (1)
+WHEN  ('ItemTotal') (1)
+WHEN  ('PRD:ProdDesc') (1)
+
+%EditInPlaceTypeExt DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Entry')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Entry')
+WHEN  ('DTL:ProdNumber') ('Entry')
+WHEN  ('DTL:Quantity') ('Entry')
+WHEN  ('ItemTotal') ('Entry')
+WHEN  ('PRD:ProdDesc') ('Entry')
+
+%EditInPlaceFEQTitle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Default')
+WHEN  ('DTL:ProdNumber') ('Default')
+WHEN  ('DTL:Quantity') ('Default')
+WHEN  ('ItemTotal') ('Default')
+WHEN  ('PRD:ProdDesc') ('Default')
+
+%EditInPlaceFEQOffset DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('0')
+WHEN  ('DTL:ProdNumber') ('0')
+WHEN  ('DTL:Quantity') ('0')
+WHEN  ('ItemTotal') ('0')
+WHEN  ('PRD:ProdDesc') ('0')
+
+%EditInPlaceFEQTransparent DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQReadOnly DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQDataSource DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Fixed')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Fixed')
+WHEN  ('DTL:ProdNumber') ('Fixed')
+WHEN  ('DTL:Quantity') ('Fixed')
+WHEN  ('ItemTotal') ('Fixed')
+WHEN  ('PRD:ProdDesc') ('Fixed')
+
+%EditInPlaceFEQFixedDataSource DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%EditInPlaceFEQFixedDataSourceValue DEPEND %EditInPlaceFEQFixedDataSource DEFAULT TIMES 0
+
+%EditInPlaceFEQFixedDataSourceSelected DEPEND %EditInPlaceFEQFixedDataSource LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('')TIMES 0
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+
+%EditInPlaceFEQQueueDataSourceQN DEPEND %Control DEPEND %ControlField FIELD TIMES 0
+
+%EditInPlaceFEQQueueDataSourceV DEPEND %Control DEPEND %ControlField FIELD TIMES 0
+
+%EditInPlaceFEQQueueDataSourceS DEPEND %Control DEPEND %ControlField FIELD TIMES 0
+
+%ReturnToOriginalDir DEPEND %Control DEPEND %ControlField LONG TIMES 0
+
+%AllowLongFilenames DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (1)
+WHEN  ('DTL:ProdNumber') (1)
+WHEN  ('DTL:Quantity') (1)
+WHEN  ('ItemTotal') (1)
+WHEN  ('PRD:ProdDesc') (1)
+
+%DOSFileDialogType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Open')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Open')
+WHEN  ('DTL:ProdNumber') ('Open')
+WHEN  ('DTL:Quantity') ('Open')
+WHEN  ('ItemTotal') ('Open')
+WHEN  ('PRD:ProdDesc') ('Open')
+
+%AllowNoError DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%AllowMultiSelect DEPEND %Control DEPEND %ControlField LONG TIMES 0
+
+%DOSMaskDesc DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('All Files')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('All Files')
+WHEN  ('DTL:ProdNumber') ('All Files')
+WHEN  ('DTL:Quantity') ('All Files')
+WHEN  ('ItemTotal') ('All Files')
+WHEN  ('PRD:ProdDesc') ('All Files')
+
+%DOSMask DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('*.*')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('*.*')
+WHEN  ('DTL:ProdNumber') ('*.*')
+WHEN  ('DTL:Quantity') ('*.*')
+WHEN  ('ItemTotal') ('*.*')
+WHEN  ('PRD:ProdDesc') ('*.*')
+
+%DOSMoreMasks DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%DOSMoreMaskDesc DEPEND %DOSMoreMasks DEFAULT TIMES 0
+
+%DOSMoreMask DEPEND %DOSMoreMasks DEFAULT TIMES 0
+
+%EditInPlaceFEQForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%EditInPlaceFEQBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%EditInPlaceFEQForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%EditInPlaceFEQBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (-1)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (-1)
+WHEN  ('DTL:ProdNumber') (-1)
+WHEN  ('DTL:Quantity') (-1)
+WHEN  ('ItemTotal') (-1)
+WHEN  ('PRD:ProdDesc') (-1)
+
+%EditInPlaceFEQFrom DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQListFormat DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQPicture DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQDrop DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('0')
+WHEN  ('DTL:ProdNumber') ('0')
+WHEN  ('DTL:Quantity') ('0')
+WHEN  ('ItemTotal') ('0')
+WHEN  ('PRD:ProdDesc') ('0')
+
+%EditInPlaceFEQWidth DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('0')
+WHEN  ('DTL:ProdNumber') ('0')
+WHEN  ('DTL:Quantity') ('0')
+WHEN  ('ItemTotal') ('0')
+WHEN  ('PRD:ProdDesc') ('0')
+
+%EditInPlaceFEQFlat DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQHorizontal DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQVertical DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQFixedDataSourceText DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQCheckJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Default')
+WHEN  ('DTL:ProdNumber') ('Default')
+WHEN  ('DTL:Quantity') ('Default')
+WHEN  ('ItemTotal') ('Default')
+WHEN  ('PRD:ProdDesc') ('Default')
+
+%EditInPlaceFEQTrue DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQFalse DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQCase DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Default')
+WHEN  ('DTL:ProdNumber') ('Default')
+WHEN  ('DTL:Quantity') ('Default')
+WHEN  ('ItemTotal') ('Default')
+WHEN  ('PRD:ProdDesc') ('Default')
+
+%EditInPlaceFEQEntryMode DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Default')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Default')
+WHEN  ('DTL:ProdNumber') ('Default')
+WHEN  ('DTL:Quantity') ('Default')
+WHEN  ('ItemTotal') ('Default')
+WHEN  ('PRD:ProdDesc') ('Default')
+
+%EditInPlaceFEQLower DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('0')
+WHEN  ('DTL:ProdNumber') ('0')
+WHEN  ('DTL:Quantity') ('0')
+WHEN  ('ItemTotal') ('0')
+WHEN  ('PRD:ProdDesc') ('0')
+
+%EditInPlaceFEQUpper DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('0')
+WHEN  ('DTL:ProdNumber') ('0')
+WHEN  ('DTL:Quantity') ('0')
+WHEN  ('ItemTotal') ('0')
+WHEN  ('PRD:ProdDesc') ('0')
+
+%EditInPlaceFEQStep DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('0')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('0')
+WHEN  ('DTL:ProdNumber') ('0')
+WHEN  ('DTL:Quantity') ('0')
+WHEN  ('ItemTotal') ('0')
+WHEN  ('PRD:ProdDesc') ('0')
+
+%EditInPlaceFEQPassword DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%LookupType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') ('Related Field')
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') ('Related Field')
+WHEN  ('DTL:ProdNumber') ('Related Field')
+WHEN  ('DTL:Quantity') ('Related Field')
+WHEN  ('ItemTotal') ('Related Field')
+WHEN  ('PRD:ProdDesc') ('Related Field')
+
+%PostLookupKey DEPEND %Control DEPEND %ControlField KEY TIMES 0
+
+%PostLookupField DEPEND %Control DEPEND %ControlField COMPONENT TIMES 0
+
+%PostLookupFieldNoRelated DEPEND %Control DEPEND %ControlField FIELD TIMES 0
+
+%PostLookupProcedure DEPEND %Control DEPEND %ControlField PROCEDURE TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%PostLookupProcedureReturnValue DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%LookupAssign DEPEND %Control DEPEND %ControlField MULTI LONG TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%EIPThisObjectName DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%UpdateProcedureParameters DEFAULT  ('')
+%EditInPlaceFEQRequired DEPEND %Control DEPEND %ControlField LONG TIMES 4
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?Change')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQAutoSerializeField DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQAutoSerializeFieldDelimiter DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQImmediate DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditViaPopup LONG  (1)
+%EditInPlaceFEQColumnFrom DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQEntryCompletion DEPEND %Control DEPEND %ControlField LONG TIMES 3
+WHEN  ('')TIMES 1
+WHEN  ('') (0)
+WHEN  ('?ActionMessage')TIMES 0
+WHEN  ('?List')TIMES 5
+WHEN  ('DTL:ProdAmount') (0)
+WHEN  ('DTL:ProdNumber') (0)
+WHEN  ('DTL:Quantity') (0)
+WHEN  ('ItemTotal') (0)
+WHEN  ('PRD:ProdDesc') (0)
+
+%EditInPlaceFEQTrueLabel DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+%EditInPlaceFEQFalseLabel DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
+
+[CALLS]
+ViewProducts
+[WINDOW]
+FormWindow WINDOW('Order Form - 12:31pm'),AT(,,289,171),FONT('Microsoft Sans Serif',10,,FONT:regular, |
+          CHARSET:DEFAULT),CENTER,GRAY,MDI,SYSTEM
+          PROMPT('Order Date:'),AT(8,6),USE(?ORD:OrderDate:Prompt),#LINK(?ORD:OrderDate),#ORIG(?ORD:OrderDate:Prompt), |
+            #ORDINAL(1)
+          ENTRY(@d1),AT(55,4),USE(ORD:OrderDate),RIGHT(1),#LINK(?ORD:OrderDate:Prompt),#ORIG(ORD:OrderDate), |
+            #ORDINAL(2)
+          PROMPT('Order Note:'),AT(98,6),USE(?ORD:OrderNote:Prompt),#LINK(?ORD:OrderNote), |
+            #ORIG(?ORD:OrderNote:Prompt),#ORDINAL(3)
+          PROMPT('Order Note:'),AT(100,128),USE(?ORD:OrderNote:Prompt2),#LINK(?ORD:OrderNote), |
+            #ORDINAL(4)
+          ENTRY(@s80),AT(137,4),USE(ORD:OrderNote),#LINK(?ORD:OrderNote:Prompt),#ORIG(ORD:OrderNote), |
+            #ORDINAL(5)
+          ENTRY(@s80),AT(138,129),USE(ORD:OrderNote,,?ORD:OrderNote:2),#LINK(?ORD:OrderNote:Prompt), |
+            #ORIG(ORD:OrderNote),#ORDINAL(6)
+          PROMPT('&Cust Number:'),AT(8,22),USE(?ORD:CustNumber:Prompt),#LINK(?ORD:CustNumber), |
+            #ORIG(?ORD:CustNumber:Prompt),#ORDINAL(7)
+          ENTRY(@n4),AT(55,20),USE(ORD:CustNumber),RIGHT(1),#LINK(?ORD:CustNumber:Prompt), |
+            #ORIG(ORD:CustNumber),#ORDINAL(8)
+          STRING(@s20),AT(136,22),USE(CUS:Company),#ORIG(?String2),#ORDINAL(9)
+          LIST,AT(8,39,263,66),USE(?List),HVSCROLL,FORMAT('47R(1)|~Prod Number~L(0)@n-7' & |
+            '@37R(1)|~Quantity~L(0)@n-7@47D(12)|~Prod Amount~L(0)@n-7.2@43D(12)|~Item T' & |
+            'otal~L(0)@n-10.2@100D(12)|~Prod Desc~L(0)@s25@'),FROM(Queue:Browse),IMM,MSG('Browsing Records'), |
+            #FIELDS(DTL:ProdNumber,DTL:Quantity,DTL:ProdAmount,ItemTotal,PRD:ProdDesc),#ORIG(?List), |
+            #SEQ(5),#ORDINAL(10)
+          BUTTON('&Insert'),AT(9,109,42,12),USE(?Insert),#ORIG(?Insert),#SEQ(6),#ORDINAL(11)
+          BUTTON('&Change'),AT(51,109,42,12),USE(?Change),#ORIG(?Change),#SEQ(6),#ORDINAL(12)
+          BUTTON('&Delete'),AT(93,109,42,12),USE(?Delete),#ORIG(?Delete),#SEQ(6),#ORDINAL(13)
+          STRING(@n-10.2),AT(231,111),USE(ORD:InvoiceAmount),#ORIG(?String3),#ORDINAL(14)
+          BUTTON('OK'),AT(8,154,40,12),USE(?OK),DEFAULT,REQ,#ORIG(?OK),#SEQ(1),#ORDINAL(15)
+          BUTTON('Cancel'),AT(53,154,40,12),USE(?Cancel),#ORIG(?Cancel),#SEQ(2),#ORDINAL(16)
+          STRING(@S40),AT(98,154),USE(ActionMessage),#ORDINAL(17)
+        END
+
+[FORMULA]
+DEFINE Item Total Formula
+ASSIGN ItemTotal
+CLASS Format Browse
+INSTANCE 5
+DESCRIPTION 
+= DTL:Quantity * DTL:ProdAmount
+[END]

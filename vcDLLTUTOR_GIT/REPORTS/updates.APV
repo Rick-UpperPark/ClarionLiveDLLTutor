@@ -1,0 +1,11 @@
+[MODULE]
+NAME 'updates.lib'
+NOPOPULATE 
+[COMMON]
+FROM ABC ExternalDLL
+[PROCEDURE]
+NAME ViewCustomers
+NOEXPORT
+[COMMON]
+FROM ABC External
+[END]

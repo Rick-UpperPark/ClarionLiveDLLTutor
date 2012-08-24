@@ -1,0 +1,140 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+MODIFIED '2012/08/10' '16:53:57'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Global Var  Export Test:'),USE(?GlobalVarExportTest:Prompt)
+! ENTRY(@s20),USE(GlobalVarExportTest)
+[REPORTCONTROLS]
+! STRING(@s20),USE(GlobalVarExportTest)
+GlobalVarExportTest      STRING(20)
+!!> GUID('9b29921c-a810-42e5-9bc8-e0aa8a0f897b'),PROMPT('Global Var Export Test:'),HEADER('Global Var Export Test'),PICTURE(@s20),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Global Var  Export Test:'),USE(?GlobalVarExportTest:Prompt)
+! ENTRY(@s20),USE(GlobalVarExportTest)
+[REPORTCONTROLS]
+! STRING(@s20),USE(GlobalVarExportTest)
+GlobalVarExportTest_Copy CSTRING(21)
+!!> GUID('1915acf2-bb94-45ab-9a4b-afc75b241ebd'),INITIAL('1234567890<0>{10}'),PROMPT('Global Var Export Test:'),HEADER('Global Var Export Test'),PICTURE(@s20),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('GBL : Owner:'),USE(?GBL:Owner:Prompt)
+! ENTRY(@s200),USE(GBL:Owner)
+[REPORTCONTROLS]
+! STRING(@s200),USE(GBL:Owner)
+GBL:Owner                STRING(200)
+!!> GUID('e268569f-f639-4b8e-a6ec-ae02c754d4dd'),PROMPT('GBL : Owner:'),HEADER('GBL : Owner'),PICTURE(@s200)
+[SCREENCONTROLS]
+! TEXT,USE(NAME:AppOutPut)
+[REPORTCONTROLS]
+! TEXT,USE(NAME:AppOutPut)
+NAME:AppOutPut           STRING(256)
+!!> GUID('c54cae22-ee86-450e-80c0-63ad921e4eb8'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLAlternates)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLAlternates)
+Name:XMLAlternates       STRING(256)
+!!> GUID('fd862fd5-f6a2-4ad4-a5fa-8b6de9e49518'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLBidItems)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLBidItems)
+Name:XMLBidItems         STRING(256)
+!!> GUID('2ab4676c-a5cc-404b-a268-543eb56ca566'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLBidResults)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLBidResults)
+Name:XMLBidResults       STRING(256)
+!!> GUID('22c958e4-42c0-42de-a72e-4969bd81c6eb'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLDBE)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLDBE)
+Name:XMLDBE              STRING(256)
+!!> GUID('357c1c1e-5b30-464b-9210-db8c3ca59f15'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLGroupBidItems)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLGroupBidItems)
+Name:XMLGroupBidItems    STRING(256)
+!!> GUID('1abe2b2a-9ff9-486d-87ae-4d176a336f79'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLListedSubs)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLListedSubs)
+Name:XMLListedSubs       STRING(256)
+!!> GUID('b6e0f2fb-812f-4031-ad7c-55d567912a97'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLProjectBidders)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLProjectBidders)
+Name:XMLProjectBidders   STRING(256)
+!!> GUID('9e1b7e89-8f54-4634-87ff-f173381a42e6'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLProjectInfo)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLProjectInfo)
+Name:XMLProjectInfo      STRING(256)
+!!> GUID('6d5acd35-c0dd-4636-a1b6-494612c6ac11'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLProject)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLProject)
+Name:XMLProject          STRING(256)
+!!> GUID('c8b68c55-6d6b-46ed-960f-b3166b9df8ce'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLUM)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLUM)
+Name:XMLUM               STRING(256)
+!!> GUID('f393ed19-cd3d-41ca-b4d8-e210e4f1b181'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLVendor)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLVendor)
+Name:XMLVendor           STRING(256)
+!!> GUID('8adbc3a8-f679-4295-9cd3-5d125f7915bb'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLSubConWorkType)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLSubConWorkType)
+Name:XMLSubConWorkType   STRING(256)
+!!> GUID('6dcb3d9c-da97-48c6-aeee-8d6065236742'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(Name:XMLVendorOffice)
+[REPORTCONTROLS]
+! TEXT,USE(Name:XMLVendorOffice)
+Name:XMLVendorOffice     STRING(256)
+!!> GUID('08b083c4-21db-4e7b-a593-a36698ace19c'),PICTURE(@s255)
+[EMBED]
+EMBED %AfterGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+! INCLUDE('Ultratre.INC'),ONCE
+! RSMTest
+[END]
+EMBED %GlobalData
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+TestString Class(StringClass)
+  End
+[END]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ INCLUDE('StringCL.INC'),ONCE
+! RSMTest
+[END]
+[END]
+[END]

@@ -1,0 +1,87 @@
+[MODULE]
+NAME 'Main_ALLFILES.clw'
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME Main
+NOEXPORT
+[COMMON]
+DESCRIPTION 'move changes'
+FROM ABC Source
+MODIFIED '2012/08/21' '12:17:12'
+[PROMPTS]
+%Parameters DEFAULT  ('')
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+%ProcedureParameters MULTI LONG  ()
+%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
+
+%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
+
+%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
+
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  MESSAGE('Hi Rick','More Wow',ICON:Application,BUTTON:OK+BUTTON:Cancel)
+ 
+
+[END]
+[END]
+[PROCEDURE]
+NAME DisplayMessage
+PROTOTYPE '(STRING pMsg)'
+NOEXPORT
+[COMMON]
+FROM ABC Source
+MODIFIED '2010/04/27' '21:16:48'
+[PROMPTS]
+%Parameters DEFAULT  ('(STRING pMsg)')
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+%ProcedureParameters MULTI LONG  (1)
+%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 1
+WHEN  (1) ('pMsg')
+
+%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 1
+WHEN  (1) ('STRING')
+
+%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 1
+WHEN  (1) ('')
+
+%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 1
+WHEN  (1) (0)
+
+%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 1
+WHEN  (1) (0)
+
+%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 1
+WHEN  (1) ('pMsg')
+
+%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 1
+WHEN  (1) (0)
+
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  Message(pMsg)
+  Clear(pMsg) ! clear the message
+[END]
+[END]
+[END]

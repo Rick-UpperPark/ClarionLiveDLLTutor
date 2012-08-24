@@ -1,0 +1,13 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+MODIFIED '2011/07/10' ' 9:35:28'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('test:'),USE(?test:Prompt)
+! ENTRY(@s22),USE(test)
+[REPORTCONTROLS]
+! STRING(@s22),USE(test)
+test                     STRING(22)
+!!> GUID('1fcc39f4-bf60-4560-9012-f3d16b0c106f'),PROMPT('test:'),HEADER('test'),PICTURE(@s22)
+[END]
