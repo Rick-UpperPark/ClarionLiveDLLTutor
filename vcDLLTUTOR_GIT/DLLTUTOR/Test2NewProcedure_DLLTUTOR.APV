@@ -1,16 +1,16 @@
 [MODULE]
-NAME 'proc3_DLLTUTOR.clw'
+NAME 'Test2NewProcedure_DLLTUTOR.clw'
 [COMMON]
 FROM ABC GENERATED
-MODIFIED '2009/06/05' ' 8:22:36'
 [PROCEDURE]
-NAME proc3
+NAME Test2NewProcedure
 [COMMON]
 FROM ABC Source
-MODIFIED '2009/06/05' ' 8:22:19'
 [PROMPTS]
 %ProcedureParameters MULTI LONG  ()
 %ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
 
 %ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
 
@@ -20,11 +20,9 @@ MODIFIED '2009/06/05' ' 8:22:19'
 
 %ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
 
+%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
+
 %Parameters DEFAULT  ('')
 %GenerateOpenClose LONG  (0)
 %GenerateSaveRestore LONG  (0)
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
 [END]

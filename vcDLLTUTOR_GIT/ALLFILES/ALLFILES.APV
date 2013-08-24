@@ -1,10 +1,9 @@
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
-MODIFIED '2012/08/10' '16:53:57'
 [DATA]
 [SCREENCONTROLS]
-! PROMPT('Global Var  Export Test:'),USE(?GlobalVarExportTest:Prompt)
+! PROMPT('Global Var   Export Test:'),USE(?GlobalVarExportTest:Prompt)
 ! ENTRY(@s20),USE(GlobalVarExportTest)
 [REPORTCONTROLS]
 ! STRING(@s20),USE(GlobalVarExportTest)

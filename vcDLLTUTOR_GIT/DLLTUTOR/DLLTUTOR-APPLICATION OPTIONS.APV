@@ -5,7 +5,6 @@ DICTIONARY 'Tutorial.dct'
 PROCEDURE Main
 [COMMON]
 FROM ABC
-MODIFIED '2010/04/21' '19:49:46'
 [PROMPTS]
 %ClassItem UNIQUE DEFAULT  ('ErrorManager', 'ErrorStatusManager', 'FileManager:Customer', |
   'FileManager:Customer_Copy', 'FileManager:Detail', 'FileManager:Orders', 'FileManager:Phones', |
@@ -490,9 +489,10 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%StandardExternalModule DEPEND %Module LONG TIMES 11
+%StandardExternalModule DEPEND %Module LONG TIMES 12
 WHEN  ('') (1)
 WHEN  ('DLLTUTOR.clw') (1)
+WHEN  ('DLLTUTOR001.clw') (1)
 WHEN  ('DLLTutor.clw') (1)
 WHEN  ('Dlltutor.clw') (1)
 WHEN  ('Main_DLLTUTOR.clw') (1)
@@ -676,8 +676,8 @@ WHEN  ('updates.lib') ('')
 #compile "DLLTUTOR.clw" -- GENERATED
 #compile "Main_DLLTUTOR.clw" -- GENERATED
 #compile "NewProc2_DLLTUTOR.clw" -- GENERATED
-#compile "proc3_DLLTUTOR.clw" -- GENERATED
 #compile "SplashScreen_DLLTUTOR.clw" -- GENERATED
+#compile "DLLTUTOR001.clw" -- GENERATED
 #pragma link("allfiles.lib") -- GENERATED
 #pragma link("reports.lib") -- GENERATED
 #pragma link("updates.lib") -- GENERATED

@@ -1,0 +1,64 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{49258BA4-CB5D-4339-935F-8B003C1B3B5A}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Updates</AssemblyName>
+    <OutputName>Updates</OutputName>
+    <Model>Dll</Model>
+    <DefineConstants>_ABCDllMode_=&gt;1%3b_ABCLinkMode_=&gt;0%3b_RSMCLASSESDllMode_=&gt;1%3b_RSMCLASSESLinkMode_=&gt;0</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Updates.exp" />
+    <Compile Include="SingleInvoiceReport_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="UpdateCompany_Update.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="UpdateCustomer_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="UpdateOrder_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="UpdateProduct_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="Updates.clw" />
+    <Compile Include="UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="ViewCustomers_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="ViewOrders_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="ViewProducts_UPDATES.clw">
+      <Generated>true</Generated>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Allfiles.cwproj">
+      <Project>{59318DD8-5BE7-4D90-A10C-F6B6BD2B4F40}</Project>
+      <Name>Allfiles</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>

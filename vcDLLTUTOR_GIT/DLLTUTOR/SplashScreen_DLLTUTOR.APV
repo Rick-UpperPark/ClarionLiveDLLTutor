@@ -6,7 +6,6 @@ FROM ABC GENERATED
 NAME SplashScreen
 [COMMON]
 FROM ABC Splash
-MODIFIED '2009/06/05' ' 6:33:44'
 [PROMPTS]
 %DisplayTime DEFAULT  ('10')
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')

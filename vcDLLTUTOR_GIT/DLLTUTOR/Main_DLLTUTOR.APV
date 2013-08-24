@@ -7,7 +7,6 @@ NAME Main
 [COMMON]
 DESCRIPTION 'main MDI frame'
 FROM ABC Frame
-MODIFIED '2011/12/22' '14:21:03'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)

@@ -1,0 +1,11 @@
+obj/
+map/
+source/
+*.*
+!.gitignore
+!*.cwproj
+!*.dct
+!*.sln
+!*.apv
+!up_vcsettings.ini
+

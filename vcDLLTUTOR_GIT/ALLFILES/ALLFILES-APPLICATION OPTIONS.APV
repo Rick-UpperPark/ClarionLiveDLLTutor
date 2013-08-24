@@ -1,11 +1,10 @@
 [APPLICATION]
-VERSION 33
+VERSION 34
 TODO ABC ToDo
 DICTIONARY 'TUTORIAL.DCT'
 PROCEDURE Main
 [COMMON]
 FROM ABC
-MODIFIED '2010/07/24' ' 8:56:06'
 [PROMPTS]
 %ClassItem UNIQUE DEFAULT  ('ErrorManager', 'ErrorStatusManager', 'FileManager:Agency', |
   'FileManager:AltTotalItems', 'FileManager:Alternates', 'FileManager:AppOutPut', |
@@ -1382,7 +1381,7 @@ WHEN  ('RelationManager:Products') ('Init {19}PROCEDURE', 'DeferedAddRelations  
 %SelectedRequiredDisplayBoxBorderColor LONG  (0)
 %SelectedCaret LONG  (1)
 %SelectedCaretColor LONG  (8421504)
-%SelectedCaretCharacter DEFAULT  ('<187>')
+%SelectedCaretCharacter DEFAULT  ('»')
 %SelectedCaretCharacterSeparation DEFAULT  ('8')
 %ExcludeSelectedDropList LONG  (1)
 %GlobalUseEnterInsteadTab LONG  (0)
@@ -4984,31 +4983,7 @@ WHEN  ('allfiles.clw') (1)
 %ExtUIXPMenuColorRight LONG  (12560039)
 %ExtUIMDITab DEFAULT  ('DISABLE')
 %ExtUIMDITabStyle DEFAULT  ('Default')
-[ADDITION]
-NAME SourceClasses AddSourceClasses
-[INSTANCE]
-INSTANCE 1
-[PROMPTS]
-%DisableAll LONG  (0)
-%InclDebugClass LONG  (0)
-%GloDebugClass DEFAULT  ('')
-%GloFileDebugClassThreaded LONG  (1)
-%InclDirClass LONG  (0)
-%GloDirClassClass DEFAULT  ('')
-%GloFileDirClassThreaded LONG  (1)
-%InclFileClass LONG  (0)
-%InclProgress LONG  (0)
-%GloProgressClass DEFAULT  ('')
-%GloProgressClassThreaded LONG  (1)
-%InclString LONG  (1)
-%InclCNotifCl LONG  (0)
-%InclTrayPopupWindow LONG  (0)
-%InclProcessClass LONG  (0)
-%InclBlobCClass LONG  (0)
-%InclRptOptClass LONG  (0)
-%InclUPCurrencyClass LONG  (0)
-%IncludeListExcel LONG  (0)
-%IncludeExcelClass LONG  (0)
+%W7ManifestW8 LONG  (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 2
@@ -5021,18 +4996,19 @@ WHEN  ('Main_ALLFILES.clw') ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 -- NAMESPACE ClarionDefaultNamespace
+
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>0) -- GENERATED
-#pragma define(_ABCLinkMode_=>1) -- GENERATED
-#pragma define(_RSMCLASSESDllMode_=>0) -- GENERATED
-#pragma define(_RSMCLASSESLinkMode_=>1) -- GENERATED
-#compile "ALLFILES.clw" -- GENERATED
-#compile "Main_ALLFILES.clw" -- GENERATED
-#compile "CWUtil.CLW" -- GENERATED
-#compile "ALLFILES_BC0.CLW" -- GENERATED
-#compile "ALLFILES_BC.CLW" -- GENERATED
-#pragma link("C%V%asc%X%%L%.lib") -- GENERATED
-#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
-#pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
+#pragma define(_ABCDllMode_=>0)
+#pragma define(_ABCLinkMode_=>1)
+#pragma define(_RSMCLASSESDllMode_=>0)
+#pragma define(_RSMCLASSESLinkMode_=>1)
+#compile "ALLFILES.clw"
+#compile "Main_ALLFILES.clw"
+#compile "CWUtil.CLW"
+#compile "ALLFILES_BC0.CLW"
+#compile "ALLFILES_BC.CLW"
+#pragma link("C%V%asc%X%%L%.lib")
+#pragma link("C%V%tps%X%%L%.lib")
+#pragma link("C%V%sqa%X%%L%.lib")
 #link "AllFiles.DLL"

@@ -1,0 +1,55 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{D71E0BE5-374E-4B13-9C81-67ECDF19EFD3}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Reports</AssemblyName>
+    <OutputName>Reports</OutputName>
+    <Model>Dll</Model>
+    <DefineConstants>_ABCDllMode_=&gt;1%3b_ABCLinkMode_=&gt;0</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Reports.exp" />
+    <Compile Include="CustReport_REPORTS.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="REPORTS.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="TestJoin2_REPORTS.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="TestJoin3_REPORTS.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="Test_Join4_REPORTS.clw">
+      <Generated>true</Generated>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Allfiles.cwproj">
+      <Project>{59318DD8-5BE7-4D90-A10C-F6B6BD2B4F40}</Project>
+      <Name>Allfiles</Name>
+    </ProjectReference>
+    <ProjectReference Include="Updates.cwproj">
+      <Project>{49258BA4-CB5D-4339-935F-8B003C1B3B5A}</Project>
+      <Name>Updates</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>

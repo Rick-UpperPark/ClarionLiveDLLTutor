@@ -2,12 +2,10 @@
 NAME 'NewProc2_DLLTUTOR.clw'
 [COMMON]
 FROM ABC GENERATED
-MODIFIED '2009/06/05' ' 8:19:04'
 [PROCEDURE]
 NAME NewProc2
 [COMMON]
 FROM ABC Source
-MODIFIED '2009/06/05' ' 8:17:11'
 [PROMPTS]
 %ProcedureParameters MULTI LONG  ()
 %ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
