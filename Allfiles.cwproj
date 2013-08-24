@@ -7,8 +7,7 @@
     <AssemblyName>Allfiles</AssemblyName>
     <OutputName>AllFiles</OutputName>
     <Model>Dll</Model>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1%3b</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>True</DebugSymbols>

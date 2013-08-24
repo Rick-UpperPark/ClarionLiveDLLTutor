@@ -40,7 +40,6 @@ WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PRO
   'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
   'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
 WHEN  ('Default') ('ThisWindow')
@@ -331,17 +330,6 @@ WHEN  ('WindowToolbar') ('NO')
 %ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
 
 %ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
@@ -363,10 +351,7 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [ADDITION]
 NAME ABC SaveButton
 [INSTANCE]

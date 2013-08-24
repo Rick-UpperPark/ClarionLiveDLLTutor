@@ -3,7 +3,7 @@
 FROM ABC ABC
 [DATA]
 [SCREENCONTROLS]
-! PROMPT('Global Var   Export Test:'),USE(?GlobalVarExportTest:Prompt)
+! PROMPT('Global Var  Export Test:'),USE(?GlobalVarExportTest:Prompt)
 ! ENTRY(@s20),USE(GlobalVarExportTest)
 [REPORTCONTROLS]
 ! STRING(@s20),USE(GlobalVarExportTest)
@@ -107,33 +107,4 @@ Name:XMLSubConWorkType   STRING(256)
 ! TEXT,USE(Name:XMLVendorOffice)
 Name:XMLVendorOffice     STRING(256)
 !!> GUID('08b083c4-21db-4e7b-a593-a36698ace19c'),PICTURE(@s255)
-[EMBED]
-EMBED %AfterGlobalIncludes
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-! INCLUDE('Ultratre.INC'),ONCE
-! RSMTest
-[END]
-EMBED %GlobalData
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
-TestString Class(StringClass)
-  End
-[END]
-EMBED %BeforeGlobalIncludes
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- INCLUDE('StringCL.INC'),ONCE
-! RSMTest
-[END]
-[END]
 [END]

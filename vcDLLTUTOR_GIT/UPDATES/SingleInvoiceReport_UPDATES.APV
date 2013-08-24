@@ -8,7 +8,6 @@ NOEXPORT
 [COMMON]
 DESCRIPTION 'test update asf'
 FROM ABC Report
-MODIFIED '2011/07/10' ' 9:26:18'
 [DATA]
 Progress:Thermometer     BYTE
 !!> GUID('c843c983-fd28-4302-81a8-af222a4bf2c0')
@@ -68,7 +67,6 @@ WHEN  ('TargetSelector') ('')
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
 WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
@@ -599,17 +597,6 @@ WHEN  ('?String23') ('')
 %ProcedureAutoBindValidToAddField LONG  (0)
 %BreakTotalFieldWeight DEPEND %BreakTotals FIELD TIMES 0
 
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %UseMRP LONG  (1)
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
@@ -632,10 +619,9 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
+%FirstPage DEFAULT  ('')
+%ReportTargetOpen LONG  (0)
 [WINDOW]
 ProgressWindow WINDOW('Invoice Progress'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(1)
           PROGRESS,AT(15,15,111,12),USE(Progress:Thermometer),RANGE(0,100),#ORIG(Progress:Thermometer)
@@ -697,6 +683,6 @@ DEFINE Item Total Formula
 ASSIGN ItemTotal
 CLASS Before Print Detail
 INSTANCE 0
-DESCRIPTION 
+DESCRIPTION
 = DTL:Quantity * DTL:ProdAmount
 [END]

@@ -8,7 +8,6 @@ NOEXPORT
 [COMMON]
 FROM ABC Window
 CATEGORY 'Form'
-MODIFIED '2010/08/01' '10:09:10'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
@@ -57,10 +56,9 @@ WHEN  ('WindowToolbar') ('')
 WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
   'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', |
   'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', 'Run {20}PROCEDURE(USHORT Number,BYTE Request),BYTE,PROC,DERIVED', |
-  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeCloseEvent         PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeCloseEvent {9}PROCEDURE(),BYTE,PROC,DERIVED', |
   'TakeSelected {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
 WHEN  ('Default') ('ThisWindow')
@@ -413,17 +411,6 @@ WHEN  (1) ('BrowseBox(ABC)')
 %ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
 
 %ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
@@ -448,10 +435,7 @@ WHEN  ('?ActionMessage')TIMES 0
 WHEN  ('')TIMES 0
 WHEN  ('?ActionMessage')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [EMBED]
 EMBED %DataSection
 [DEFINITION]
@@ -840,7 +824,7 @@ WHEN  ('Step0') ('')
 
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
 WHEN  ('Default') ('Q {22}&Queue:Browse {18}!Reference to browse queue', 'Init {19}PROCEDURE(SIGNED ListBox,*STRING Posit,VIEW V,QUEUE Q,RelationManager RM,WindowManager WM)', |
-  'ResetFromView {10}PROCEDURE(),DERIVED', 'SetQueueRecord         PROCEDURE(),DERIVED')
+  'ResetFromView {10}PROCEDURE(),DERIVED', 'SetQueueRecord {9}PROCEDURE(),DERIVED')
 
 %EnableQuickScan LONG  (0)
 %LocatorType DEFAULT  ('Step')
@@ -1513,6 +1497,11 @@ WHEN  ('ItemTotal') (0)
 WHEN  ('PRD:ProdDesc') (0)
 
 %UseMRP LONG  (1)
+%SortHeaderColumnsUseColor LONG  (0)
+%SortHeaderColorBkHdrAsc LONG  (10526303)
+%SortHeaderColorBkColAsc LONG  (15128749)
+%SortHeaderColorBkHdrDec LONG  (10526303)
+%SortHeaderColorBkColDec LONG  (15128749)
 [ADDITION]
 NAME ABC BrowseUpdateButtons
 [INSTANCE]
@@ -2178,6 +2167,6 @@ DEFINE Item Total Formula
 ASSIGN ItemTotal
 CLASS Format Browse
 INSTANCE 5
-DESCRIPTION 
+DESCRIPTION
 = DTL:Quantity * DTL:ProdAmount
 [END]

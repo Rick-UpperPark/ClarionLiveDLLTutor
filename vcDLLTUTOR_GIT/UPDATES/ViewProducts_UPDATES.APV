@@ -7,7 +7,6 @@ NAME ViewProducts
 [COMMON]
 FROM ABC Window
 CATEGORY 'Browse'
-MODIFIED '2010/01/30' '17:12:38'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
@@ -39,7 +38,6 @@ WHEN  ('WindowToolbar') ('')
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
   'Run {20}PROCEDURE(USHORT Number,BYTE Request),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
 WHEN  ('Default') ('ThisWindow')
@@ -382,17 +380,6 @@ WHEN  ('WindowToolbar') ('NO')
 %ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
 
 %ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
@@ -414,10 +401,7 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [ADDITION]
 NAME ABC BrowseBox
 [INSTANCE]
@@ -1048,6 +1032,11 @@ WHEN  ('PRD:ProdNumber') (0)
 WHEN  ('PRD:TaxRate') (0)
 
 %UseMRP LONG  (1)
+%SortHeaderColumnsUseColor LONG  (0)
+%SortHeaderColorBkHdrAsc LONG  (10526303)
+%SortHeaderColorBkColAsc LONG  (15128749)
+%SortHeaderColorBkHdrDec LONG  (10526303)
+%SortHeaderColorBkColDec LONG  (15128749)
 [ADDITION]
 NAME ABC BrowseSelectButton
 [INSTANCE]
@@ -1705,7 +1694,6 @@ NAME TestViews
 DESCRIPTION 'Browse the Phones file'
 FROM ABC Window
 CATEGORY 'Browse'
-MODIFIED '2010/08/04' ' 9:39:35'
 [DATA]
 CurrentTab               STRING(80)
 !!> GUID('8330a4e5-75d9-40d5-aa4c-0ef741c694a3')
@@ -1777,20 +1765,6 @@ WHEN  ('WindowToolbar') ('')
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
@@ -2050,8 +2024,7 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [EMBED]
 EMBED %WindowManagerMethodCodeSection
 [INSTANCES]
@@ -2687,6 +2660,11 @@ WHEN  ('')TIMES 0
 %SQLGrouping DEFAULT  ('')
 %SQLHasHaving LONG  (0)
 %SQLHas DEFAULT  ('')
+%SortHeaderColumnsUseColor LONG  (0)
+%SortHeaderColorBkHdrAsc LONG  (10526303)
+%SortHeaderColorBkColAsc LONG  (15128749)
+%SortHeaderColorBkHdrDec LONG  (10526303)
+%SortHeaderColorBkColDec LONG  (15128749)
 [ADDITION]
 NAME ABC BrowseUpdateButtons
 [INSTANCE]

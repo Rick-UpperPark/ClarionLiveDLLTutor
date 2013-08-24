@@ -1328,6 +1328,7 @@ WHEN  ('RelationManager:Products') ('Init {19}PROCEDURE', 'DeferedAddRelations  
 %NoThemedControlsDependency LONG  (0)
 %W7ManifestVista LONG  (0)
 %W7ManifestW7 LONG  (0)
+%W7ManifestW8 LONG  (1)
 %ForceMakeTransparentXPManifest LONG  (0)
 %ForceMakeColorXPManifest LONG  (0)
 %ForceSHEETNoTheme LONG  (0)
@@ -1436,8 +1437,7 @@ WHEN  ('RelationManager:Products') ('Init {19}PROCEDURE', 'DeferedAddRelations  
 %DataPathOtherDirectoryCreate LONG  (0)
 %OverrideGenerate DEPEND %File LONG TIMES 0
 
-%OverrideRILogout DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideRILogout DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4693,8 +4693,10 @@ WHEN  ('Translator') (0)
 
 %NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
 
-%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 3
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 5
 WHEN  ('FuzzyMatcher')TIMES 0
+WHEN  ('INIManager')TIMES 0
+WHEN  ('RelationManager:Customer_Copy')TIMES 0
 WHEN  ('RelationManager:Phones')TIMES 0
 WHEN  ('RelationManager:ProjectTaskAlias')TIMES 0
 
@@ -4722,8 +4724,10 @@ WHEN  ('RelationManager:ProjectTaskAlias')TIMES 0
 
 %ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 3
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 5
 WHEN  ('FuzzyMatcher')TIMES 0
+WHEN  ('INIManager')TIMES 0
+WHEN  ('RelationManager:Customer_Copy')TIMES 0
 WHEN  ('RelationManager:Phones')TIMES 0
 WHEN  ('RelationManager:ProjectTaskAlias')TIMES 0
 
@@ -4741,8 +4745,7 @@ WHEN  ('RelationManager:ProjectTaskAlias')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%OverrideThreaded DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideThreaded DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4750,8 +4753,7 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideCreate DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideCreate DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4759,8 +4761,7 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideExternal DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideExternal DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4776,8 +4777,7 @@ WHEN  ('Products') ('Use Default')
 
 %OverrideExport DEPEND %File LONG TIMES 0
 
-%FileDeclarationMode DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use User Options')
+%FileDeclarationMode DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use User Options')
 WHEN  ('Customer_Copy') ('Use User Options')
 WHEN  ('Detail') ('Use User Options')
@@ -4785,8 +4785,7 @@ WHEN  ('Orders') ('Use User Options')
 WHEN  ('Phones') ('Use User Options')
 WHEN  ('Products') ('Use User Options')
 
-%FileDeclarationType DEPEND %File LONG TIMES 7
-WHEN  ('') (0)
+%FileDeclarationType DEPEND %File LONG TIMES 6
 WHEN  ('Customer') (0)
 WHEN  ('Customer_Copy') (0)
 WHEN  ('Detail') (0)
@@ -4794,8 +4793,7 @@ WHEN  ('Orders') (0)
 WHEN  ('Phones') (0)
 WHEN  ('Products') (0)
 
-%FileDeclarationThread DEPEND %File LONG TIMES 7
-WHEN  ('') (0)
+%FileDeclarationThread DEPEND %File LONG TIMES 6
 WHEN  ('Customer') (1)
 WHEN  ('Customer_Copy') (1)
 WHEN  ('Detail') (1)
@@ -4803,8 +4801,7 @@ WHEN  ('Orders') (1)
 WHEN  ('Phones') (1)
 WHEN  ('Products') (1)
 
-%FileDeclarationBindable DEPEND %File LONG TIMES 7
-WHEN  ('') (1)
+%FileDeclarationBindable DEPEND %File LONG TIMES 6
 WHEN  ('Customer') (1)
 WHEN  ('Customer_Copy') (1)
 WHEN  ('Detail') (1)
@@ -4816,8 +4813,7 @@ WHEN  ('Products') (1)
 
 %FileDeclarationOver DEPEND %File DEFAULT TIMES 0
 
-%OverrideOpenMode DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideOpenMode DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4825,8 +4821,7 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideUserAccess DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideUserAccess DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4834,8 +4829,7 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideOtherAccess DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideOtherAccess DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4843,8 +4837,7 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideLazyOpen DEPEND %File DEFAULT TIMES 7
-WHEN  ('') ('Use Default')
+%OverrideLazyOpen DEPEND %File DEFAULT TIMES 6
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4852,8 +4845,7 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%StandardExternalModule DEPEND %Module LONG TIMES 6
-WHEN  ('') (1)
+%StandardExternalModule DEPEND %Module LONG TIMES 5
 WHEN  ('ALLFILES.clw') (1)
 WHEN  ('AllFiles.clw') (1)
 WHEN  ('Allfiles.clw') (1)
@@ -4956,8 +4948,8 @@ WHEN  ('allfiles.clw') (1)
 %AbcSourceLocation DEFAULT  ('LINK')
 %AbcLibraryName DEFAULT  ('')
 %AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v8.0')
-%ABCVersion DEFAULT  ('8000')
+%CWTemplateVersion DEFAULT  ('v9.0')
+%ABCVersion DEFAULT  ('9000')
 %EnableExceptionMessage LONG  (0)
 %WindowFrameDragging LONG  (1)
 %ConfigFileVariable DEFAULT  ('')
@@ -4983,7 +4975,6 @@ WHEN  ('allfiles.clw') (1)
 %ExtUIXPMenuColorRight LONG  (12560039)
 %ExtUIMDITab DEFAULT  ('DISABLE')
 %ExtUIMDITabStyle DEFAULT  ('Default')
-%W7ManifestW8 LONG  (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 2
@@ -5001,8 +4992,6 @@ WHEN  ('Main_ALLFILES.clw') ('1')
 #model clarion dll
 #pragma define(_ABCDllMode_=>0)
 #pragma define(_ABCLinkMode_=>1)
-#pragma define(_RSMCLASSESDllMode_=>0)
-#pragma define(_RSMCLASSESLinkMode_=>1)
 #compile "ALLFILES.clw"
 #compile "Main_ALLFILES.clw"
 #compile "CWUtil.CLW"

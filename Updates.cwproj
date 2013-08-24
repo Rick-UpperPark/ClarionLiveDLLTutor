@@ -7,7 +7,7 @@
     <AssemblyName>Updates</AssemblyName>
     <OutputName>Updates</OutputName>
     <Model>Dll</Model>
-    <DefineConstants>_ABCDllMode_=&gt;1%3b_ABCLinkMode_=&gt;0%3b_RSMCLASSESDllMode_=&gt;1%3b_RSMCLASSESLinkMode_=&gt;0</DefineConstants>
+    <DefineConstants>_ABCDllMode_=&gt;1%3b_ABCLinkMode_=&gt;0</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>True</DebugSymbols>

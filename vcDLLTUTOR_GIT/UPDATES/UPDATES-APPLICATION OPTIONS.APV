@@ -1,11 +1,10 @@
 [APPLICATION]
-VERSION 33
+VERSION 34
 TODO ABC ToDo
 DICTIONARY 'Tutorial.dct'
 PROCEDURE ViewCustomers
 [COMMON]
 FROM ABC
-MODIFIED '2009/09/29' '13:49:30'
 [PROMPTS]
 %ClassItem UNIQUE DEFAULT  ('ErrorManager', 'ErrorStatusManager', 'FileManager:Customer', |
   'FileManager:Customer_Copy', 'FileManager:Detail', 'FileManager:Orders', 'FileManager:Phones', |
@@ -86,6 +85,7 @@ WHEN  ('Translator') ('')
 %NoThemedControlsDependency LONG  (0)
 %W7ManifestVista LONG  (0)
 %W7ManifestW7 LONG  (0)
+%W7ManifestW8 LONG  (1)
 %ForceMakeTransparentXPManifest LONG  (0)
 %ForceMakeColorXPManifest LONG  (0)
 %ForceSHEETNoTheme LONG  (0)
@@ -139,7 +139,7 @@ WHEN  ('Translator') ('')
 %SelectedRequiredDisplayBoxBorderColor LONG  (0)
 %SelectedCaret LONG  (1)
 %SelectedCaretColor LONG  (8421504)
-%SelectedCaretCharacter DEFAULT  ('<187>')
+%SelectedCaretCharacter DEFAULT  ('»')
 %SelectedCaretCharacterSeparation DEFAULT  ('8')
 %ExcludeSelectedDropList LONG  (1)
 %GlobalUseEnterInsteadTab LONG  (0)
@@ -600,8 +600,8 @@ WHEN  ('allfiles.lib') (1)
 %AbcSourceLocation DEFAULT  ('LINK')
 %AbcLibraryName DEFAULT  ('')
 %AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v8.0')
-%ABCVersion DEFAULT  ('8000')
+%CWTemplateVersion DEFAULT  ('v9.0')
+%ABCVersion DEFAULT  ('9000')
 %EnableExceptionMessage LONG  (0)
 %WindowFrameDragging LONG  (1)
 %ConfigFileVariable DEFAULT  ('')
@@ -672,20 +672,19 @@ WHEN  ('allfiles.lib') ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 -- NAMESPACE ClarionDefaultNamespace
+
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>1) -- GENERATED
-#pragma define(_ABCLinkMode_=>0) -- GENERATED
-#pragma define(_RSMCLASSESDllMode_=>1) -- GENERATED
-#pragma define(_RSMCLASSESLinkMode_=>0) -- GENERATED
-#compile "UPDATES.clw" -- GENERATED
-#compile "SingleInvoiceReport_UPDATES.clw" -- GENERATED
-#compile "UpdateCompany_Update.clw" -- GENERATED
-#compile "UpdateCustomer_UPDATES.clw" -- GENERATED
-#compile "UpdateOrder_UPDATES.clw" -- GENERATED
-#compile "UpdateProduct_UPDATES.clw" -- GENERATED
-#compile "ViewCustomers_UPDATES.clw" -- GENERATED
-#compile "ViewOrders_UPDATES.clw" -- GENERATED
-#compile "ViewProducts_UPDATES.clw" -- GENERATED
-#pragma link("allfiles.lib") -- GENERATED
+#pragma define(_ABCDllMode_=>1)
+#pragma define(_ABCLinkMode_=>0)
+#compile "UPDATES.clw"
+#compile "SingleInvoiceReport_UPDATES.clw"
+#compile "UpdateCompany_Update.clw"
+#compile "UpdateCustomer_UPDATES.clw"
+#compile "UpdateOrder_UPDATES.clw"
+#compile "UpdateProduct_UPDATES.clw"
+#compile "ViewCustomers_UPDATES.clw"
+#compile "ViewOrders_UPDATES.clw"
+#compile "ViewProducts_UPDATES.clw"
+#pragma link("allfiles.lib")
 #link "Updates.DLL"

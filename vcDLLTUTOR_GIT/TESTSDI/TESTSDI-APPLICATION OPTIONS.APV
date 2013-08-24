@@ -1,10 +1,9 @@
 [APPLICATION]
-VERSION 33
+VERSION 34
 TODO ABC ToDo
 PROCEDURE Main
 [COMMON]
 FROM ABC
-MODIFIED '2008/11/19' '15:10:10'
 [PROMPTS]
 %ClassItem UNIQUE DEFAULT  ('ErrorManager', 'ErrorStatusManager', 'FuzzyMatcher', |
   'INIManager', 'Translator')
@@ -58,6 +57,7 @@ WHEN  ('Translator') ('')
 %NoThemedControlsDependency LONG  (0)
 %W7ManifestVista LONG  (0)
 %W7ManifestW7 LONG  (0)
+%W7ManifestW8 LONG  (1)
 %ForceMakeTransparentXPManifest LONG  (0)
 %ForceMakeColorXPManifest LONG  (0)
 %ForceSHEETNoTheme LONG  (0)
@@ -111,7 +111,7 @@ WHEN  ('Translator') ('')
 %SelectedRequiredDisplayBoxBorderColor LONG  (0)
 %SelectedCaret LONG  (1)
 %SelectedCaretColor LONG  (8421504)
-%SelectedCaretCharacter DEFAULT  ('<187>')
+%SelectedCaretCharacter DEFAULT  ('»')
 %SelectedCaretCharacterSeparation DEFAULT  ('8')
 %ExcludeSelectedDropList LONG  (0)
 %GlobalUseEnterInsteadTab LONG  (0)
@@ -416,8 +416,8 @@ WHEN  ('TestSDI.clw') (1)
 %AbcSourceLocation DEFAULT  ('LINK')
 %AbcLibraryName DEFAULT  ('')
 %AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v8.0')
-%ABCVersion DEFAULT  ('8000')
+%CWTemplateVersion DEFAULT  ('v9.0')
+%ABCVersion DEFAULT  ('9000')
 %EnableExceptionMessage LONG  (0)
 %WindowFrameDragging LONG  (0)
 %CustomNoDataExport LONG  (0)
@@ -445,12 +445,13 @@ WHEN  ('TESTSDI.clw') ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 -- NAMESPACE ClarionDefaultNamespace
+
 #system win32 exe
 #model clarion dll
-#pragma define(_ABCDllMode_=>0) -- GENERATED
-#pragma define(_ABCLinkMode_=>1) -- GENERATED
-#compile "TESTSDI.clw" -- GENERATED
-#compile "Main_TESTSDI.clw" -- GENERATED
-#compile "TESTSDI_BC0.CLW" -- GENERATED
-#compile "TESTSDI_BC.CLW" -- GENERATED
+#pragma define(_ABCDllMode_=>0)
+#pragma define(_ABCLinkMode_=>1)
+#compile "TESTSDI.clw"
+#compile "Main_TESTSDI.clw"
+#compile "TESTSDI_BC0.CLW"
+#compile "TESTSDI_BC.CLW"
 #link "TESTSDI.EXE"

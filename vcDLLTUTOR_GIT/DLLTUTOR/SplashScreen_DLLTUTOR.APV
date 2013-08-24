@@ -23,7 +23,6 @@ WHEN  ('WindowToolbar') ('')
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
   'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %ProcedureDisableEnhanceFocus LONG  (0)
 %ProcedureUseEnterInsteadTabOverride LONG  (0)
@@ -319,17 +318,6 @@ WHEN  ('?String3')TIMES 0
 %ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
 
 %ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
@@ -357,10 +345,7 @@ WHEN  ('')TIMES 0
 WHEN  ('?String1')TIMES 0
 WHEN  ('?String2')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [WINDOW]
 window  WINDOW,AT(,,204,112),FONT('MS Sans Serif',8,,FONT:regular),NOFRAME,CENTER,GRAY,MDI
           PANEL,AT(0,-42,204,154),BEVEL(6)

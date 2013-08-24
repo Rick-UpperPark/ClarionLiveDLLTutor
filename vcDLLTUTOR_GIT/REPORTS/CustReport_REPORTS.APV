@@ -6,7 +6,6 @@ FROM ABC GENERATED
 NAME CustReport
 [COMMON]
 FROM ABC Report
-MODIFIED '2011/12/22' '15:39:29'
 [DATA]
 Progress:Thermometer     BYTE
 !!> GUID('75d167a3-60bf-4408-b925-53726f5c58d8')
@@ -49,7 +48,6 @@ WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE
   'OpenReport {13}PROCEDURE(),BYTE,PROC,DERIVED')
 WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
@@ -567,17 +565,6 @@ WHEN  ('?String1') ('')
 %ProcedureAutoBindValidToAddField LONG  (0)
 %BreakTotalFieldWeight DEPEND %BreakTotals FIELD TIMES 0
 
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %UseMRP LONG  (1)
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
@@ -600,10 +587,9 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
+%FirstPage DEFAULT  ('')
+%ReportTargetOpen LONG  (0)
 [ADDITION]
 NAME ABC ReportPageNumber
 [INSTANCE]
@@ -643,7 +629,6 @@ detail    DETAIL,AT(0,0,,1067),USE(?DETAIL1),#ORDINAL(4)
 NAME InvoiceReport
 [COMMON]
 FROM ABC Report
-MODIFIED '2011/12/22' '15:25:23'
 [DATA]
 Progress:Thermometer     BYTE
 !!> GUID('2a6b674b-3c0f-44bb-acce-949551ebd0cc')
@@ -703,7 +688,6 @@ WHEN  ('TargetSelector') ('')
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
 WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
@@ -1239,17 +1223,6 @@ WHEN  ('?String26') ('')
 %ProcedureAutoBindValidToAddField LONG  (0)
 %BreakTotalFieldWeight DEPEND %BreakTotals FIELD TIMES 0
 
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %UseMRP LONG  (1)
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
@@ -1272,10 +1245,9 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
+%FirstPage DEFAULT  ('')
+%ReportTargetOpen LONG  (0)
 [WINDOW]
 ProgressWindow WINDOW('Invoice Progress'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(1)
           PROGRESS,AT(15,15,111,12),USE(Progress:Thermometer),RANGE(0,100),#ORIG(Progress:Thermometer)
@@ -1348,14 +1320,13 @@ DEFINE Item Total Formula
 ASSIGN ItemTotal
 CLASS Before Print Detail
 INSTANCE 0
-DESCRIPTION 
+DESCRIPTION
 = DTL:Quantity * DTL:ProdAmount
 [PROCEDURE]
 NAME CustInvoiceReport
 [COMMON]
 DESCRIPTION 'new description for customer invoice reports'
 FROM ABC Report
-MODIFIED '2011/12/22' '15:25:21'
 [DATA]
 Progress:Thermometer     BYTE
 !!> GUID('a2f52cc0-915b-49a2-8041-d12c60cada58')
@@ -1415,7 +1386,6 @@ WHEN  ('TargetSelector') ('')
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
 WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
@@ -1953,17 +1923,6 @@ WHEN  ('?String26') ('')
 %ProcedureAutoBindValidToAddField LONG  (0)
 %BreakTotalFieldWeight DEPEND %BreakTotals FIELD TIMES 0
 
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %UseMRP LONG  (1)
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
@@ -1986,10 +1945,9 @@ WHEN  ('')TIMES 0
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
+%FirstPage DEFAULT  ('')
+%ReportTargetOpen LONG  (0)
 [EMBED]
 EMBED %WindowManagerMethodCodeSection
 [INSTANCES]
@@ -2082,6 +2040,6 @@ DEFINE Item Total Formula
 ASSIGN ItemTotal
 CLASS Before Print Detail
 INSTANCE 0
-DESCRIPTION 
+DESCRIPTION
 = DTL:Quantity * DTL:ProdAmount
 [END]

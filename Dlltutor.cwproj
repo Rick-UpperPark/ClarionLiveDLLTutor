@@ -47,10 +47,10 @@
     <Compile Include="NewProc2_DLLTUTOR.clw">
       <Generated>true</Generated>
     </Compile>
-    <Compile Include="proc3_DLLTUTOR.clw">
+    <Compile Include="SplashScreen_DLLTUTOR.clw">
       <Generated>true</Generated>
     </Compile>
-    <Compile Include="SplashScreen_DLLTUTOR.clw">
+    <Compile Include="Test2NewProcedure_DLLTUTOR.clw">
       <Generated>true</Generated>
     </Compile>
     <Library Include="DLLTutor.EXE.manifest" />

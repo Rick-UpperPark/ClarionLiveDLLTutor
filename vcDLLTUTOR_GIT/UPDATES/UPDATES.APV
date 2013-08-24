@@ -1,7 +1,6 @@
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
-MODIFIED '2011/12/22' '14:20:10'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('Global Long Var:'),USE(?GlobalLongVar:Prompt)
@@ -10,14 +9,4 @@ MODIFIED '2011/12/22' '14:20:10'
 ! STRING(@n-14),USE(GlobalLongVar),RIGHT(1)
 GlobalLongVar            LONG
 !!> GUID('8c6fb389-1a08-4b12-a721-5090d545a17d'),PROMPT('Global Long Var:'),HEADER('Global Long Var'),PICTURE(@n-14),TYPEMODE(INS),JUSTIFY(RIGHT,1)
-[EMBED]
-EMBED %AfterGlobalIncludes
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4000
-PROPERTY:END
- INCLUDE('StringCL.INC') !Commented Change
-[END]
-[END]
 [END]

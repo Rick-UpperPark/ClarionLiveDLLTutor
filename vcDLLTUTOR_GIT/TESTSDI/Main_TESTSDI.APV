@@ -7,7 +7,6 @@ NAME Main
 [COMMON]
 FROM ABC Window
 CATEGORY 'Menu'
-MODIFIED '2010/08/06' '10:07:45'
 [PROMPTS]
 %INISaveWindow LONG  (1)
 %ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
@@ -22,18 +21,6 @@ WHEN  ('WindowToolbar') ('')
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %ProcedureDisableEnhanceFocus LONG  (0)
@@ -348,10 +335,7 @@ WHEN  ('')TIMES 0
 WHEN  ('?Exit')TIMES 0
 WHEN  ('?MenuBar')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [WINDOW]
 MenuWindow WINDOW('Caption I want my title'),AT(0,0,260,147),FONT('Microsoft Sans Serif',10, |
           ,FONT:regular,CHARSET:DEFAULT)

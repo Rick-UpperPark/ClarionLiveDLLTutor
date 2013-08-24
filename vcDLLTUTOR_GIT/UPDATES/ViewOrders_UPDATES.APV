@@ -7,7 +7,6 @@ NAME ViewOrders
 [COMMON]
 DESCRIPTION 'This is our complete description'
 FROM ABC Window
-MODIFIED '2011/08/12' '12:19:32'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
@@ -43,7 +42,6 @@ WHEN  ('WindowToolbar') ('')
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
   'Run {20}PROCEDURE(USHORT Number,BYTE Request),BYTE,PROC,DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%Parameters DEFAULT  ('')
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
@@ -372,17 +370,6 @@ WHEN  ('WindowToolbar') ('NO')
 %ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
 
 %ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureParameters MULTI LONG  ()
-%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
-
-%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
-
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
@@ -407,10 +394,7 @@ WHEN  ('?Close')TIMES 0
 WHEN  ('')TIMES 0
 WHEN  ('?Close')TIMES 0
 
-%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
-
-%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
-
+%ProcedureOneInstance LONG  (0)
 [EMBED]
 EMBED %WindowManagerMethodCodeSection
 [INSTANCES]
@@ -422,7 +406,6 @@ WHEN '(),BYTE'
 PROPERTY:BEGIN
 PRIORITY 10000
 PROPERTY:END
-TestString.Assign('Test')
 brw1.popup.AddItemMimic('Print Invoice',?PrintInvoice)
 [END]
 [END]
@@ -471,11 +454,6 @@ lScrollDir   LONG
 [END]
 EMBED %DataSection
 [DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 1300
-PROPERTY:END
-TestString StringClass
 [SOURCE]
 PROPERTY:BEGIN
 PRIORITY 3000
@@ -1166,6 +1144,11 @@ WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
 %UseMRP LONG  (1)
+%SortHeaderColumnsUseColor LONG  (0)
+%SortHeaderColorBkHdrAsc LONG  (10526303)
+%SortHeaderColorBkColAsc LONG  (15128749)
+%SortHeaderColorBkHdrDec LONG  (10526303)
+%SortHeaderColorBkColDec LONG  (15128749)
 [INSTANCE]
 INSTANCE 3
 [PROMPTS]
@@ -1824,6 +1807,11 @@ WHEN  ('DTL:ProdNumber') (0)
 WHEN  ('DTL:Quantity') (0)
 
 %UseMRP LONG  (1)
+%SortHeaderColumnsUseColor LONG  (0)
+%SortHeaderColorBkHdrAsc LONG  (10526303)
+%SortHeaderColorBkColAsc LONG  (15128749)
+%SortHeaderColorBkHdrDec LONG  (10526303)
+%SortHeaderColorBkColDec LONG  (15128749)
 [ADDITION]
 NAME ABC BrowseUpdateButtons
 [INSTANCE]
