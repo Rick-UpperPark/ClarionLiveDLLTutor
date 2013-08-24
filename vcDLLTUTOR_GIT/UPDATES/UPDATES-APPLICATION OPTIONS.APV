@@ -652,31 +652,6 @@ WHEN  ('Products') ('AsciiFileClass')
 %ExtUIXPMenuColorRight LONG  (12560039)
 %ExtUIMDITab DEFAULT  ('DISABLE')
 %ExtUIMDITabStyle DEFAULT  ('Default')
-[ADDITION]
-NAME SourceClasses AddSourceClasses
-[INSTANCE]
-INSTANCE 1
-[PROMPTS]
-%DisableAll LONG  (0)
-%InclDebugClass LONG  (0)
-%GloDebugClass DEFAULT  ('')
-%GloFileDebugClassThreaded LONG  (1)
-%InclDirClass LONG  (0)
-%GloDirClassClass DEFAULT  ('')
-%GloFileDirClassThreaded LONG  (1)
-%InclFileClass LONG  (0)
-%InclProgress LONG  (0)
-%GloProgressClass DEFAULT  ('')
-%GloProgressClassThreaded LONG  (1)
-%InclString LONG  (1)
-%InclCNotifCl LONG  (0)
-%InclTrayPopupWindow LONG  (0)
-%InclProcessClass LONG  (0)
-%InclBlobCClass LONG  (0)
-%InclRptOptClass LONG  (0)
-%InclUPCurrencyClass LONG  (0)
-%IncludeListExcel LONG  (0)
-%IncludeExcelClass LONG  (0)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 10
