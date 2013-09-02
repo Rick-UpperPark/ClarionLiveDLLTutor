@@ -12,7 +12,7 @@ FROM ABC Report
 Progress:Thermometer     BYTE
 !!> GUID('c843c983-fd28-4302-81a8-af222a4bf2c0')
 [SCREENCONTROLS]
-! PROMPT('FilesOpened:'),USE(?FilesOpened:Prompt)
+! PROMPT('FilesOpened: '),USE(?FilesOpened:Prompt)
 ! ENTRY(@n3),USE(FilesOpened)
 [REPORTCONTROLS]
 ! STRING(@n3),USE(FilesOpened)
