@@ -41,7 +41,7 @@ PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
   Message(pMsg)
-  Clear(pMsg) ! clear the message
+
 [END]
 [END]
 [END]

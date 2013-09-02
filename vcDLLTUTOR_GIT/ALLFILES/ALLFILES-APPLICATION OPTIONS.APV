@@ -4990,14 +4990,14 @@ WHEN  ('Main_ALLFILES.clw') ('1')
 
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>0)
-#pragma define(_ABCLinkMode_=>1)
-#compile "ALLFILES.clw"
-#compile "Main_ALLFILES.clw"
-#compile "CWUtil.CLW"
-#compile "ALLFILES_BC0.CLW"
-#compile "ALLFILES_BC.CLW"
-#pragma link("C%V%asc%X%%L%.lib")
-#pragma link("C%V%tps%X%%L%.lib")
-#pragma link("C%V%sqa%X%%L%.lib")
+#pragma define(_ABCDllMode_=>0) -- GENERATED
+#pragma define(_ABCLinkMode_=>1) -- GENERATED
+#compile "ALLFILES.clw" -- GENERATED
+#compile "Main_ALLFILES.clw" -- GENERATED
+#compile "CWUtil.CLW" -- GENERATED
+#compile "ALLFILES_BC0.CLW" -- GENERATED
+#compile "ALLFILES_BC.CLW" -- GENERATED
+#pragma link("C%V%asc%X%%L%.lib") -- GENERATED
+#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
+#pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
 #link "AllFiles.DLL"
