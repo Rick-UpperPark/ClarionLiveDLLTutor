@@ -3,7 +3,7 @@
 FROM ABC ABC
 [DATA]
 [SCREENCONTROLS]
-! PROMPT('Global Var  Export Test:'),USE(?GlobalVarExportTest:Prompt)
+! PROMPT('Global VarExport Test:'),USE(?GlobalVarExportTest:Prompt)
 ! ENTRY(@s20),USE(GlobalVarExportTest)
 [REPORTCONTROLS]
 ! STRING(@s20),USE(GlobalVarExportTest)
