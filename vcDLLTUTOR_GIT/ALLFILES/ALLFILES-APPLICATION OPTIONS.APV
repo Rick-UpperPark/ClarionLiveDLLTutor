@@ -1268,31 +1268,7 @@ WHEN  ('RelationManager:XMLVendor') ('')
 WHEN  ('RelationManager:XMLVendorOffice') ('')
 WHEN  ('Translator') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 12
-WHEN  ('FileManager:Customer') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
-WHEN  ('FileManager:Customer_Copy') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
-WHEN  ('FileManager:Detail') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
-WHEN  ('FileManager:Orders') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', |
-  'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
-WHEN  ('FileManager:Phones') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
-WHEN  ('FileManager:Products') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
-WHEN  ('RelationManager:Customer') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
-  'Kill {19}PROCEDURE(),DERIVED')
-WHEN  ('RelationManager:Customer_Copy') ('Init {19}PROCEDURE', 'Kill {19}PROCEDURE(),DERIVED')
-WHEN  ('RelationManager:Detail') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
-  'Kill {19}PROCEDURE(),DERIVED')
-WHEN  ('RelationManager:Orders') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
-  'Kill {19}PROCEDURE(),DERIVED')
-WHEN  ('RelationManager:Phones') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
-  'Kill {19}PROCEDURE(),DERIVED')
-WHEN  ('RelationManager:Products') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
-  'Kill {19}PROCEDURE(),DERIVED')
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
 
 %ProgramAuthor DEFAULT  ('Rick')
 %ProgramIcon DEFAULT  ('')
@@ -1437,7 +1413,8 @@ WHEN  ('RelationManager:Products') ('Init {19}PROCEDURE', 'DeferedAddRelations  
 %DataPathOtherDirectoryCreate LONG  (0)
 %OverrideGenerate DEPEND %File LONG TIMES 0
 
-%OverrideRILogout DEPEND %File DEFAULT TIMES 6
+%OverrideRILogout DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4745,7 +4722,8 @@ WHEN  ('RelationManager:ProjectTaskAlias')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%OverrideThreaded DEPEND %File DEFAULT TIMES 6
+%OverrideThreaded DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4753,7 +4731,8 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideCreate DEPEND %File DEFAULT TIMES 6
+%OverrideCreate DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4761,7 +4740,8 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideExternal DEPEND %File DEFAULT TIMES 6
+%OverrideExternal DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4777,7 +4757,8 @@ WHEN  ('Products') ('Use Default')
 
 %OverrideExport DEPEND %File LONG TIMES 0
 
-%FileDeclarationMode DEPEND %File DEFAULT TIMES 6
+%FileDeclarationMode DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use User Options')
 WHEN  ('Customer') ('Use User Options')
 WHEN  ('Customer_Copy') ('Use User Options')
 WHEN  ('Detail') ('Use User Options')
@@ -4785,7 +4766,8 @@ WHEN  ('Orders') ('Use User Options')
 WHEN  ('Phones') ('Use User Options')
 WHEN  ('Products') ('Use User Options')
 
-%FileDeclarationType DEPEND %File LONG TIMES 6
+%FileDeclarationType DEPEND %File LONG TIMES 7
+WHEN  ('') (0)
 WHEN  ('Customer') (0)
 WHEN  ('Customer_Copy') (0)
 WHEN  ('Detail') (0)
@@ -4793,7 +4775,8 @@ WHEN  ('Orders') (0)
 WHEN  ('Phones') (0)
 WHEN  ('Products') (0)
 
-%FileDeclarationThread DEPEND %File LONG TIMES 6
+%FileDeclarationThread DEPEND %File LONG TIMES 7
+WHEN  ('') (0)
 WHEN  ('Customer') (1)
 WHEN  ('Customer_Copy') (1)
 WHEN  ('Detail') (1)
@@ -4801,7 +4784,8 @@ WHEN  ('Orders') (1)
 WHEN  ('Phones') (1)
 WHEN  ('Products') (1)
 
-%FileDeclarationBindable DEPEND %File LONG TIMES 6
+%FileDeclarationBindable DEPEND %File LONG TIMES 7
+WHEN  ('') (1)
 WHEN  ('Customer') (1)
 WHEN  ('Customer_Copy') (1)
 WHEN  ('Detail') (1)
@@ -4813,7 +4797,8 @@ WHEN  ('Products') (1)
 
 %FileDeclarationOver DEPEND %File DEFAULT TIMES 0
 
-%OverrideOpenMode DEPEND %File DEFAULT TIMES 6
+%OverrideOpenMode DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4821,7 +4806,8 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideUserAccess DEPEND %File DEFAULT TIMES 6
+%OverrideUserAccess DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4829,7 +4815,8 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideOtherAccess DEPEND %File DEFAULT TIMES 6
+%OverrideOtherAccess DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4837,7 +4824,8 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%OverrideLazyOpen DEPEND %File DEFAULT TIMES 6
+%OverrideLazyOpen DEPEND %File DEFAULT TIMES 7
+WHEN  ('') ('Use Default')
 WHEN  ('Customer') ('Use Default')
 WHEN  ('Customer_Copy') ('Use Default')
 WHEN  ('Detail') ('Use Default')
@@ -4845,7 +4833,8 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%StandardExternalModule DEPEND %Module LONG TIMES 5
+%StandardExternalModule DEPEND %Module LONG TIMES 6
+WHEN  ('') (1)
 WHEN  ('ALLFILES.clw') (1)
 WHEN  ('AllFiles.clw') (1)
 WHEN  ('Allfiles.clw') (1)
@@ -4986,18 +4975,9 @@ WHEN  ('Main_ALLFILES.clw') ('1')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
--- NAMESPACE ClarionDefaultNamespace
-
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>0) -- GENERATED
-#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "ALLFILES.clw" -- GENERATED
 #compile "Main_ALLFILES.clw" -- GENERATED
-#compile "CWUtil.CLW" -- GENERATED
-#compile "ALLFILES_BC0.CLW" -- GENERATED
-#compile "ALLFILES_BC.CLW" -- GENERATED
 #pragma link("C%V%asc%X%%L%.lib") -- GENERATED
-#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
-#pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
-#link "AllFiles.DLL"
+#link "ALLFILES.DLL"
