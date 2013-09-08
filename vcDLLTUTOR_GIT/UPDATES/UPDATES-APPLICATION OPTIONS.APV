@@ -671,20 +671,16 @@ WHEN  ('allfiles.lib') ('')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
--- NAMESPACE ClarionDefaultNamespace
-
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>1)
-#pragma define(_ABCLinkMode_=>0)
-#compile "UPDATES.clw"
-#compile "SingleInvoiceReport_UPDATES.clw"
-#compile "UpdateCompany_Update.clw"
-#compile "UpdateCustomer_UPDATES.clw"
-#compile "UpdateOrder_UPDATES.clw"
-#compile "UpdateProduct_UPDATES.clw"
-#compile "ViewCustomers_UPDATES.clw"
-#compile "ViewOrders_UPDATES.clw"
-#compile "ViewProducts_UPDATES.clw"
-#pragma link("allfiles.lib")
-#link "Updates.DLL"
+#compile "UPDATES.clw" -- GENERATED
+#compile "SingleInvoiceReport_UPDATES.clw" -- GENERATED
+#compile "UpdateCompany_Update.clw" -- GENERATED
+#compile "UpdateCustomer_UPDATES.clw" -- GENERATED
+#compile "UpdateOrder_UPDATES.clw" -- GENERATED
+#compile "UpdateProduct_UPDATES.clw" -- GENERATED
+#compile "ViewCustomers_UPDATES.clw" -- GENERATED
+#compile "ViewOrders_UPDATES.clw" -- GENERATED
+#compile "ViewProducts_UPDATES.clw" -- GENERATED
+#pragma link("allfiles.lib") -- GENERATED
+#link "UPDATES.DLL"
