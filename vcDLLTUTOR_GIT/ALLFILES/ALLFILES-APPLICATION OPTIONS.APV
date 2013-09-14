@@ -4977,7 +4977,7 @@ WHEN  ('Main_ALLFILES.clw') ('1')
 [PROJECT]
 #system win32 dll
 #model clarion dll
-#compile "ALLFILES.clw" -- GENERATED
-#compile "Main_ALLFILES.clw" -- GENERATED
-#pragma link("C%V%asc%X%%L%.lib") -- GENERATED
+#compile "ALLFILES.clw"
+#compile "Main_ALLFILES.clw"
+#pragma link("C%V%asc%X%%L%.lib")
 #link "ALLFILES.DLL"
