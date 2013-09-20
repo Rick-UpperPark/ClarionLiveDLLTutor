@@ -41,7 +41,7 @@ EMBED %ProcessedCode
 PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
-  Message(pMsg)
+  Message(pMsg)  !This app is for CIDC 2013
 
 [END]
 [END]
