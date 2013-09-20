@@ -45,5 +45,13 @@ PROPERTY:END
   ii = 123
 
 [END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+ii                      long
+[END]
 [END]
 [END]
