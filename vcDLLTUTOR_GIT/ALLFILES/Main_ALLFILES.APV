@@ -19,7 +19,7 @@ PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
   MESSAGE('Hi Rick|Welcome to CIDC 2013','More Wow',ICON:Application,BUTTON:OK+BUTTON:Cancel)
-!  asdasdf = 6123
+  asdasdf = 6123
 
 
 [END]
