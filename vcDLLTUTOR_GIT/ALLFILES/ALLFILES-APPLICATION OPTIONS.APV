@@ -4967,8 +4967,8 @@ WHEN  ('allfiles.clw') (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 2
-WHEN  ('ALLFILES.clw') ('1')
-WHEN  ('Main_ALLFILES.clw') ('1')
+WHEN  ('ALLFILES.clw') ('')
+WHEN  ('Main_ALLFILES.clw') ('')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
