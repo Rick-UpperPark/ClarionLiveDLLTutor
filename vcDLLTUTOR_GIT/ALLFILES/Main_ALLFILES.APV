@@ -23,14 +23,6 @@ PROPERTY:END
 
 
 [END]
-EMBED %DataSection
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 1300
-PROPERTY:END
-BadVariable             long
-[END]
 [END]
 [PROCEDURE]
 NAME DisplayMessage
