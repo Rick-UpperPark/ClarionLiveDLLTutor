@@ -29,7 +29,7 @@ EMBED %DataSection
 PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
-!BadVariable             long
+BadVariable             long
 [END]
 [END]
 [PROCEDURE]
