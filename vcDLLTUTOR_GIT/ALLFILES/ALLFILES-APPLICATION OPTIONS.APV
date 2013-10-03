@@ -1268,7 +1268,31 @@ WHEN  ('RelationManager:XMLVendor') ('')
 WHEN  ('RelationManager:XMLVendorOffice') ('')
 WHEN  ('Translator') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 12
+WHEN  ('FileManager:Customer') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:Customer_Copy') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:Detail') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:Orders') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', |
+  'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:Phones') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:Products') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('RelationManager:Customer') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:Customer_Copy') ('Init {19}PROCEDURE', 'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:Detail') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:Orders') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:Phones') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:Products') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
 
 %ProgramAuthor DEFAULT  ('Rick')
 %ProgramIcon DEFAULT  ('')
@@ -4833,9 +4857,10 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%StandardExternalModule DEPEND %Module LONG TIMES 6
+%StandardExternalModule DEPEND %Module LONG TIMES 7
 WHEN  ('') (1)
 WHEN  ('ALLFILES.clw') (1)
+WHEN  ('ALLFILES001.clw') (1)
 WHEN  ('AllFiles.clw') (1)
 WHEN  ('Allfiles.clw') (1)
 WHEN  ('Main_ALLFILES.clw') (1)
@@ -4966,9 +4991,10 @@ WHEN  ('allfiles.clw') (1)
 %ExtUIMDITabStyle DEFAULT  ('Default')
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
-%GenerationCompleted DEPEND %Module DEFAULT TIMES 2
-WHEN  ('ALLFILES.clw') ('')
-WHEN  ('Main_ALLFILES.clw') ('')
+%GenerationCompleted DEPEND %Module DEFAULT TIMES 3
+WHEN  ('ALLFILES.clw') ('1')
+WHEN  ('ALLFILES001.clw') ('1')
+WHEN  ('Main_ALLFILES.clw') ('1')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
@@ -4979,7 +5005,15 @@ WHEN  ('Main_ALLFILES.clw') ('')
  
 #system win32 dll
 #model clarion dll
+#pragma define(_ABCDllMode_=>0) -- GENERATED
+#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "ALLFILES.clw" -- GENERATED
 #compile "Main_ALLFILES.clw" -- GENERATED
+#compile "ALLFILES001.clw" -- GENERATED
+#compile "CWUtil.CLW" -- GENERATED
+#compile "ALLFILES_BC0.CLW" -- GENERATED
+#compile "ALLFILES_BC.CLW" -- GENERATED
 #pragma link("C%V%asc%X%%L%.lib") -- GENERATED
+#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
+#pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
 #link "AllFiles.DLL"
