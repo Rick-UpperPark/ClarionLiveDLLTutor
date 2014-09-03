@@ -665,6 +665,8 @@ WHEN  ('Products') ('AsciiFileClass')
 
 %VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
 
+%EnableOSK DEFAULT  ('OFF')
+%W7ManifestW81 LONG  (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 10
@@ -686,8 +688,6 @@ WHEN  ('allfiles.lib') ('')
 [PROJECT]
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>1) -- GENERATED
-#pragma define(_ABCLinkMode_=>0) -- GENERATED
 #compile "UPDATES.clw" -- GENERATED
 #compile "SingleInvoiceReport_UPDATES.clw" -- GENERATED
 #compile "UpdateCompany_Update.clw" -- GENERATED

@@ -1078,8 +1078,7 @@ PARENT 1
 PROCPROP
 [PROMPTS]
 %UpdateProcedure PROCEDURE  (UpdateProduct)
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_PRD:ProdAmount', 'EIP_PRD:ProdDesc', |
-  'EIP_PRD:ProdNumber', 'EIP_PRD:TaxRate')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_PRD:ProdDesc', 'EIP_PRD:TaxRate')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
@@ -1104,36 +1103,28 @@ WHEN  ('BrowseEIPManager') ('')
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW1::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 5
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_PRD:ProdAmount') (1)
 WHEN  ('EIP_PRD:ProdDesc') (1)
-WHEN  ('EIP_PRD:ProdNumber') (1)
 WHEN  ('EIP_PRD:TaxRate') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 5
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_PRD:ProdAmount') (1)
 WHEN  ('EIP_PRD:ProdDesc') (1)
-WHEN  ('EIP_PRD:ProdNumber') (1)
 WHEN  ('EIP_PRD:TaxRate') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 5
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 3
 WHEN  ('BrowseEIPManager') ('AStringValue')
-WHEN  ('EIP_PRD:ProdAmount') ('')
 WHEN  ('EIP_PRD:ProdDesc') ('ADOBlob')
-WHEN  ('EIP_PRD:ProdNumber') ('')
 WHEN  ('EIP_PRD:TaxRate') ('ADOBlob')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 5
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (0)
-WHEN  ('EIP_PRD:ProdAmount') (0)
 WHEN  ('EIP_PRD:ProdDesc') (0)
-WHEN  ('EIP_PRD:ProdNumber') (0)
 WHEN  ('EIP_PRD:TaxRate') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
@@ -1191,11 +1182,9 @@ WHEN  ('BrowseEIPManager')TIMES 0
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
 %EditInPlace LONG  (0)
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 5
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 3
 WHEN  ('BrowseEIPManager') ('NO')
-WHEN  ('EIP_PRD:ProdAmount') ('NO')
 WHEN  ('EIP_PRD:ProdDesc') ('NO')
-WHEN  ('EIP_PRD:ProdNumber') ('NO')
 WHEN  ('EIP_PRD:TaxRate') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
@@ -1799,7 +1788,12 @@ WHEN  ('Default') ('')
 WHEN  ('WindowToolbar') ('')
 
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
+WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'ChangeAction {11}PROCEDURE(),BYTE,DERIVED', |
+  'Open {19}PROCEDURE(),DERIVED', 'PrimeUpdate {12}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeDisableButton      PROCEDURE(SIGNED Control,BYTE MakeDisable),DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Update {17}PROCEDURE(),DERIVED')
 
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
@@ -2097,7 +2091,7 @@ WHEN '(),BYTE'
 PROPERTY:BEGIN
 PRIORITY 8150
 PROPERTY:END
-0{PROP:Text} = 'Hi Rick'
+0{PROP:Text} = 'Hi Rick Testing'
 [SOURCE]
 PROPERTY:BEGIN
 PRIORITY 8251
@@ -2188,8 +2182,22 @@ WHEN  ('Default') ('')
 WHEN  ('Locator0') ('')
 WHEN  ('Step0') ('StepRealClass')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Q {22}&Queue:Browse:1 {16}!Reference to browse queue', 'Init {19}PROCEDURE(SIGNED ListBox,*STRING Posit,VIEW V,QUEUE Q,RelationManager RM,WindowManager WM)')
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 3
+WHEN  ('Default') ('Q {22}&Queue:Browse:1 {16}!Reference to browse queue', 'AppendOrder {12}PROCEDURE(STRING Order),DERIVED', |
+  'ApplyRange {13}PROCEDURE(),BYTE,PROC,DERIVED', 'ClearFilesRecord       PROCEDURE(),DERIVED', |
+  'GetFreeElementAscending PROCEDURE(),STRING,DERIVED', 'Init {19}PROCEDURE(IListControl IC,VIEW V,BrowseQueue LQ,RelationManager RM,WindowManager WM)', |
+  'InitSort {15}PROCEDURE(BYTE NewOrder),BYTE,DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'Next {19}PROCEDURE(),BYTE,DERIVED', 'Open {19}PROCEDURE(),DERIVED', 'Previous {15}PROCEDURE(),BYTE,DERIVED', |
+  'ReplaceSort {12}PROCEDURE(STRING NewSortString,<<LocatorClass NewLocator>,<<StepClass NewStepClass>),DERIVED', |
+  'ResetSort {14}PROCEDURE(BYTE Force),BYTE,PROC,DERIVED', 'RestoreBuffers {9}PROCEDURE(),DERIVED', |
+  'SetSort {16}PROCEDURE(BYTE NewOrder,BYTE Force),BYTE,PROC,DERIVED', 'SetUseMRP {14}PROCEDURE(BYTE UseMRP=True),DERIVED', |
+  'TakeKey {16}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeLocate {13}PROCEDURE(),DERIVED', |
+  'ValidateRecord {9}PROCEDURE(),BYTE,DERIVED')
+WHEN  ('Locator0') ('Destruct {15}PROCEDURE(),DERIVED', 'GetShadow {14}PROCEDURE(),STRING,DERIVED', |
+  'Init {19}PROCEDURE(SIGNED Control = 0,*? Free,BYTE NoCase = 0),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,DERIVED', |
+  'UpdateWindow {11}PROCEDURE(),DERIVED')
+WHEN  ('Step0') ('GetPercentile {10}PROCEDURE(? Value),BYTE,DERIVED', 'Init {19}PROCEDURE(BYTE Controls)', |
+  'SetLimitNeeded {9}PROCEDURE(),BYTE,DERIVED')
 
 %SQLViewFields MULTI DEFAULT  ()
 %TableSchematicsDescription DEFAULT  ('')
@@ -2734,56 +2742,55 @@ PARENT 1
 PROCPROP
 [PROMPTS]
 %EditInPlace LONG  (1)
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_PHO:Area', 'EIP_PHO:CustNumber', |
-  'EIP_PHO:Description', 'EIP_PHO:Phone')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_PHO:CustNumber', 'EIP_PHO:Phone')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
 %ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('BrowseEIPManager') ('Ask {20}PROCEDURE(),DERIVED', 'ChangeAction {11}PROCEDURE(),BYTE,DERIVED', |
+  'ClearColumn {12}PROCEDURE(),DERIVED', 'DeleteAction {11}PROCEDURE(),BYTE,DERIVED', |
+  'InitControls {11}PROCEDURE(),DERIVED', 'InsertAction {11}PROCEDURE(),BYTE,DERIVED', |
+  'Open {19}PROCEDURE(),DERIVED', 'PrimeUpdate {12}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAcceptAll {10}PROCEDURE(),BYTE,DERIVED', |
+  'TakeAction {13}PROCEDURE(UNSIGNED Action),DERIVED', 'TakeCloseEvent {9}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeCompleted {10}PROCEDURE(BYTE Force),DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeFocusLoss {10}PROCEDURE(),DERIVED', 'TakeNewSelection       PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Update {17}PROCEDURE(),DERIVED')
 
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 5
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 3
 WHEN  ('BrowseEIPManager') ('NO')
-WHEN  ('EIP_PHO:Area') ('NO')
 WHEN  ('EIP_PHO:CustNumber') ('NO')
-WHEN  ('EIP_PHO:Description') ('NO')
 WHEN  ('EIP_PHO:Phone') ('NO')
 
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW1::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 5
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_PHO:Area') (1)
 WHEN  ('EIP_PHO:CustNumber') (1)
-WHEN  ('EIP_PHO:Description') (1)
 WHEN  ('EIP_PHO:Phone') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 5
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_PHO:Area') (1)
 WHEN  ('EIP_PHO:CustNumber') (1)
-WHEN  ('EIP_PHO:Description') (1)
 WHEN  ('EIP_PHO:Phone') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 5
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 3
 WHEN  ('BrowseEIPManager') ('')
-WHEN  ('EIP_PHO:Area') ('')
 WHEN  ('EIP_PHO:CustNumber') ('')
-WHEN  ('EIP_PHO:Description') ('')
 WHEN  ('EIP_PHO:Phone') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 5
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (0)
-WHEN  ('EIP_PHO:Area') (0)
 WHEN  ('EIP_PHO:CustNumber') (0)
-WHEN  ('EIP_PHO:Description') (0)
 WHEN  ('EIP_PHO:Phone') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
@@ -3267,7 +3274,9 @@ WHEN  ('Default') ('WindowResizeClass')
 WHEN  ('Default') ('')
 
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Init {19}PROCEDURE(BYTE AppStrategy=AppStrategy:Resize,BYTE SetWindowMinSize=False,BYTE SetWindowMaxSize=False)')
+WHEN  ('Default') ('GetParentControl       PROCEDURE(SIGNED Control),SIGNED,DERIVED', |
+  'Init {19}PROCEDURE(BYTE AppStrategy=AppStrategy:Resize,BYTE SetWindowMinSize=False,BYTE SetWindowMaxSize=False)', |
+  'Resize {17}PROCEDURE(),BYTE,PROC,DERIVED', 'RestoreWindow {10}PROCEDURE(),DERIVED')
 
 %WindowMinHeight DEFAULT  ('')
 %RestrictMaxSize LONG  (0)
