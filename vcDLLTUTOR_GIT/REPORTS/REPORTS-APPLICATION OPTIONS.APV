@@ -642,6 +642,19 @@ WHEN  ('Orders') ('AsciiFileClass')
 WHEN  ('Phones') ('AsciiFileClass')
 WHEN  ('Products') ('AsciiFileClass')
 
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 7
@@ -658,17 +671,15 @@ WHEN  ('updates.lib') ('')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
--- NAMESPACE ClarionDefaultNamespace
-
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>1)
-#pragma define(_ABCLinkMode_=>0)
-#compile "REPORTS.clw"
-#compile "CustReport_REPORTS.clw"
-#compile "TestJoin2_REPORTS.clw"
-#compile "TestJoin3_REPORTS.clw"
-#compile "Test_Join4_REPORTS.clw"
-#pragma link("allfiles.lib")
-#pragma link("updates.lib")
-#link "Reports.DLL"
+#pragma define(_ABCDllMode_=>1) -- GENERATED
+#pragma define(_ABCLinkMode_=>0) -- GENERATED
+#compile "REPORTS.clw" -- GENERATED
+#compile "CustReport_REPORTS.clw" -- GENERATED
+#compile "TestJoin2_REPORTS.clw" -- GENERATED
+#compile "TestJoin3_REPORTS.clw" -- GENERATED
+#compile "Test_Join4_REPORTS.clw" -- GENERATED
+#pragma link("allfiles.lib") -- GENERATED
+#pragma link("updates.lib") -- GENERATED
+#link "REPORTS.DLL"

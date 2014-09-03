@@ -651,6 +651,19 @@ WHEN  ('Products') ('AsciiFileClass')
 %ExtUIXPMenuColorRight LONG  (12632256)
 %ExtUIMDITab DEFAULT  ('TOP')
 %ExtUIMDITabStyle DEFAULT  ('Default')
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 8
@@ -668,19 +681,16 @@ WHEN  ('updates.lib') ('')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
--- NAMESPACE ClarionDefaultNamespace
-
 #system win32 exe
 #model clarion dll
-#pragma define(_ABCDllMode_=>1)
-#pragma define(_ABCLinkMode_=>0)
-#compile "DLLTUTOR.clw"
-#compile "Main_DLLTUTOR.clw"
-#compile "NewProc2_DLLTUTOR.clw"
-#compile "SplashScreen_DLLTUTOR.clw"
-#compile "Test2NewProcedure_DLLTUTOR.clw"
-#pragma link("allfiles.lib")
-#pragma link("reports.lib")
-#pragma link("updates.lib")
-#pragma link("DLLTutor.EXE.manifest")
-#link "DLLTutor.EXE"
+#pragma define(_ABCDllMode_=>1) -- GENERATED
+#pragma define(_ABCLinkMode_=>0) -- GENERATED
+#compile "DLLTUTOR.clw" -- GENERATED
+#compile "Main_DLLTUTOR.clw" -- GENERATED
+#compile "NewProc2_DLLTUTOR.clw" -- GENERATED
+#compile "SplashScreen_DLLTUTOR.clw" -- GENERATED
+#compile "Test2NewProcedure_DLLTUTOR.clw" -- GENERATED
+#pragma link("allfiles.lib") -- GENERATED
+#pragma link("reports.lib") -- GENERATED
+#pragma link("updates.lib") -- GENERATED
+#link "DLLTUTOR.EXE"

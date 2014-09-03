@@ -386,6 +386,31 @@ WHEN  ('')TIMES 0
 WHEN  ('')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
 [ADDITION]
 NAME ABC SaveButton
 [INSTANCE]
@@ -1304,7 +1329,8 @@ NAME ABC BrowseUpdateButtons
 INSTANCE 7
 PARENT 6
 [PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_PHO:CustNumber', 'EIP_PHO:Phone')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_PHO:Area', 'EIP_PHO:CustNumber', |
+  'EIP_PHO:Description', 'EIP_PHO:Phone')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
@@ -1329,28 +1355,36 @@ WHEN  ('BrowseEIPManager') ('')
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW6::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 3
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 5
 WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP_PHO:Area') (1)
 WHEN  ('EIP_PHO:CustNumber') (1)
+WHEN  ('EIP_PHO:Description') (1)
 WHEN  ('EIP_PHO:Phone') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 3
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 5
 WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP_PHO:Area') (1)
 WHEN  ('EIP_PHO:CustNumber') (1)
+WHEN  ('EIP_PHO:Description') (1)
 WHEN  ('EIP_PHO:Phone') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 3
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 5
 WHEN  ('BrowseEIPManager') ('AStringValue')
+WHEN  ('EIP_PHO:Area') ('')
 WHEN  ('EIP_PHO:CustNumber') ('ADOBlob')
+WHEN  ('EIP_PHO:Description') ('')
 WHEN  ('EIP_PHO:Phone') ('ADOBlob')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 3
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 5
 WHEN  ('BrowseEIPManager') (0)
+WHEN  ('EIP_PHO:Area') (0)
 WHEN  ('EIP_PHO:CustNumber') (0)
+WHEN  ('EIP_PHO:Description') (0)
 WHEN  ('EIP_PHO:Phone') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
@@ -1409,9 +1443,11 @@ WHEN  ('EIP')TIMES 0
 
 %EditInPlace LONG  (1)
 %UpdateProcedure PROCEDURE  ()
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 3
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 5
 WHEN  ('BrowseEIPManager') ('NO')
+WHEN  ('EIP_PHO:Area') ('NO')
 WHEN  ('EIP_PHO:CustNumber') ('NO')
+WHEN  ('EIP_PHO:Description') ('NO')
 WHEN  ('EIP_PHO:Phone') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')

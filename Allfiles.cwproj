@@ -36,10 +36,19 @@
     <Compile Include="ALLFILES_BC0.CLW">
       <Generated>true</Generated>
     </Compile>
+    <Compile Include="ALLFILES_NewProcedure.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="ALLFILES_NewProcedureToName.clw">
+      <Generated>true</Generated>
+    </Compile>
     <Compile Include="CWUtil.CLW">
       <Generated>true</Generated>
     </Compile>
     <Compile Include="Main_ALLFILES.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="TestAPVExtension_ALLFILES.clw">
       <Generated>true</Generated>
     </Compile>
   </ItemGroup>

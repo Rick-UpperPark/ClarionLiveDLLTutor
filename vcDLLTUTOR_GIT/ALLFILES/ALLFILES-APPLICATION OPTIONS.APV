@@ -4857,13 +4857,15 @@ WHEN  ('Orders') ('Use Default')
 WHEN  ('Phones') ('Use Default')
 WHEN  ('Products') ('Use Default')
 
-%StandardExternalModule DEPEND %Module LONG TIMES 7
+%StandardExternalModule DEPEND %Module LONG TIMES 9
 WHEN  ('') (1)
 WHEN  ('ALLFILES.clw') (1)
 WHEN  ('ALLFILES001.clw') (1)
+WHEN  ('ALLFILES_NewProcedureToName.clw') (1)
 WHEN  ('AllFiles.clw') (1)
 WHEN  ('Allfiles.clw') (1)
 WHEN  ('Main_ALLFILES.clw') (1)
+WHEN  ('TestAPVExtension_ALLFILES.clw') (1)
 WHEN  ('allfiles.clw') (1)
 
 %NoGenerateGlobals LONG  (0)
@@ -4964,6 +4966,19 @@ WHEN  ('allfiles.clw') (1)
 %AppTemplateFamily DEFAULT  ('ABC')
 %CWTemplateVersion DEFAULT  ('v9.0')
 %ABCVersion DEFAULT  ('9000')
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
 %EnableExceptionMessage LONG  (0)
 %WindowFrameDragging LONG  (1)
 %ConfigFileVariable DEFAULT  ('')
@@ -4989,31 +5004,28 @@ WHEN  ('allfiles.clw') (1)
 %ExtUIXPMenuColorRight LONG  (12560039)
 %ExtUIMDITab DEFAULT  ('DISABLE')
 %ExtUIMDITabStyle DEFAULT  ('Default')
+%W7ManifestW81 LONG  (1)
+%EnableOSK DEFAULT  ('OFF')
 [PERSIST]
+%LastApplicationDebug DEFAULT  ('')
+%LastApplicationLocalLibrary DEFAULT  ('')
 %SaveCreateLocalMap DEFAULT  ('1')
-%GenerationCompleted DEPEND %Module DEFAULT TIMES 3
+%GenerationCompleted DEPEND %Module DEFAULT TIMES 4
 WHEN  ('ALLFILES.clw') ('1')
-WHEN  ('ALLFILES001.clw') ('1')
+WHEN  ('ALLFILES_NewProcedureToName.clw') ('1')
 WHEN  ('Main_ALLFILES.clw') ('1')
+WHEN  ('TestAPVExtension_ALLFILES.clw') ('1')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
-%LastApplicationDebug DEFAULT  ('')
-%LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 -- NAMESPACE ClarionDefaultNamespace
- 
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>0) -- GENERATED
-#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "ALLFILES.clw" -- GENERATED
+#compile "ALLFILES_NewProcedureToName.clw" -- GENERATED
 #compile "Main_ALLFILES.clw" -- GENERATED
+#compile "TestAPVExtension_ALLFILES.clw" -- GENERATED
 #compile "ALLFILES001.clw" -- GENERATED
-#compile "CWUtil.CLW" -- GENERATED
-#compile "ALLFILES_BC0.CLW" -- GENERATED
-#compile "ALLFILES_BC.CLW" -- GENERATED
 #pragma link("C%V%asc%X%%L%.lib") -- GENERATED
-#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
-#pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
-#link "AllFiles.DLL"
+#link "ALLFILES.DLL"
