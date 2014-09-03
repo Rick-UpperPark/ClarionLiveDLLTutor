@@ -43,33 +43,10 @@ WHEN  ('Process') ('')
 WHEN  ('ProgressMgr') ('StepLongClass')
 WHEN  ('TargetSelector') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 4
-WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'ChangeAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'Init {19}PROCEDURE(ProcessClass PC,<<REPORT R>,<<PrintPreviewClass PV>)', 'InsertAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'Open {19}PROCEDURE(),DERIVED', 'OpenReport {13}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'PrimeUpdate {12}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'PrintReport {12}PROCEDURE(),DERIVED', 'ProcessResultFiles     PROCEDURE(OutputFileQueue OutputFile),BYTE,DERIVED', |
-  'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeDisableButton      PROCEDURE(SIGNED Control,BYTE MakeDisable),DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeNoRecords {10}PROCEDURE(),DERIVED', 'TakeNotify {13}PROCEDURE(UNSIGNED NotifyCode,SIGNED Thread,LONG Parameter),BYTE,PROC,DERIVED', |
-  'Update {17}PROCEDURE(),DERIVED')
-WHEN  ('Previewer') ('Ask {20}PROCEDURE(),DERIVED', 'AskPage {16}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'AskThumbnails {10}PROCEDURE(),DERIVED', 'ChangeAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'Init {19}PROCEDURE(PreviewQueue ImageQueue),DERIVED', 'InsertAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'Open {19}PROCEDURE(),DERIVED', 'PrimeUpdate {12}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeCurrentPage        PROCEDURE(),DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Update {17}PROCEDURE(),DERIVED')
-WHEN  ('Process') ('AppendOrder {12}PROCEDURE(STRING Order),DERIVED', 'ApplyRange {13}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'ChildProcessingEnd     PROCEDURE(USHORT ChildRead),DERIVED', 'GetFreeElementAscending PROCEDURE(),STRING,DERIVED', |
-  'Init {19}PROCEDURE(VIEW V,RelationManager RM,<<SortOrder SO>)', 'Next {19}PROCEDURE(),BYTE,DERIVED', |
-  'Open {19}PROCEDURE(),DERIVED', 'Previous {15}PROCEDURE(),BYTE,DERIVED', 'Reset {18}PROCEDURE(),DERIVED', |
-  'SetSort {16}PROCEDURE(BYTE OrderNumber),BYTE,PROC,DERIVED', 'TakeAccepted {11}PROCEDURE(),DERIVED', |
-  'TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED', 'UpdateDisplay {10}PROCEDURE(),DERIVED', |
-  'ValidateRecord {9}PROCEDURE(),BYTE,DERIVED')
-WHEN  ('ProgressMgr') ('Init {19}PROCEDURE(BYTE Controls)', 'SetLimitNeeded {9}PROCEDURE(),BYTE,DERIVED')
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'OpenReport {13}PROCEDURE(),BYTE,PROC,DERIVED')
+WHEN  ('Process') ('TakeRecord {13}PROCEDURE(),BYTE,PROC,DERIVED')
 
 %ReturnValue FIELD  ()
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
@@ -639,16 +616,6 @@ WHEN  ('') (-1)
 %FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('') (0)
 
-[EMBED]
-EMBED %DataSection
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 1300
-PROPERTY:END
-
-[END]
-[END]
 [ADDITION]
 NAME ABC ReportPageNumber
 [INSTANCE]
@@ -893,8 +860,7 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %DetailFilterExclusive DEPEND %ReportControl LONG TIMES 0
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 2
-WHEN  ('') ('No Special Action')
+%ButtonAction DEPEND %Control DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel') ('No Special Action')
 
 %ButtonRunName DEPEND %Control DEFAULT TIMES 0
@@ -905,14 +871,12 @@ WHEN  ('?Progress:Cancel') ('No Special Action')
 
 %ButtonThread DEPEND %Control LONG TIMES 0
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 2
-WHEN  ('') ('25000')
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel') ('25000')
 
 %ButtonParameters DEPEND %Control DEFAULT TIMES 0
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 2
-WHEN  ('') ('None')
+%ButtonRequest DEPEND %Control DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel') ('None')
 
 %PreLookupKey DEPEND %Control KEY TIMES 0
@@ -927,8 +891,7 @@ WHEN  ('?Progress:Cancel') ('None')
 
 %PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
-WHEN  ('') (1)
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 1
 WHEN  ('?Progress:Cancel') (1)
 
 %ForceWindowRefresh DEPEND %Control LONG TIMES 0
@@ -943,16 +906,14 @@ WHEN  ('?Progress:Cancel') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 2
-WHEN  ('')TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel')TIMES 0
 
 %CheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
-WHEN  ('')TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel')TIMES 0
 
 %UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
@@ -965,16 +926,14 @@ WHEN  ('?Progress:Cancel')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 2
-WHEN  ('')TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel')TIMES 0
 
 %UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
-WHEN  ('')TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
 WHEN  ('?Progress:Cancel')TIMES 0
 
 %GlobalObject DEPEND %ClassItem DEFAULT TIMES 7
@@ -1237,8 +1196,9 @@ WHEN  ('WindowToolbar') ('NO')
 
 %PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
-%DetailFilterExternal DEPEND %ReportControl DEFAULT TIMES 32
-WHEN  ('') ('')
+%DetailFilterExternal DEPEND %ReportControl DEFAULT TIMES 40
+WHEN  ('?BREAK1') ('')
+WHEN  ('?BREAK2') ('')
 WHEN  ('?CUS:Address') ('')
 WHEN  ('?CUS:City') ('')
 WHEN  ('?CUS:Company') ('')
@@ -1247,9 +1207,16 @@ WHEN  ('?CUS:FirstName') ('')
 WHEN  ('?CUS:LastName') ('')
 WHEN  ('?CUS:State') ('')
 WHEN  ('?CUS:ZipCode') ('')
+WHEN  ('?DETAIL1') ('')
 WHEN  ('?DTL:ProdAmount') ('')
 WHEN  ('?DTL:ProdNumber') ('')
 WHEN  ('?DTL:Quantity') ('')
+WHEN  ('?FOOTER1') ('')
+WHEN  ('?FORM1') ('')
+WHEN  ('?GROUPFOOTER1') ('')
+WHEN  ('?GROUPFOOTER2') ('')
+WHEN  ('?GROUPHEADER1') ('')
+WHEN  ('?HEADER1') ('')
 WHEN  ('?InvoiceCount') ('')
 WHEN  ('?ItemTotal') ('')
 WHEN  ('?ItemTotal:2') ('')
@@ -1287,51 +1254,41 @@ WHEN  ('?String26') ('')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('Default')
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
-WHEN  ('')TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
-WHEN  ('')TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
 %ProcedureOneInstance LONG  (0)
 %FirstPage DEFAULT  ('')
 %ReportTargetOpen LONG  (0)
 %HideOutputProgress LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('Off')
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('')
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
-WHEN  ('') (-1)
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 1
-WHEN  ('') (-1)
+%FieldGradientColorTo DEPEND %Control LONG TIMES 0
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
 
 [WINDOW]
 ProgressWindow WINDOW('Invoice Progress'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(1)
@@ -1342,61 +1299,70 @@ ProgressWindow WINDOW('Invoice Progress'),AT(,,142,59),DOUBLE,CENTER,GRAY,TIMER(
         END
 
 [REPORT]
-Report  REPORT,AT(1000,2000,6000,7000),PRE(RPT),FONT('Arial',10,COLOR:Black,FONT:regular), |
+REPORT  REPORT,AT(1000,2000,6000,7000),PRE(RPT),FONT('Arial',10,COLOR:Black,FONT:regular), |
           THOUS
-          HEADER,AT(1000,1000,6000,1000)
+          HEADER,AT(1000,1000,6000,1000),USE(?HEADER1),#ORDINAL(1)
           END
-CUS:CustNumberBreak BREAK(CUS:CustNumber)
-ORD:OrderNumberBreak BREAK(ORD:OrderNumber)
-              HEADER,AT(0,0,,1067)
-                STRING(@s20),AT(100,25),USE(CUS:Company),#ORIG(CUS:Company)
-                STRING('Order Number:'),AT(3604,42),USE(?String17),TRN,#ORIG(?String17)
-                STRING(@n-7),AT(4531,52),USE(ORD:OrderNumber),RIGHT(1),#ORIG(ORD:OrderNumber)
-                STRING(@s20),AT(1729,219),USE(CUS:LastName),#ORIG(CUS:LastName)
-                STRING(@s20),AT(100,225),USE(CUS:FirstName),#ORIG(CUS:FirstName)
-                STRING(@d1),AT(4533,275),USE(ORD:OrderDate),RIGHT(1),#ORIG(ORD:OrderDate)
-                STRING('Order Date:'),AT(3600,225),USE(?String18),TRN,#ORIG(?String18)
-                STRING(@P#####P),AT(1908,600),USE(CUS:ZipCode),RIGHT(1),#ORIG(CUS:ZipCode)
-                STRING('Item Total'),AT(4469,792),USE(?String22),TRN,#ORIG(?String22)
-                LINE,AT(125,958,4958,10),USE(?Line1),COLOR(COLOR:Black),LINEWIDTH(50),#ORIG(?Line1)
-                STRING('Quantity'),AT(104,792),USE(?String19),TRN,#ORIG(?String19)
-                STRING('Product'),AT(844,792),USE(?String20),TRN,#ORIG(?String20)
-                STRING('At:'),AT(3740,792),USE(?String21),TRN,#ORIG(?String21)
-                STRING(@s20),AT(100,417),USE(CUS:Address),#ORIG(CUS:Address)
-                STRING(@s20),AT(100,600),USE(CUS:City),#ORIG(CUS:City)
-                STRING(@s2),AT(1692,600),USE(CUS:State),#ORIG(CUS:State)
+CUS:CustNumberBreak BREAK(CUS:CustNumber),USE(?BREAK1),#ORDINAL(2)
+ORD:OrderNumberBreak BREAK(ORD:OrderNumber),USE(?BREAK2),#ORDINAL(3)
+              HEADER,AT(0,0,,1067),USE(?GROUPHEADER1),#ORDINAL(4)
+                STRING(@s20),AT(100,25),USE(CUS:Company),#ORIG(CUS:Company),#ORDINAL(5)
+                STRING('Order Number:'),AT(3604,42),USE(?String17),TRN,#ORIG(?String17),#ORDINAL(6)
+                STRING(@n-7),AT(4531,52),USE(ORD:OrderNumber),RIGHT(1),#ORIG(ORD:OrderNumber), |
+                  #ORDINAL(7)
+                STRING(@s20),AT(1687,42),USE(CUS:LastName),#ORIG(CUS:LastName),#ORDINAL(8)
+                STRING(@s20),AT(100,225),USE(CUS:FirstName),#ORIG(CUS:FirstName),#ORDINAL(9)
+                STRING(@d1),AT(4533,275),USE(ORD:OrderDate),RIGHT(1),#ORIG(ORD:OrderDate), |
+                  #ORDINAL(10)
+                STRING('Order Date:'),AT(3600,225),USE(?String18),TRN,#ORIG(?String18),#ORDINAL(11)
+                STRING(@P#####P),AT(1908,600),USE(CUS:ZipCode),RIGHT(1),#ORIG(CUS:ZipCode), |
+                  #ORDINAL(12)
+                STRING('Item Total'),AT(4469,792),USE(?String22),TRN,#ORIG(?String22),#ORDINAL(13)
+                LINE,AT(125,958,4958,10),USE(?Line1),COLOR(COLOR:Black),LINEWIDTH(50),#ORIG(?Line1), |
+                  #ORDINAL(14)
+                STRING('Quantity'),AT(104,792),USE(?String19),TRN,#ORIG(?String19),#ORDINAL(15)
+                STRING('Product'),AT(844,792),USE(?String20),TRN,#ORIG(?String20),#ORDINAL(16)
+                STRING('At:'),AT(3740,792),USE(?String21),TRN,#ORIG(?String21),#ORDINAL(17)
+                STRING(@s20),AT(100,417),USE(CUS:Address),#ORIG(CUS:Address),#ORDINAL(18)
+                STRING(@s20),AT(100,600),USE(CUS:City),#ORIG(CUS:City),#ORDINAL(19)
+                STRING(@s2),AT(1692,600),USE(CUS:State),#ORIG(CUS:State),#ORDINAL(20)
               END
-detail        DETAIL
-                STRING(@n-7),AT(83,42),USE(DTL:Quantity),RIGHT(1),#ORIG(DTL:Quantity)
-                STRING(@n-7),AT(771,42),USE(DTL:ProdNumber),RIGHT(1),#ORIG(DTL:ProdNumber)
-                STRING(@s25),AT(1438,42),USE(PRD:ProdDesc),#ORIG(PRD:ProdDesc)
-                STRING(@n-7.2),AT(3542,42),USE(DTL:ProdAmount),DECIMAL(12),#ORIG(DTL:ProdAmount)
-                STRING(@n-10.2),AT(4208,42),USE(ItemTotal),DECIMAL(12),#ORIG(ItemTotal)
+DETAIL        DETAIL,AT(0,0),USE(?DETAIL1),#ORDINAL(21)
+                STRING(@n-7),AT(83,42),USE(DTL:Quantity),RIGHT(1),#ORIG(DTL:Quantity),#ORDINAL(22)
+                STRING(@n-7),AT(771,42),USE(DTL:ProdNumber),RIGHT(1),#ORIG(DTL:ProdNumber), |
+                  #ORDINAL(23)
+                STRING(@s25),AT(1438,42),USE(PRD:ProdDesc),#ORIG(PRD:ProdDesc),#ORDINAL(24)
+                STRING(@n-7.2),AT(3542,42),USE(DTL:ProdAmount),DECIMAL(12),#ORIG(DTL:ProdAmount), |
+                  #ORDINAL(25)
+                STRING(@n-10.2),AT(4208,42),USE(ItemTotal),DECIMAL(12),#ORIG(ItemTotal),#ORDINAL(26)
               END
-              FOOTER,AT(0,0),PAGEAFTER(-1)
-                LINE,AT(3758,50,1469,-10),USE(?Line2),COLOR(COLOR:Black),LINEWIDTH(20),#ORIG(?Line2)
+              FOOTER,AT(0,0),USE(?GROUPFOOTER1),PAGEAFTER(-1),#ORDINAL(27)
+                LINE,AT(3760,52,1469,-9),USE(?Line2),COLOR(COLOR:Black),LINEWIDTH(20),#ORIG(?Line2), |
+                  #ORDINAL(28)
                 STRING(@n9.2),AT(4508,58),USE(ItemTotal,,?ItemTotal:2),SUM,RESET(ORD:OrderNumberBreak), |
-                  TRN,#ORIG(?String24)
-                STRING('Order Total:'),AT(3758,58),USE(?String23),TRN,#ORIG(?String23)
+                  TRN,#ORIG(?String24),#ORDINAL(29)
+                STRING('Order Total:'),AT(3758,58),USE(?String23),TRN,#ORIG(?String23),#ORDINAL(30)
               END
             END
-            FOOTER,AT(0,0),PAGEAFTER(-1)
-              STRING('Invoice Summary for:'),AT(1533,75),USE(?String25),TRN,#ORIG(?String25)
-              STRING(@s20),AT(2958,58),USE(CUS:Company,,?CUS:Company:2),#ORIG(CUS:Company)
+            FOOTER,AT(0,0),USE(?GROUPFOOTER2),PAGEAFTER(-1),#ORDINAL(31)
+              STRING('Invoice Summary for:'),AT(1533,75),USE(?String25),TRN,#ORIG(?String25), |
+                #ORDINAL(32)
+              STRING(@s20),AT(3833,73),USE(CUS:Company,,?CUS:Company:2),#ORIG(CUS:Company), |
+                #ORDINAL(33)
               STRING(@n-10.2),AT(2958,283),USE(ItemTotal,,?ItemTotal:3),SUM,RESET(CUS:CustNumberBreak), |
-                TRN,#ORIG(?String28)
+                TRN,#ORIG(?String28),#ORDINAL(34)
               STRING(@n3),AT(2483,283),USE(InvoiceCount),CNT,TALLY(ORD:OrderNumberBreak),RESET(CUS:CustNumberBreak), |
-                TRN,#ORIG(?String27)
-              STRING('Total Orders:'),AT(1675,283),USE(?String26),TRN,#ORIG(?String26)
+                TRN,#ORIG(?String27),#ORDINAL(35)
+              STRING('Total Orders:'),AT(1675,283),USE(?String26),TRN,#ORIG(?String26),#ORDINAL(36)
             END
           END
-          FOOTER,AT(1000,9000,6000,1000)
+          FOOTER,AT(1000,9000,6000,1000),USE(?FOOTER1),#ORDINAL(37)
           END
-          FORM,AT(1000,1000,6000,9000)
+          FORM,AT(1000,1000,6000,9000),USE(?FORM1),#ORDINAL(38)
             STRING('Invoice'),AT(2396,125),USE(?String1),FONT('Times New Roman',16,COLOR:Black, |
-              FONT:bold),TRN,#ORIG(?String1)
+              FONT:bold),TRN,#ORIG(?String1),#ORDINAL(39)
             STRING('TopSpeed Corporation'),AT(2000,604),USE(?String2),FONT('Times New Roman', |
-              14,COLOR:Black,FONT:bold),TRN,#ORIG(?String2)
+              14,COLOR:Black,FONT:bold),TRN,#ORIG(?String2),#ORDINAL(40)
           END
         END
 
