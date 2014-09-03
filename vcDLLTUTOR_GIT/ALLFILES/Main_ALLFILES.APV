@@ -53,7 +53,7 @@ PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
   Message(pMsg)  !This app is for CIDC 2013
-  ii = 123
+!  ii = 123
 
 [END]
 EMBED %DataSection
