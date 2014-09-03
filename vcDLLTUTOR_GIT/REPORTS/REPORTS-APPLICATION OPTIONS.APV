@@ -83,6 +83,19 @@ WHEN  ('Translator') ('')
 %VistaManifestExecutionLevel DEFAULT  ('asInvoker')
 %VistaManifestUIAccess LONG  (0)
 %NoThemedControlsDependency LONG  (0)
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
 %W7ManifestVista LONG  (0)
 %W7ManifestW7 LONG  (0)
 %W7ManifestW8 LONG  (1)
@@ -642,19 +655,8 @@ WHEN  ('Orders') ('AsciiFileClass')
 WHEN  ('Phones') ('AsciiFileClass')
 WHEN  ('Products') ('AsciiFileClass')
 
-%VistaManifestDependentAssembly MULTI LONG  ()
-%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
-
+%EnableOSK DEFAULT  ('OFF')
+%W7ManifestW81 LONG  (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 7
@@ -668,11 +670,12 @@ WHEN  ('updates.lib') ('')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
-%LastApplicationDebug DEFAULT  ('')
+%LastApplicationDebug DEFAULT  ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 #system win32 dll
 #model clarion dll
+#pragma debug(vid=>full)
 #pragma define(_ABCDllMode_=>1) -- GENERATED
 #pragma define(_ABCLinkMode_=>0) -- GENERATED
 #compile "REPORTS.clw" -- GENERATED

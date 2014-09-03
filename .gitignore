@@ -7,5 +7,6 @@ source/
 !*.dct
 !*.sln
 !*.apv
+!Include
 !up_vcsettings.ini
 
