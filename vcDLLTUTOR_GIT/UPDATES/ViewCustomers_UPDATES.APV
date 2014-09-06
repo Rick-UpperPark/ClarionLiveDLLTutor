@@ -1243,8 +1243,8 @@ PARENT 1
 PROCPROP
 [PROMPTS]
 %UpdateProcedure PROCEDURE  (UpdateCustomer)
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_CUS:City', 'EIP_CUS:FirstName', |
-  'EIP_CUS:State')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_CUS:Address', 'EIP_CUS:City', |
+  'EIP_CUS:Company', 'EIP_CUS:FirstName', 'EIP_CUS:LastName', 'EIP_CUS:State', 'EIP_CUS:ZipCode')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
@@ -1269,33 +1269,49 @@ WHEN  ('BrowseEIPManager') ('')
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW1::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 4
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 8
 WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP_CUS:Address') (1)
 WHEN  ('EIP_CUS:City') (1)
+WHEN  ('EIP_CUS:Company') (1)
 WHEN  ('EIP_CUS:FirstName') (1)
+WHEN  ('EIP_CUS:LastName') (1)
 WHEN  ('EIP_CUS:State') (1)
+WHEN  ('EIP_CUS:ZipCode') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 4
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 8
 WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP_CUS:Address') (1)
 WHEN  ('EIP_CUS:City') (1)
+WHEN  ('EIP_CUS:Company') (1)
 WHEN  ('EIP_CUS:FirstName') (1)
+WHEN  ('EIP_CUS:LastName') (1)
 WHEN  ('EIP_CUS:State') (1)
+WHEN  ('EIP_CUS:ZipCode') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 4
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 8
 WHEN  ('BrowseEIPManager') ('AStringValue')
+WHEN  ('EIP_CUS:Address') ('')
 WHEN  ('EIP_CUS:City') ('ADOBlob')
+WHEN  ('EIP_CUS:Company') ('')
 WHEN  ('EIP_CUS:FirstName') ('ADOBlob')
+WHEN  ('EIP_CUS:LastName') ('')
 WHEN  ('EIP_CUS:State') ('ADOBlob')
+WHEN  ('EIP_CUS:ZipCode') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 4
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 8
 WHEN  ('BrowseEIPManager') (0)
+WHEN  ('EIP_CUS:Address') (0)
 WHEN  ('EIP_CUS:City') (0)
+WHEN  ('EIP_CUS:Company') (0)
 WHEN  ('EIP_CUS:FirstName') (0)
+WHEN  ('EIP_CUS:LastName') (0)
 WHEN  ('EIP_CUS:State') (0)
+WHEN  ('EIP_CUS:ZipCode') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
 
@@ -1350,11 +1366,15 @@ WHEN  ('EIP_CUS:State') (0)
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
 %EditInPlace LONG  (0)
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 4
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 8
 WHEN  ('BrowseEIPManager') ('NO')
+WHEN  ('EIP_CUS:Address') ('NO')
 WHEN  ('EIP_CUS:City') ('NO')
+WHEN  ('EIP_CUS:Company') ('NO')
 WHEN  ('EIP_CUS:FirstName') ('NO')
+WHEN  ('EIP_CUS:LastName') ('NO')
 WHEN  ('EIP_CUS:State') ('NO')
+WHEN  ('EIP_CUS:ZipCode') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
 %EIPAskOnDelete DEFAULT  ('Always')
