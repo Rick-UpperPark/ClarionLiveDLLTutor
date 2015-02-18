@@ -2,10 +2,12 @@ obj/
 map/
 source/
 *.*
+!*.clw
 !.gitignore
 !*.cwproj
 !*.dct
 !*.sln
 !*.apv
+#!*.sb8
 !up_vcsettings.ini
-
+/_0obj/
