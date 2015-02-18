@@ -2,6 +2,7 @@ obj/
 map/
 source/
 *.*
+#files to watch
 !*.clw
 !.gitignore
 !*.cwproj
