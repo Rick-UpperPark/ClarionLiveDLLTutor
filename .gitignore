@@ -9,6 +9,7 @@ source/
 !*.dct
 !*.sln
 !*.apv
+!Include
 #!*.sb8
 !up_vcsettings.ini
 #Folder used by John

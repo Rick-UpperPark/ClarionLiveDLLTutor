@@ -1,0 +1,24 @@
+[MODULE]
+NAME 'ALLFILES_NewProcedureToName.clw'
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME NewProcedureToName
+NOEXPORT
+[COMMON]
+FROM ABC Source
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  message('New procedure')
+
+[END]
+[END]
+[END]

@@ -433,6 +433,19 @@ WHEN  ('TestSDI.clw') (1)
 %OverrideCloseFile DEPEND %File DEFAULT TIMES 0
 
 %CWBrowseEIPManagerType DEFAULT  ('CWEIPManager')
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 2
@@ -444,14 +457,10 @@ WHEN  ('TESTSDI.clw') ('1')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
--- NAMESPACE ClarionDefaultNamespace
-
 #system win32 exe
 #model clarion dll
-#pragma define(_ABCDllMode_=>0)
-#pragma define(_ABCLinkMode_=>1)
-#compile "TESTSDI.clw"
-#compile "Main_TESTSDI.clw"
-#compile "TESTSDI_BC0.CLW"
-#compile "TESTSDI_BC.CLW"
+#pragma define(_ABCDllMode_=>0) -- GENERATED
+#pragma define(_ABCLinkMode_=>1) -- GENERATED
+#compile "TESTSDI.clw" -- GENERATED
+#compile "Main_TESTSDI.clw" -- GENERATED
 #link "TESTSDI.EXE"

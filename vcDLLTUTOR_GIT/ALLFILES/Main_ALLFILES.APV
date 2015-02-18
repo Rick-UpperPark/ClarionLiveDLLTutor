@@ -19,7 +19,9 @@ PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
   MESSAGE('Hi Rick|Welcome to CIDC 2013|Great Info, Great People','More Wow',ICON:Application,BUTTON:OK+BUTTON:Cancel)
-  BadVariable = 6123432
+!  BadVariable         =  12433 * 12
+  MorestuffVariables  =  'asdf'
+
 
 
 [END]
@@ -29,7 +31,8 @@ EMBED %DataSection
 PROPERTY:BEGIN
 PRIORITY 1300
 PROPERTY:END
-BadVariable             long
+BadVariable         long
+MorestuffVariables  string(30)
 [END]
 [END]
 [PROCEDURE]
@@ -50,7 +53,7 @@ PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
   Message(pMsg)  !This app is for CIDC 2013
-  ii = 123
+!  ii = 123
 
 [END]
 EMBED %DataSection
