@@ -675,9 +675,9 @@ WHEN  ('updates.lib') ('')
 [PROJECT]
 #system win32 dll
 #model clarion dll
+#pragma debug(vid=>off)
 #pragma define(_ABCDllMode_=>1) -- GENERATED
 #pragma define(_ABCLinkMode_=>0) -- GENERATED
-#pragma debug(vid=>full)
 #compile "REPORTS.clw" -- GENERATED
 #compile "CustReport_REPORTS.clw" -- GENERATED
 #compile "TestJoin2_REPORTS.clw" -- GENERATED

@@ -83,9 +83,23 @@ WHEN  ('Translator') ('')
 %VistaManifestExecutionLevel DEFAULT  ('asInvoker')
 %VistaManifestUIAccess LONG  (0)
 %NoThemedControlsDependency LONG  (0)
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
 %W7ManifestVista LONG  (0)
 %W7ManifestW7 LONG  (0)
 %W7ManifestW8 LONG  (1)
+%W7ManifestW81 LONG  (1)
 %ForceMakeTransparentXPManifest LONG  (0)
 %ForceMakeColorXPManifest LONG  (0)
 %ForceSHEETNoTheme LONG  (0)
@@ -142,6 +156,7 @@ WHEN  ('Translator') ('')
 %SelectedCaretCharacter DEFAULT  ('»')
 %SelectedCaretCharacterSeparation DEFAULT  ('8')
 %ExcludeSelectedDropList LONG  (1)
+%EnableOSK DEFAULT  ('OFF')
 %GlobalUseEnterInsteadTab LONG  (0)
 %GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
 %GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
@@ -651,19 +666,6 @@ WHEN  ('Products') ('AsciiFileClass')
 %ExtUIXPMenuColorRight LONG  (12632256)
 %ExtUIMDITab DEFAULT  ('TOP')
 %ExtUIMDITabStyle DEFAULT  ('Default')
-%VistaManifestDependentAssembly MULTI LONG  ()
-%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
-
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 8
@@ -693,4 +695,5 @@ WHEN  ('updates.lib') ('')
 #pragma link("allfiles.lib") -- GENERATED
 #pragma link("reports.lib") -- GENERATED
 #pragma link("updates.lib") -- GENERATED
+#pragma link("DLLTUTOR.EXE.manifest") -- GENERATED
 #link "DLLTUTOR.EXE"
