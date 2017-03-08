@@ -18,9 +18,9 @@ EMBED %ProcessedCode
 PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
-  MESSAGE('Hi Rick|Welcome to CIDC 2013|Great Info, Great People','More Wow',ICON:Application,BUTTON:OK+BUTTON:Cancel)
-!  BadVariable         =  12433 * 12
-  MorestuffVariables  =  'asdf'
+    MESSAGE('Hi Rick|Welcome to CIDC 2013|Great Info, Great People','More Wow',ICON:Application,BUTTON:OK+BUTTON:Cancel)
+    BadVariable        =  12433 * 12
+    MorestuffVariables =  'asdf'
 
 
 
