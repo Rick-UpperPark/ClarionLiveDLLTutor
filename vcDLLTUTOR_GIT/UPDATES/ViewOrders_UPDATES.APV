@@ -1835,7 +1835,8 @@ NAME ABC BrowseUpdateButtons
 INSTANCE 2
 PARENT 1
 [PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_ORD:InvoiceAmount', 'EIP_ORD:OrderNote')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_ORD:CustNumber', 'EIP_ORD:InvoiceAmount', |
+  'EIP_ORD:OrderDate', 'EIP_ORD:OrderNote', 'EIP_ORD:OrderNumber')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
@@ -1860,29 +1861,41 @@ WHEN  ('BrowseEIPManager') ('')
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW1::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 3
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 6
 WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP_ORD:CustNumber') (1)
 WHEN  ('EIP_ORD:InvoiceAmount') (1)
+WHEN  ('EIP_ORD:OrderDate') (1)
 WHEN  ('EIP_ORD:OrderNote') (1)
+WHEN  ('EIP_ORD:OrderNumber') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 3
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 6
 WHEN  ('BrowseEIPManager') (1)
+WHEN  ('EIP_ORD:CustNumber') (1)
 WHEN  ('EIP_ORD:InvoiceAmount') (1)
+WHEN  ('EIP_ORD:OrderDate') (1)
 WHEN  ('EIP_ORD:OrderNote') (1)
+WHEN  ('EIP_ORD:OrderNumber') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 3
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 6
 WHEN  ('BrowseEIPManager') ('AStringValue')
+WHEN  ('EIP_ORD:CustNumber') ('')
 WHEN  ('EIP_ORD:InvoiceAmount') ('ADOBlob')
+WHEN  ('EIP_ORD:OrderDate') ('')
 WHEN  ('EIP_ORD:OrderNote') ('ADOBlob')
+WHEN  ('EIP_ORD:OrderNumber') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 3
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 6
 WHEN  ('BrowseEIPManager') (0)
+WHEN  ('EIP_ORD:CustNumber') (0)
 WHEN  ('EIP_ORD:InvoiceAmount') (0)
+WHEN  ('EIP_ORD:OrderDate') (0)
 WHEN  ('EIP_ORD:OrderNote') (0)
+WHEN  ('EIP_ORD:OrderNumber') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
 
@@ -1940,10 +1953,13 @@ WHEN  ('EIP_ORD:OrderNote')TIMES 0
 
 %EditInPlace LONG  (1)
 %UpdateProcedure PROCEDURE  (UpdateOrder)
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 3
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 6
 WHEN  ('BrowseEIPManager') ('NO')
+WHEN  ('EIP_ORD:CustNumber') ('NO')
 WHEN  ('EIP_ORD:InvoiceAmount') ('NO')
+WHEN  ('EIP_ORD:OrderDate') ('NO')
 WHEN  ('EIP_ORD:OrderNote') ('NO')
+WHEN  ('EIP_ORD:OrderNumber') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
 %EIPAskOnDelete DEFAULT  ('Always')

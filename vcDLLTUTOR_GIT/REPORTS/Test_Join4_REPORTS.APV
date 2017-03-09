@@ -4,6 +4,8 @@ NAME 'Test_Join4_REPORTS.clw'
 FROM ABC GENERATED
 [PROCEDURE]
 NAME TestJoin
+PROTOTYPE '(LONG pParam1, LONG pParam2), LONG'
+PARAMETERS '(LONG pParam1,LONG pParam2)'
 [COMMON]
 DESCRIPTION 'Process the Orders File'
 FROM ABC Process
@@ -71,7 +73,7 @@ WHEN  ('ProgressMgr') ('StepLongClass')
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
 WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED')
 
-%ReturnValue FIELD  ()
+%ReturnValue FIELD  (Progress:Thermometer)
 %WindowOperationMode DEFAULT  ('Use WINDOW setting')
 %INISaveWindow LONG  (1)
 %ProcedureDisableEnhanceFocus LONG  (0)
@@ -380,8 +382,9 @@ WHEN  ('ProgressMgr')TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
 WHEN  ('') ('Default')
+WHEN  ('?Progress:Cancel') ('Default')
 
 %ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
 
@@ -395,8 +398,9 @@ WHEN  ('') ('Default')
 
 %PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 1
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 2
 WHEN  ('') (1)
+WHEN  ('?Progress:Cancel') (1)
 
 %LookupAssign DEPEND %Control MULTI LONG TIMES 0
 
@@ -414,15 +418,17 @@ WHEN  ('') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 1
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 2
 WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
 
 %CheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 1
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 2
 WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
 
 %UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
 
@@ -434,55 +440,66 @@ WHEN  ('')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 1
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 2
 WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
 
 %UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 1
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 2
 WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
 WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
 WHEN  ('')TIMES 0
+WHEN  ('?Progress:Cancel')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 2
 WHEN  ('') ('Off')
+WHEN  ('?Progress:Cancel') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 2
 WHEN  ('') ('')
+WHEN  ('?Progress:Cancel') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 2
 WHEN  ('') (-1)
+WHEN  ('?Progress:Cancel') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+%FieldGradientColorTo DEPEND %Control LONG TIMES 2
 WHEN  ('') (-1)
+WHEN  ('?Progress:Cancel') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 2
 WHEN  ('') (0)
+WHEN  ('?Progress:Cancel') (0)
 
 [WINDOW]
 ProgressWindow WINDOW('Process Orders'),AT(,,142,59),FONT('MS Sans Serif',8,,FONT:regular, |

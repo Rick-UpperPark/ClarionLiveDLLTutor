@@ -53,12 +53,11 @@ WHEN  ('Default') ('')
 WHEN  ('WindowToolbar') ('')
 
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'ChangeAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'Open {19}PROCEDURE(),DERIVED', 'PrimeUpdate {12}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeDisableButton      PROCEDURE(SIGNED Control,BYTE MakeDisable),DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Update {17}PROCEDURE(),DERIVED')
+WHEN  ('Default') ('Ask {20}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', |
+  'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', 'Run {20}PROCEDURE(USHORT Number,BYTE Request),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeCloseEvent {9}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeSelected {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
 
 %ReturnValue FIELD  ()
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
@@ -387,7 +386,8 @@ WHEN  (1) ('BrowseBox(ABC)')
 %ProcedureUserBindFields MULTI LONG  ()
 %ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
 
-%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 1
+WHEN  (1) (0)
 
 %ProcedureUserBindProcedures MULTI LONG  ()
 %ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
@@ -760,8 +760,7 @@ WHEN  ('Default') ('ToolbarUpdateClass')
 %ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('Default') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('DisplayButtons {9}PROCEDURE(),DERIVED', 'TryTakeToolbar {9}PROCEDURE(),BYTE,DERIVED')
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
 
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('Default') ('ToolbarForm')
@@ -854,20 +853,9 @@ WHEN  ('Default') ('')
 WHEN  ('Locator0') ('')
 WHEN  ('Step0') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
-WHEN  ('Default') ('Q {22}&Queue:Browse {18}!Reference to browse queue', 'AppendOrder {12}PROCEDURE(STRING Order),DERIVED', |
-  'ApplyRange {13}PROCEDURE(),BYTE,PROC,DERIVED', 'ClearFilesRecord       PROCEDURE(),DERIVED', |
-  'GetFreeElementAscending PROCEDURE(),STRING,DERIVED', 'Init {19}PROCEDURE(IListControl IC,VIEW V,BrowseQueue LQ,RelationManager RM,WindowManager WM)', |
-  'InitSort {15}PROCEDURE(BYTE NewOrder),BYTE,DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
-  'Next {19}PROCEDURE(),BYTE,DERIVED', 'Open {19}PROCEDURE(),DERIVED', 'Previous {15}PROCEDURE(),BYTE,DERIVED', |
-  'ReplaceSort {12}PROCEDURE(STRING NewSortString,<<LocatorClass NewLocator>,<<StepClass NewStepClass>),DERIVED', |
-  'ResetSort {14}PROCEDURE(BYTE Force),BYTE,PROC,DERIVED', 'RestoreBuffers {9}PROCEDURE(),DERIVED', |
-  'SetSort {16}PROCEDURE(BYTE NewOrder,BYTE Force),BYTE,PROC,DERIVED', 'SetUseMRP {14}PROCEDURE(BYTE UseMRP=True),DERIVED', |
-  'TakeKey {16}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeLocate {13}PROCEDURE(),DERIVED', |
-  'ValidateRecord {9}PROCEDURE(),BYTE,DERIVED')
-WHEN  ('Locator0') ('Destruct {15}PROCEDURE(),DERIVED', 'GetShadow {14}PROCEDURE(),STRING,DERIVED', |
-  'Init {19}PROCEDURE(SIGNED Control = 0,*? Free,BYTE NoCase = 0),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,DERIVED', |
-  'UpdateWindow {11}PROCEDURE(),DERIVED')
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Q {22}&Queue:Browse {18}!Reference to browse queue', 'Init {19}PROCEDURE(SIGNED ListBox,*STRING Posit,VIEW V,QUEUE Q,RelationManager RM,WindowManager WM)', |
+  'ResetFromView {10}PROCEDURE(),DERIVED', 'SetQueueRecord {9}PROCEDURE(),DERIVED')
 
 %EnableQuickScan LONG  (0)
 %LocatorType DEFAULT  ('Step')
@@ -1551,8 +1539,8 @@ NAME ABC BrowseUpdateButtons
 INSTANCE 6
 PARENT 5
 [PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP1', 'EIP2', 'EIP3', 'EIP_DTL:ProdNumber', |
-  'EIP_ItemTotal')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP1', 'EIP2', 'EIP3', 'EIP_DTL:ProdAmount', |
+  'EIP_DTL:ProdNumber', 'EIP_DTL:Quantity', 'EIP_ItemTotal', 'EIP_PRD:ProdDesc')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 4
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 WHEN  ('EIP1') ('EditEntryClass')
@@ -1565,24 +1553,10 @@ WHEN  ('EIP1') ('')
 WHEN  ('EIP2') ('')
 WHEN  ('EIP3') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 3
-WHEN  ('BrowseEIPManager') ('Ask {20}PROCEDURE(),DERIVED', 'ChangeAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'ClearColumn {12}PROCEDURE(),DERIVED', 'DeleteAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'InitControls {11}PROCEDURE(),DERIVED', 'InsertAction {11}PROCEDURE(),BYTE,DERIVED', |
-  'Open {19}PROCEDURE(),DERIVED', 'PrimeUpdate {12}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Reset {18}PROCEDURE(BYTE Force=0),DERIVED', 'Run {20}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAcceptAll {10}PROCEDURE(),BYTE,DERIVED', |
-  'TakeAction {13}PROCEDURE(UNSIGNED Action),DERIVED', 'TakeCloseEvent {9}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeCompleted {10}PROCEDURE(BYTE Force),DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'TakeFocusLoss {10}PROCEDURE(),DERIVED', 'TakeNewSelection       PROCEDURE(),BYTE,PROC,DERIVED', |
-  'Update {17}PROCEDURE(),DERIVED')
-WHEN  ('EIP1') ('GetFeq {17}PROCEDURE(),UNSIGNED,DERIVED', 'Init {19}PROCEDURE(UNSIGNED FieldNumber,UNSIGNED ListBox,*? UseVar),DERIVED', |
-  'ResetControl {11}PROCEDURE(),BYTE,DERIVED', 'SetAlerts {14}PROCEDURE(),DERIVED', |
-  'TakeAccepted {11}PROCEDURE(BYTE Action),BYTE,DERIVED')
-WHEN  ('EIP2') ('CreateControl {10}PROCEDURE(),DERIVED', 'GetFeq {17}PROCEDURE(),UNSIGNED,DERIVED', |
-  'Init {19}PROCEDURE(UNSIGNED FieldNumber,UNSIGNED ListBox,*? UseVar),DERIVED', |
-  'ResetControl {11}PROCEDURE(),BYTE,DERIVED', 'SetAlerts {14}PROCEDURE(),DERIVED', |
-  'TakeAccepted {11}PROCEDURE(BYTE Action),BYTE,DERIVED')
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 2
+WHEN  ('EIP1') ('TakeEvent {14}PROCEDURE(UNSIGNED Event),BYTE,DERIVED')
+WHEN  ('EIP2') ('Init {19}PROCEDURE(UNSIGNED FieldNumber,UNSIGNED ListBox,*? UseVar),DERIVED', |
+  'TakeEvent {14}PROCEDURE(UNSIGNED Event),BYTE,DERIVED')
 
 %EIPTabAction DEFAULT  ('Default')
 %EIPTabRemain LONG  (0)
@@ -1609,41 +1583,53 @@ WHEN  ('EIP1') ('EditInPlace::DTL:ProdNumber')
 WHEN  ('EIP2') ('EditInPlace::DTL:Quantity')
 WHEN  ('EIP3') ('EditInPlace::DTL:ProdAmount')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 6
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 9
 WHEN  ('BrowseEIPManager') (1)
 WHEN  ('EIP1') (1)
 WHEN  ('EIP2') (1)
 WHEN  ('EIP3') (1)
+WHEN  ('EIP_DTL:ProdAmount') (1)
 WHEN  ('EIP_DTL:ProdNumber') (1)
+WHEN  ('EIP_DTL:Quantity') (1)
 WHEN  ('EIP_ItemTotal') (1)
+WHEN  ('EIP_PRD:ProdDesc') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 6
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 9
 WHEN  ('BrowseEIPManager') (1)
 WHEN  ('EIP1') (1)
 WHEN  ('EIP2') (1)
 WHEN  ('EIP3') (1)
+WHEN  ('EIP_DTL:ProdAmount') (1)
 WHEN  ('EIP_DTL:ProdNumber') (1)
+WHEN  ('EIP_DTL:Quantity') (1)
 WHEN  ('EIP_ItemTotal') (1)
+WHEN  ('EIP_PRD:ProdDesc') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 6
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 9
 WHEN  ('BrowseEIPManager') ('AStringValue')
 WHEN  ('EIP1') ('')
 WHEN  ('EIP2') ('')
 WHEN  ('EIP3') ('')
+WHEN  ('EIP_DTL:ProdAmount') ('')
 WHEN  ('EIP_DTL:ProdNumber') ('ADOBlob')
+WHEN  ('EIP_DTL:Quantity') ('')
 WHEN  ('EIP_ItemTotal') ('ADOBlob')
+WHEN  ('EIP_PRD:ProdDesc') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 6
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 9
 WHEN  ('BrowseEIPManager') (0)
 WHEN  ('EIP1') (0)
 WHEN  ('EIP2') (0)
 WHEN  ('EIP3') (0)
+WHEN  ('EIP_DTL:ProdAmount') (0)
 WHEN  ('EIP_DTL:ProdNumber') (0)
+WHEN  ('EIP_DTL:Quantity') (0)
 WHEN  ('EIP_ItemTotal') (0)
+WHEN  ('EIP_PRD:ProdDesc') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
 
@@ -1705,13 +1691,16 @@ WHEN  ('EIP3')TIMES 0
 
 %EditInPlace LONG  (1)
 %UpdateProcedure PROCEDURE  ()
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 6
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 9
 WHEN  ('BrowseEIPManager') ('NO')
 WHEN  ('EIP1') ('NO')
 WHEN  ('EIP2') ('NO')
 WHEN  ('EIP3') ('NO')
+WHEN  ('EIP_DTL:ProdAmount') ('NO')
 WHEN  ('EIP_DTL:ProdNumber') ('NO')
+WHEN  ('EIP_DTL:Quantity') ('NO')
 WHEN  ('EIP_ItemTotal') ('NO')
+WHEN  ('EIP_PRD:ProdDesc') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
 %EIPAskOnDelete DEFAULT  ('Always')

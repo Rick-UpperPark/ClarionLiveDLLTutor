@@ -99,6 +99,7 @@ WHEN  ('Translator') ('')
 %W7ManifestVista LONG  (0)
 %W7ManifestW7 LONG  (0)
 %W7ManifestW8 LONG  (1)
+%W7ManifestW81 LONG  (1)
 %ForceMakeTransparentXPManifest LONG  (0)
 %ForceMakeColorXPManifest LONG  (0)
 %ForceSHEETNoTheme LONG  (0)
@@ -155,6 +156,7 @@ WHEN  ('Translator') ('')
 %SelectedCaretCharacter DEFAULT  ('»')
 %SelectedCaretCharacterSeparation DEFAULT  ('8')
 %ExcludeSelectedDropList LONG  (1)
+%EnableOSK DEFAULT  ('OFF')
 %GlobalUseEnterInsteadTab LONG  (0)
 %GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
 %GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
@@ -655,8 +657,6 @@ WHEN  ('Orders') ('AsciiFileClass')
 WHEN  ('Phones') ('AsciiFileClass')
 WHEN  ('Products') ('AsciiFileClass')
 
-%EnableOSK DEFAULT  ('OFF')
-%W7ManifestW81 LONG  (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 7
@@ -670,12 +670,12 @@ WHEN  ('updates.lib') ('')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
-%LastApplicationDebug DEFAULT  ('1')
+%LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 #system win32 dll
 #model clarion dll
-#pragma debug(vid=>full)
+#pragma debug(vid=>off)
 #pragma define(_ABCDllMode_=>1) -- GENERATED
 #pragma define(_ABCLinkMode_=>0) -- GENERATED
 #compile "REPORTS.clw" -- GENERATED
