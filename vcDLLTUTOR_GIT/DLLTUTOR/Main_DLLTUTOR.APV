@@ -17,8 +17,7 @@ FilesOpened              BYTE
 !!> GUID('1c2d1bef-83e1-49b5-a66c-a22a7b2ecf53'),PROMPT('FilesOpened:'),HEADER('FilesOpened'),PICTURE(@n3)
 [PROMPTS]
 %INISaveWindow LONG  (1)
-%ButtonAction DEPEND %Control DEFAULT TIMES 36
-WHEN  ('') ('No Special Action')
+%ButtonAction DEPEND %Control DEFAULT TIMES 35
 WHEN  ('?Arrange') ('No Special Action')
 WHEN  ('?Cascade') ('No Special Action')
 WHEN  ('?Copy') ('No Special Action')
@@ -202,8 +201,7 @@ WHEN  ('?ViewCustomers') (1)
 WHEN  ('?ViewOrders') (1)
 WHEN  ('?ViewProducts') (0)
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 36
-WHEN  ('') ('25000')
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 35
 WHEN  ('?Arrange') ('25000')
 WHEN  ('?Cascade') ('25000')
 WHEN  ('?Copy') ('25000')
@@ -249,8 +247,7 @@ WHEN  ('?OrdersButton') ('')
 WHEN  ('?ViewCustomers') ('')
 WHEN  ('?ViewOrders') ('')
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 36
-WHEN  ('') ('None')
+%ButtonRequest DEPEND %Control DEFAULT TIMES 35
 WHEN  ('?Arrange') ('None')
 WHEN  ('?Cascade') ('None')
 WHEN  ('?Copy') ('None')
@@ -299,8 +296,7 @@ WHEN  ('?ViewProducts') ('None')
 
 %PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 15
-WHEN  ('') (1)
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 14
 WHEN  ('?CustomerButton') (1)
 WHEN  ('?FilePrintAllInvoices') (1)
 WHEN  ('?FilePrintCustomerList') (1)
@@ -328,8 +324,7 @@ WHEN  ('?ViewProducts') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 15
-WHEN  ('')TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 14
 WHEN  ('?CustomerButton')TIMES 0
 WHEN  ('?FilePrintAllInvoices')TIMES 0
 WHEN  ('?FilePrintCustomerList')TIMES 0
@@ -349,8 +344,7 @@ WHEN  ('?ViewProducts')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 15
-WHEN  ('')TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 14
 WHEN  ('?CustomerButton')TIMES 0
 WHEN  ('?FilePrintAllInvoices')TIMES 0
 WHEN  ('?FilePrintCustomerList')TIMES 0
@@ -376,8 +370,7 @@ WHEN  ('?ViewProducts')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 15
-WHEN  ('')TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 14
 WHEN  ('?CustomerButton')TIMES 0
 WHEN  ('?FilePrintAllInvoices')TIMES 0
 WHEN  ('?FilePrintCustomerList')TIMES 0
@@ -397,8 +390,7 @@ WHEN  ('?ViewProducts')TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 15
-WHEN  ('')TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 14
 WHEN  ('?CustomerButton')TIMES 0
 WHEN  ('?FilePrintAllInvoices')TIMES 0
 WHEN  ('?FilePrintCustomerList')TIMES 0
@@ -533,8 +525,7 @@ WHEN  ('WindowToolbar') ('NO')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 3
-WHEN  ('') ('Default')
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
 WHEN  ('?MainMenu') ('Default')
 WHEN  ('?Toolbar:Help') ('Default')
 
@@ -542,8 +533,7 @@ WHEN  ('?Toolbar:Help') ('Default')
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 3
-WHEN  ('')TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
 WHEN  ('?MainMenu')TIMES 0
 WHEN  ('?Toolbar:Help')TIMES 0
 
@@ -551,42 +541,34 @@ WHEN  ('?Toolbar:Help')TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 3
-WHEN  ('')TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
 WHEN  ('?MainMenu')TIMES 0
 WHEN  ('?Toolbar:Help')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 2
-WHEN  ('') ('Off')
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
 WHEN  ('?TOOLBAR1') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 2
-WHEN  ('') ('')
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
 WHEN  ('?TOOLBAR1') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 2
-WHEN  ('') (0)
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('?TOOLBAR1') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 2
-WHEN  ('') (-1)
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
 WHEN  ('?TOOLBAR1') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 2
-WHEN  ('') (0)
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('?TOOLBAR1') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 2
-WHEN  ('') (-1)
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
 WHEN  ('?TOOLBAR1') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 2
-WHEN  ('') (0)
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('?TOOLBAR1') (0)
 
 %PreserveVarsLoc MULTI LONG  ()
@@ -594,14 +576,11 @@ WHEN  ('?TOOLBAR1') (0)
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('AIBtn0')
+%AIObjectName DEPEND %Control DEFAULT TIMES 0
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 1
-WHEN  ('') (1)
+%AIEnableMimicControl DEPEND %Control LONG TIMES 0
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('?MainMenu')
+%AIMimicControl DEPEND %Control DEFAULT TIMES 0
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -609,29 +588,25 @@ WHEN  ('') ('?MainMenu')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
 
 [EMBED]
 EMBED %ControlEventHandling
@@ -702,8 +677,8 @@ INSTANCE 4
 %ThreadStack DEFAULT  ('25000')
 %ThreadError DEFAULT  ('')
 [WINDOW]
-AppFrame APPLICATION('Clarion Live Tutorial Application '),AT(,,310,225),RESIZE,MAX,STATUS(-1, |
-          80,120,45),SYSTEM
+AppFrame APPLICATION('Clarion Live # 402 Tutorial Application With Cruise Control.Net'),AT(, |
+          ,310,225),RESIZE,MAX,STATUS(-1,80,120,45),SYSTEM
           MENUBAR,USE(?MainMenu),#ORDINAL(1)
             MENU('&File'),USE(?FileMenu),#ORDINAL(2)
               ITEM('P&rint Setup...'),USE(?PrintSetup),MSG('Setup Printer'),STD(STD:PrintSetup), |

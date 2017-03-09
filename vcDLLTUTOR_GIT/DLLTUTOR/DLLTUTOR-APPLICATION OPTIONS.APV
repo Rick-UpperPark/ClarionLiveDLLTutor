@@ -757,4 +757,5 @@ WHEN  ('updates.lib') ('')
 #pragma link("reports.lib") -- GENERATED
 #pragma link("updates.lib") -- GENERATED
 #pragma link("DLLTUTOR.EXE.manifest") -- GENERATED
+#pragma link("DLLTUTOR.Version") -- GENERATED
 #link "DLLTUTOR.EXE"
