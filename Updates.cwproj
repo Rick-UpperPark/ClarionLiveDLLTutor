@@ -59,6 +59,7 @@
       <Project>{59318DD8-5BE7-4D90-A10C-F6B6BD2B4F40}</Project>
       <Name>Allfiles</Name>
     </ProjectReference>
+    <Library Include="UPDATES.Version" />
   </ItemGroup>
   <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
 </Project>

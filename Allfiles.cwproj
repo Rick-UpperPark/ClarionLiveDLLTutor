@@ -57,6 +57,7 @@
     <FileDriver Include="DOS" />
     <FileDriver Include="SQLAnywhere" />
     <FileDriver Include="TOPSPEED" />
+    <Library Include="ALLFILES.Version" />
   </ItemGroup>
   <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
 </Project>
