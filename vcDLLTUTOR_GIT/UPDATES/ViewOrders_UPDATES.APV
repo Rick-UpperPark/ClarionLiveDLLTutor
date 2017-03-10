@@ -420,6 +420,50 @@ WHEN  ('') (-1)
 %FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('') (0)
 
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?List')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
 [EMBED]
 EMBED %WindowManagerMethodCodeSection
 [INSTANCES]
@@ -1835,8 +1879,7 @@ NAME ABC BrowseUpdateButtons
 INSTANCE 2
 PARENT 1
 [PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_ORD:CustNumber', 'EIP_ORD:InvoiceAmount', |
-  'EIP_ORD:OrderDate', 'EIP_ORD:OrderNote', 'EIP_ORD:OrderNumber')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_ORD:InvoiceAmount', 'EIP_ORD:OrderNote')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
@@ -1861,41 +1904,29 @@ WHEN  ('BrowseEIPManager') ('')
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW1::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 6
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_ORD:CustNumber') (1)
 WHEN  ('EIP_ORD:InvoiceAmount') (1)
-WHEN  ('EIP_ORD:OrderDate') (1)
 WHEN  ('EIP_ORD:OrderNote') (1)
-WHEN  ('EIP_ORD:OrderNumber') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 6
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_ORD:CustNumber') (1)
 WHEN  ('EIP_ORD:InvoiceAmount') (1)
-WHEN  ('EIP_ORD:OrderDate') (1)
 WHEN  ('EIP_ORD:OrderNote') (1)
-WHEN  ('EIP_ORD:OrderNumber') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 6
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 3
 WHEN  ('BrowseEIPManager') ('AStringValue')
-WHEN  ('EIP_ORD:CustNumber') ('')
 WHEN  ('EIP_ORD:InvoiceAmount') ('ADOBlob')
-WHEN  ('EIP_ORD:OrderDate') ('')
 WHEN  ('EIP_ORD:OrderNote') ('ADOBlob')
-WHEN  ('EIP_ORD:OrderNumber') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 6
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 3
 WHEN  ('BrowseEIPManager') (0)
-WHEN  ('EIP_ORD:CustNumber') (0)
 WHEN  ('EIP_ORD:InvoiceAmount') (0)
-WHEN  ('EIP_ORD:OrderDate') (0)
 WHEN  ('EIP_ORD:OrderNote') (0)
-WHEN  ('EIP_ORD:OrderNumber') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
 
@@ -1953,13 +1984,10 @@ WHEN  ('EIP_ORD:OrderNote')TIMES 0
 
 %EditInPlace LONG  (1)
 %UpdateProcedure PROCEDURE  (UpdateOrder)
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 6
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 3
 WHEN  ('BrowseEIPManager') ('NO')
-WHEN  ('EIP_ORD:CustNumber') ('NO')
 WHEN  ('EIP_ORD:InvoiceAmount') ('NO')
-WHEN  ('EIP_ORD:OrderDate') ('NO')
 WHEN  ('EIP_ORD:OrderNote') ('NO')
-WHEN  ('EIP_ORD:OrderNumber') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
 %EIPAskOnDelete DEFAULT  ('Always')
@@ -2400,6 +2428,8 @@ WHEN  ('ORD:OrderNumber') (0)
 
 %EditInPlaceFEQFalseLabel DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
+%ConditionalEditInPlace LONG  (0)
+%ConditionalEditInPlaceCondition DEFAULT  ('')
 [ADDITION]
 NAME ABC CloseButton
 [INSTANCE]

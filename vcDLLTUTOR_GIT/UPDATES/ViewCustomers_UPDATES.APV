@@ -440,6 +440,50 @@ WHEN  ('') (-1)
 %FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('') (0)
 
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?Sheet1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
 [ADDITION]
 NAME ABC BrowseBox
 [INSTANCE]
@@ -1243,8 +1287,8 @@ PARENT 1
 PROCPROP
 [PROMPTS]
 %UpdateProcedure PROCEDURE  (UpdateCustomer)
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_CUS:Address', 'EIP_CUS:City', |
-  'EIP_CUS:Company', 'EIP_CUS:FirstName', 'EIP_CUS:LastName', 'EIP_CUS:State', 'EIP_CUS:ZipCode')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP_CUS:City', 'EIP_CUS:FirstName', |
+  'EIP_CUS:State')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 
@@ -1269,49 +1313,33 @@ WHEN  ('BrowseEIPManager') ('')
 %ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
 WHEN  ('BrowseEIPManager') ('BRW1::EIPManager')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 8
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 4
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_CUS:Address') (1)
 WHEN  ('EIP_CUS:City') (1)
-WHEN  ('EIP_CUS:Company') (1)
 WHEN  ('EIP_CUS:FirstName') (1)
-WHEN  ('EIP_CUS:LastName') (1)
 WHEN  ('EIP_CUS:State') (1)
-WHEN  ('EIP_CUS:ZipCode') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 8
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 4
 WHEN  ('BrowseEIPManager') (1)
-WHEN  ('EIP_CUS:Address') (1)
 WHEN  ('EIP_CUS:City') (1)
-WHEN  ('EIP_CUS:Company') (1)
 WHEN  ('EIP_CUS:FirstName') (1)
-WHEN  ('EIP_CUS:LastName') (1)
 WHEN  ('EIP_CUS:State') (1)
-WHEN  ('EIP_CUS:ZipCode') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 8
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 4
 WHEN  ('BrowseEIPManager') ('AStringValue')
-WHEN  ('EIP_CUS:Address') ('')
 WHEN  ('EIP_CUS:City') ('ADOBlob')
-WHEN  ('EIP_CUS:Company') ('')
 WHEN  ('EIP_CUS:FirstName') ('ADOBlob')
-WHEN  ('EIP_CUS:LastName') ('')
 WHEN  ('EIP_CUS:State') ('ADOBlob')
-WHEN  ('EIP_CUS:ZipCode') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 8
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 4
 WHEN  ('BrowseEIPManager') (0)
-WHEN  ('EIP_CUS:Address') (0)
 WHEN  ('EIP_CUS:City') (0)
-WHEN  ('EIP_CUS:Company') (0)
 WHEN  ('EIP_CUS:FirstName') (0)
-WHEN  ('EIP_CUS:LastName') (0)
 WHEN  ('EIP_CUS:State') (0)
-WHEN  ('EIP_CUS:ZipCode') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
 
@@ -1366,15 +1394,11 @@ WHEN  ('EIP_CUS:ZipCode') (0)
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
 %EditInPlace LONG  (0)
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 8
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 4
 WHEN  ('BrowseEIPManager') ('NO')
-WHEN  ('EIP_CUS:Address') ('NO')
 WHEN  ('EIP_CUS:City') ('NO')
-WHEN  ('EIP_CUS:Company') ('NO')
 WHEN  ('EIP_CUS:FirstName') ('NO')
-WHEN  ('EIP_CUS:LastName') ('NO')
 WHEN  ('EIP_CUS:State') ('NO')
-WHEN  ('EIP_CUS:ZipCode') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
 %EIPAskOnDelete DEFAULT  ('Always')
@@ -1881,6 +1905,8 @@ WHEN  ('CUS:ZipCode') (0)
 
 %EditInPlaceFEQFalseLabel DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
+%ConditionalEditInPlace LONG  (0)
+%ConditionalEditInPlaceCondition DEFAULT  ('')
 [ADDITION]
 NAME ABC CloseButton
 [INSTANCE]

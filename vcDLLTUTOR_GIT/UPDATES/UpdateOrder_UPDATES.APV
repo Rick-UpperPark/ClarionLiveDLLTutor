@@ -386,8 +386,7 @@ WHEN  (1) ('BrowseBox(ABC)')
 %ProcedureUserBindFields MULTI LONG  ()
 %ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
 
-%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 1
-WHEN  (1) (0)
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
 
 %ProcedureUserBindProcedures MULTI LONG  ()
 %ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
@@ -460,6 +459,50 @@ WHEN  ('') (-1)
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
 %FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?ORD:OrderDate:Prompt')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
 WHEN  ('') (0)
 
 [EMBED]
@@ -1539,8 +1582,8 @@ NAME ABC BrowseUpdateButtons
 INSTANCE 6
 PARENT 5
 [PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP1', 'EIP2', 'EIP3', 'EIP_DTL:ProdAmount', |
-  'EIP_DTL:ProdNumber', 'EIP_DTL:Quantity', 'EIP_ItemTotal', 'EIP_PRD:ProdDesc')
+%ClassItem UNIQUE DEFAULT  ('BrowseEIPManager', 'EIP1', 'EIP2', 'EIP3', 'EIP_DTL:ProdNumber', |
+  'EIP_ItemTotal')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 4
 WHEN  ('BrowseEIPManager') ('BrowseEIPManager')
 WHEN  ('EIP1') ('EditEntryClass')
@@ -1583,53 +1626,41 @@ WHEN  ('EIP1') ('EditInPlace::DTL:ProdNumber')
 WHEN  ('EIP2') ('EditInPlace::DTL:Quantity')
 WHEN  ('EIP3') ('EditInPlace::DTL:ProdAmount')
 
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 9
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 6
 WHEN  ('BrowseEIPManager') (1)
 WHEN  ('EIP1') (1)
 WHEN  ('EIP2') (1)
 WHEN  ('EIP3') (1)
-WHEN  ('EIP_DTL:ProdAmount') (1)
 WHEN  ('EIP_DTL:ProdNumber') (1)
-WHEN  ('EIP_DTL:Quantity') (1)
 WHEN  ('EIP_ItemTotal') (1)
-WHEN  ('EIP_PRD:ProdDesc') (1)
 
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 9
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 6
 WHEN  ('BrowseEIPManager') (1)
 WHEN  ('EIP1') (1)
 WHEN  ('EIP2') (1)
 WHEN  ('EIP3') (1)
-WHEN  ('EIP_DTL:ProdAmount') (1)
 WHEN  ('EIP_DTL:ProdNumber') (1)
-WHEN  ('EIP_DTL:Quantity') (1)
 WHEN  ('EIP_ItemTotal') (1)
-WHEN  ('EIP_PRD:ProdDesc') (1)
 
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 9
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 6
 WHEN  ('BrowseEIPManager') ('AStringValue')
 WHEN  ('EIP1') ('')
 WHEN  ('EIP2') ('')
 WHEN  ('EIP3') ('')
-WHEN  ('EIP_DTL:ProdAmount') ('')
 WHEN  ('EIP_DTL:ProdNumber') ('ADOBlob')
-WHEN  ('EIP_DTL:Quantity') ('')
 WHEN  ('EIP_ItemTotal') ('ADOBlob')
-WHEN  ('EIP_PRD:ProdDesc') ('')
 
 %ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
 
 %BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
 
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 9
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 6
 WHEN  ('BrowseEIPManager') (0)
 WHEN  ('EIP1') (0)
 WHEN  ('EIP2') (0)
 WHEN  ('EIP3') (0)
-WHEN  ('EIP_DTL:ProdAmount') (0)
 WHEN  ('EIP_DTL:ProdNumber') (0)
-WHEN  ('EIP_DTL:Quantity') (0)
 WHEN  ('EIP_ItemTotal') (0)
-WHEN  ('EIP_PRD:ProdDesc') (0)
 
 %NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
 
@@ -1691,16 +1722,13 @@ WHEN  ('EIP3')TIMES 0
 
 %EditInPlace LONG  (1)
 %UpdateProcedure PROCEDURE  ()
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 9
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 6
 WHEN  ('BrowseEIPManager') ('NO')
 WHEN  ('EIP1') ('NO')
 WHEN  ('EIP2') ('NO')
 WHEN  ('EIP3') ('NO')
-WHEN  ('EIP_DTL:ProdAmount') ('NO')
 WHEN  ('EIP_DTL:ProdNumber') ('NO')
-WHEN  ('EIP_DTL:Quantity') ('NO')
 WHEN  ('EIP_ItemTotal') ('NO')
-WHEN  ('EIP_PRD:ProdDesc') ('NO')
 
 %EIPInsertionPoint DEFAULT  ('After')
 %EIPAskOnDelete DEFAULT  ('Always')
@@ -2172,6 +2200,8 @@ WHEN  ('PRD:ProdDesc') (0)
 
 %EditInPlaceFEQFalseLabel DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
+%ConditionalEditInPlace LONG  (0)
+%ConditionalEditInPlaceCondition DEFAULT  ('')
 [CALLS]
 ViewProducts
 [WINDOW]
