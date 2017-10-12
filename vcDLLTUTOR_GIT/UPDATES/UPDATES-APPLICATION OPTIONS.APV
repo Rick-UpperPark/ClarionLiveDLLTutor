@@ -743,11 +743,12 @@ WHEN  ('allfiles.lib') ('')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
-%LastApplicationDebug DEFAULT  ('')
+%LastApplicationDebug DEFAULT  ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
 #system win32 dll
 #model clarion dll
+#pragma debug(vid=>full)
 #pragma define(_ABCDllMode_=>1) -- GENERATED
 #pragma define(_ABCLinkMode_=>0) -- GENERATED
 #compile "UPDATES.clw" -- GENERATED
