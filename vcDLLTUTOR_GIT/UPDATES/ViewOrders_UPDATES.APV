@@ -473,6 +473,13 @@ WHEN '(),BYTE'
 [DEFINITION]
 [SOURCE]
 PROPERTY:BEGIN
+PRIORITY 8035
+PROPERTY:END
+If true
+  hide(?Insert)
+end
+[SOURCE]
+PROPERTY:BEGIN
 PRIORITY 10000
 PROPERTY:END
 brw1.popup.AddItemMimic('Print Invoice',?PrintInvoice)

@@ -760,4 +760,5 @@ WHEN  ('allfiles.lib') ('')
 #compile "ViewOrders_UPDATES.clw" -- GENERATED
 #compile "ViewProducts_UPDATES.clw" -- GENERATED
 #pragma link("allfiles.lib") -- GENERATED
+#pragma link("UPDATES.Version") -- GENERATED
 #link "UPDATES.DLL"
