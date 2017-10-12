@@ -125,8 +125,7 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 8
-WHEN  ('') ('No Special Action')
+%ButtonAction DEPEND %Control DEFAULT TIMES 7
 WHEN  ('?Change') ('No Special Action')
 WHEN  ('?Close') ('No Special Action')
 WHEN  ('?Delete') ('No Special Action')
@@ -151,8 +150,7 @@ WHEN  ('?PrintInvoice') (SingleInvoiceReport)
 WHEN  ('?Delete') (0)
 WHEN  ('?PrintInvoice') (0)
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 8
-WHEN  ('') ('25000')
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 7
 WHEN  ('?Change') ('25000')
 WHEN  ('?Close') ('25000')
 WHEN  ('?Delete') ('25000')
@@ -163,8 +161,7 @@ WHEN  ('?PrintInvoice') ('25000')
 
 %ButtonParameters DEPEND %Control DEFAULT TIMES 0
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 8
-WHEN  ('') ('None')
+%ButtonRequest DEPEND %Control DEFAULT TIMES 7
 WHEN  ('?Change') ('None')
 WHEN  ('?Close') ('None')
 WHEN  ('?Delete') ('None')
@@ -185,8 +182,7 @@ WHEN  ('?PrintInvoice') ('None')
 
 %PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 6
-WHEN  ('') (1)
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 5
 WHEN  ('?Close') (1)
 WHEN  ('?Delete') (1)
 WHEN  ('?List') (1)
@@ -205,8 +201,7 @@ WHEN  ('?PrintInvoice') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 5
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
@@ -217,8 +212,7 @@ WHEN  ('?PrintInvoice')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 5
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
@@ -235,8 +229,7 @@ WHEN  ('?PrintInvoice')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 5
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
@@ -247,8 +240,7 @@ WHEN  ('?PrintInvoice')TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 5
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Delete')TIMES 0
 WHEN  ('?List')TIMES 0
@@ -374,65 +366,52 @@ WHEN  ('WindowToolbar') ('NO')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 2
-WHEN  ('') ('Default')
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
 WHEN  ('?Close') ('Default')
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 2
-WHEN  ('')TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 2
-WHEN  ('')TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('Off')
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('')
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
-WHEN  ('') (-1)
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 1
-WHEN  ('') (-1)
+%FieldGradientColorTo DEPEND %Control LONG TIMES 0
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
 
 %PreserveVarsLoc MULTI LONG  ()
 %PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('AIBtn0')
+%AIObjectName DEPEND %Control DEFAULT TIMES 0
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 1
-WHEN  ('') (1)
+%AIEnableMimicControl DEPEND %Control LONG TIMES 0
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 1
-WHEN  ('') ('?List')
+%AIMimicControl DEPEND %Control DEFAULT TIMES 0
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -440,29 +419,25 @@ WHEN  ('') ('?List')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 0
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('') (0)
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
 
 [EMBED]
 EMBED %WindowManagerMethodCodeSection
@@ -713,9 +688,7 @@ WHEN  ('Step0')TIMES 0
 
 %HotFieldBound DEPEND %HotFields LONG TIMES 0
 
-%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -724,9 +697,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -735,9 +706,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -746,9 +715,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -761,27 +728,19 @@ WHEN  ('ORD:OrderNumber') (-1)
 
 %ColorCondition DEPEND %ConditionalColors DEFAULT TIMES 0
 
-%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 0
 
-%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 0
 
-%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 0
 
-%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 0
 
@@ -863,9 +822,7 @@ WHEN  ('Step0') ('NO')
 %SortAddSortFieldAssistedOrder DEPEND %SortAddSortFieldsAssisted DEFAULT TIMES 0
 
 %UseSameColorForAll LONG  (0)
-%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -874,9 +831,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -885,9 +840,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -896,9 +849,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -907,9 +858,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -918,9 +867,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -929,9 +876,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -940,9 +885,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -951,9 +894,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -992,9 +933,7 @@ WHEN  ('ORD:OrderNumber') (-1)
 %ConditionalControlFieldIconIsNumber DEPEND %ConditionalIcons LONG TIMES 0
 
 %UseSameStyleForAll LONG  (0)
-%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -1003,9 +942,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Local List')
+%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Local List')
@@ -1014,9 +951,7 @@ WHEN  ('ORD:OrderDate') ('Local List')
 WHEN  ('ORD:OrderNote') ('Local List')
 WHEN  ('ORD:OrderNumber') ('Local List')
 
-%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('')
+%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('')
@@ -1027,9 +962,7 @@ WHEN  ('ORD:OrderNumber') ('')
 
 %GreenBarOnStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Local List')
+%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Local List')
@@ -1038,9 +971,7 @@ WHEN  ('ORD:OrderDate') ('Local List')
 WHEN  ('ORD:OrderNote') ('Local List')
 WHEN  ('ORD:OrderNumber') ('Local List')
 
-%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('')
+%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('')
@@ -1051,9 +982,7 @@ WHEN  ('ORD:OrderNumber') ('')
 
 %GreenBarOffStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Local List')
+%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Local List')
@@ -1062,9 +991,7 @@ WHEN  ('ORD:OrderDate') ('Local List')
 WHEN  ('ORD:OrderNote') ('Local List')
 WHEN  ('ORD:OrderNumber') ('Local List')
 
-%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('')
+%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('')
@@ -1073,14 +1000,10 @@ WHEN  ('ORD:OrderDate') ('')
 WHEN  ('ORD:OrderNote') ('')
 WHEN  ('ORD:OrderNumber') ('')
 
-%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
-%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %AllControlGreenBarStyle LONG  (0)
@@ -1155,9 +1078,7 @@ WHEN  ('?Close')TIMES 0
 %BrowseBoxDoNotIncludePrimaryKey LONG  (0)
 %DisableUsePopup LONG  (0)
 %ControlFieldSortHeaderSave LONG  (0)
-%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -1166,9 +1087,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -1181,21 +1100,15 @@ WHEN  ('ORD:OrderNumber') (0)
 
 %ControlFieldSortHeaderField DEPEND %ControlFieldSortHeaderFields FIELD TIMES 0
 
-%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
-%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %ListFormatManagerMenuAppendSortOrder LONG  (1)
 %ControlFieldSortHeaderMulti LONG  (1)
-%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -1399,9 +1312,7 @@ WHEN  (1) (ORD:InvoiceAmount)
 
 %HotFieldBound DEPEND %HotFields LONG TIMES 0
 
-%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1409,9 +1320,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1419,9 +1328,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1429,9 +1336,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%ControlFieldBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1443,27 +1348,19 @@ WHEN  ('DTL:Quantity') (-1)
 
 %ColorCondition DEPEND %ConditionalColors DEFAULT TIMES 0
 
-%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldForegroundNormal DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 0
 
-%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldBackgroundNormal DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 0
 
-%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldForegroundSelected DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 0
 
-%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldBackgroundSelected DEPEND %ConditionalColors LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 0
 
@@ -1545,9 +1442,7 @@ WHEN  ('Step0') ('NO')
 %SortAddSortFieldAssistedOrder DEPEND %SortAddSortFieldsAssisted DEFAULT TIMES 0
 
 %UseSameColorForAll LONG  (0)
-%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlGreenBarColor DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (0)
@@ -1555,9 +1450,7 @@ WHEN  ('DTL:ProdAmount') (0)
 WHEN  ('DTL:ProdNumber') (0)
 WHEN  ('DTL:Quantity') (0)
 
-%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1565,9 +1458,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1575,9 +1466,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1585,9 +1474,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOnBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1595,9 +1482,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1605,9 +1490,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1615,9 +1498,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1625,9 +1506,7 @@ WHEN  ('DTL:ProdAmount') (-1)
 WHEN  ('DTL:ProdNumber') (-1)
 WHEN  ('DTL:Quantity') (-1)
 
-%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%GreenBarOffBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (-1)
@@ -1665,9 +1544,7 @@ WHEN  ('DTL:Quantity') (-1)
 %ConditionalControlFieldIconIsNumber DEPEND %ConditionalIcons LONG TIMES 0
 
 %UseSameStyleForAll LONG  (0)
-%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlGreenBarStyle DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (0)
@@ -1675,9 +1552,7 @@ WHEN  ('DTL:ProdAmount') (0)
 WHEN  ('DTL:ProdNumber') (0)
 WHEN  ('DTL:Quantity') (0)
 
-%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Local List')
+%GreenBarOnStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') ('Local List')
@@ -1685,9 +1560,7 @@ WHEN  ('DTL:ProdAmount') ('Local List')
 WHEN  ('DTL:ProdNumber') ('Local List')
 WHEN  ('DTL:Quantity') ('Local List')
 
-%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('')
+%GreenBarOnStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') ('')
@@ -1697,9 +1570,7 @@ WHEN  ('DTL:Quantity') ('')
 
 %GreenBarOnStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Local List')
+%GreenBarOffStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') ('Local List')
@@ -1707,9 +1578,7 @@ WHEN  ('DTL:ProdAmount') ('Local List')
 WHEN  ('DTL:ProdNumber') ('Local List')
 WHEN  ('DTL:Quantity') ('Local List')
 
-%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('')
+%GreenBarOffStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') ('')
@@ -1719,9 +1588,7 @@ WHEN  ('DTL:Quantity') ('')
 
 %GreenBarOffStyle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Local List')
+%ControlFieldStyleType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') ('Local List')
@@ -1729,9 +1596,7 @@ WHEN  ('DTL:ProdAmount') ('Local List')
 WHEN  ('DTL:ProdNumber') ('Local List')
 WHEN  ('DTL:Quantity') ('Local List')
 
-%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('')
+%ControlFieldStyleLocalList DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') ('')
@@ -1739,14 +1604,10 @@ WHEN  ('DTL:ProdAmount') ('')
 WHEN  ('DTL:ProdNumber') ('')
 WHEN  ('DTL:Quantity') ('')
 
-%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldStyleType DEPEND %ConditionalStyles DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
-%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ConditionalControlFieldStyleLocalList DEPEND %ConditionalStyles DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %AllControlGreenBarStyle LONG  (0)
@@ -1821,9 +1682,7 @@ WHEN  ('?Close')TIMES 0
 %BrowseBoxDoNotIncludePrimaryKey LONG  (0)
 %DisableUsePopup LONG  (0)
 %ControlFieldSortHeaderSave LONG  (0)
-%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlFieldSortHeaderOverride DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (0)
@@ -1831,9 +1690,7 @@ WHEN  ('DTL:ProdAmount') (0)
 WHEN  ('DTL:ProdNumber') (0)
 WHEN  ('DTL:Quantity') (0)
 
-%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlFieldSortHeaderDisableColumn DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (0)
@@ -1845,21 +1702,15 @@ WHEN  ('DTL:Quantity') (0)
 
 %ControlFieldSortHeaderField DEPEND %ControlFieldSortHeaderFields FIELD TIMES 0
 
-%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ControlFieldSortHeaderFieldOrder DEPEND %ControlFieldSortHeaderFields DEFAULT TIMES 1
 WHEN  ('?Close')TIMES 0
 
-%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%ControlFieldSortHeaderFieldCase DEPEND %ControlFieldSortHeaderFields LONG TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %ListFormatManagerMenuAppendSortOrder LONG  (1)
 %ControlFieldSortHeaderMulti LONG  (1)
-%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%ControlFieldSortHeaderOnlyAsc DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List:2')TIMES 4
 WHEN  ('DTL:OrderNumber') (0)
@@ -1996,9 +1847,7 @@ WHEN  ('EIP_ORD:OrderNote') ('NO')
 
 %PrimedValue DEPEND %PrimingFields DEFAULT TIMES 0
 
-%AllowEIPExt DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (1)
+%AllowEIPExt DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (1)
@@ -2007,9 +1856,7 @@ WHEN  ('ORD:OrderDate') (1)
 WHEN  ('ORD:OrderNote') (1)
 WHEN  ('ORD:OrderNumber') (1)
 
-%EditInPlaceTypeExt DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Entry')
+%EditInPlaceTypeExt DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Entry')
@@ -2020,9 +1867,7 @@ WHEN  ('ORD:OrderNumber') ('Entry')
 
 %EditInPlaceFEQTitle DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Default')
+%EditInPlaceFEQJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Default')
@@ -2031,9 +1876,7 @@ WHEN  ('ORD:OrderDate') ('Default')
 WHEN  ('ORD:OrderNote') ('Default')
 WHEN  ('ORD:OrderNumber') ('Default')
 
-%EditInPlaceFEQOffset DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('0')
+%EditInPlaceFEQOffset DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('0')
@@ -2042,9 +1885,7 @@ WHEN  ('ORD:OrderDate') ('0')
 WHEN  ('ORD:OrderNote') ('0')
 WHEN  ('ORD:OrderNumber') ('0')
 
-%EditInPlaceFEQTransparent DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQTransparent DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2053,9 +1894,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%EditInPlaceFEQReadOnly DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQReadOnly DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2064,9 +1903,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%EditInPlaceFEQDataSource DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Fixed')
+%EditInPlaceFEQDataSource DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Fixed')
@@ -2079,9 +1916,7 @@ WHEN  ('ORD:OrderNumber') ('Fixed')
 
 %EditInPlaceFEQFixedDataSourceValue DEPEND %EditInPlaceFEQFixedDataSource DEFAULT TIMES 0
 
-%EditInPlaceFEQFixedDataSourceSelected DEPEND %EditInPlaceFEQFixedDataSource LONG TIMES 2
-WHEN  ('')TIMES 1
-WHEN  ('')TIMES 0
+%EditInPlaceFEQFixedDataSourceSelected DEPEND %EditInPlaceFEQFixedDataSource LONG TIMES 1
 WHEN  ('?Close')TIMES 0
 
 %EditInPlaceFEQQueueDataSourceQN DEPEND %Control DEPEND %ControlField FIELD TIMES 0
@@ -2092,9 +1927,7 @@ WHEN  ('?Close')TIMES 0
 
 %ReturnToOriginalDir DEPEND %Control DEPEND %ControlField LONG TIMES 0
 
-%AllowLongFilenames DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (1)
+%AllowLongFilenames DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (1)
@@ -2103,9 +1936,7 @@ WHEN  ('ORD:OrderDate') (1)
 WHEN  ('ORD:OrderNote') (1)
 WHEN  ('ORD:OrderNumber') (1)
 
-%DOSFileDialogType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Open')
+%DOSFileDialogType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Open')
@@ -2114,9 +1945,7 @@ WHEN  ('ORD:OrderDate') ('Open')
 WHEN  ('ORD:OrderNote') ('Open')
 WHEN  ('ORD:OrderNumber') ('Open')
 
-%AllowNoError DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%AllowNoError DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2127,9 +1956,7 @@ WHEN  ('ORD:OrderNumber') (0)
 
 %AllowMultiSelect DEPEND %Control DEPEND %ControlField LONG TIMES 0
 
-%DOSMaskDesc DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('All Files')
+%DOSMaskDesc DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('All Files')
@@ -2138,9 +1965,7 @@ WHEN  ('ORD:OrderDate') ('All Files')
 WHEN  ('ORD:OrderNote') ('All Files')
 WHEN  ('ORD:OrderNumber') ('All Files')
 
-%DOSMask DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('*.*')
+%DOSMask DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('*.*')
@@ -2155,9 +1980,7 @@ WHEN  ('ORD:OrderNumber') ('*.*')
 
 %DOSMoreMask DEPEND %DOSMoreMasks DEFAULT TIMES 0
 
-%EditInPlaceFEQForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%EditInPlaceFEQForegroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -2166,9 +1989,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%EditInPlaceFEQBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%EditInPlaceFEQBackgroundNormal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -2177,9 +1998,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%EditInPlaceFEQForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%EditInPlaceFEQForegroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -2188,9 +2007,7 @@ WHEN  ('ORD:OrderDate') (-1)
 WHEN  ('ORD:OrderNote') (-1)
 WHEN  ('ORD:OrderNumber') (-1)
 
-%EditInPlaceFEQBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (-1)
+%EditInPlaceFEQBackgroundSelected DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (-1)
@@ -2205,9 +2022,7 @@ WHEN  ('ORD:OrderNumber') (-1)
 
 %EditInPlaceFEQPicture DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQDrop DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('0')
+%EditInPlaceFEQDrop DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('0')
@@ -2216,9 +2031,7 @@ WHEN  ('ORD:OrderDate') ('0')
 WHEN  ('ORD:OrderNote') ('0')
 WHEN  ('ORD:OrderNumber') ('0')
 
-%EditInPlaceFEQWidth DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('0')
+%EditInPlaceFEQWidth DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('0')
@@ -2227,9 +2040,7 @@ WHEN  ('ORD:OrderDate') ('0')
 WHEN  ('ORD:OrderNote') ('0')
 WHEN  ('ORD:OrderNumber') ('0')
 
-%EditInPlaceFEQFlat DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQFlat DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2238,9 +2049,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%EditInPlaceFEQHorizontal DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQHorizontal DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2249,9 +2058,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%EditInPlaceFEQVertical DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQVertical DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2262,9 +2069,7 @@ WHEN  ('ORD:OrderNumber') (0)
 
 %EditInPlaceFEQFixedDataSourceText DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQCheckJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Default')
+%EditInPlaceFEQCheckJust DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Default')
@@ -2277,9 +2082,7 @@ WHEN  ('ORD:OrderNumber') ('Default')
 
 %EditInPlaceFEQFalse DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQCase DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Default')
+%EditInPlaceFEQCase DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Default')
@@ -2288,9 +2091,7 @@ WHEN  ('ORD:OrderDate') ('Default')
 WHEN  ('ORD:OrderNote') ('Default')
 WHEN  ('ORD:OrderNumber') ('Default')
 
-%EditInPlaceFEQEntryMode DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Default')
+%EditInPlaceFEQEntryMode DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Default')
@@ -2299,9 +2100,7 @@ WHEN  ('ORD:OrderDate') ('Default')
 WHEN  ('ORD:OrderNote') ('Default')
 WHEN  ('ORD:OrderNumber') ('Default')
 
-%EditInPlaceFEQLower DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('0')
+%EditInPlaceFEQLower DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('0')
@@ -2310,9 +2109,7 @@ WHEN  ('ORD:OrderDate') ('0')
 WHEN  ('ORD:OrderNote') ('0')
 WHEN  ('ORD:OrderNumber') ('0')
 
-%EditInPlaceFEQUpper DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('0')
+%EditInPlaceFEQUpper DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('0')
@@ -2321,9 +2118,7 @@ WHEN  ('ORD:OrderDate') ('0')
 WHEN  ('ORD:OrderNote') ('0')
 WHEN  ('ORD:OrderNumber') ('0')
 
-%EditInPlaceFEQStep DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('0')
+%EditInPlaceFEQStep DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('0')
@@ -2332,9 +2127,7 @@ WHEN  ('ORD:OrderDate') ('0')
 WHEN  ('ORD:OrderNote') ('0')
 WHEN  ('ORD:OrderNumber') ('0')
 
-%EditInPlaceFEQPassword DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQPassword DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2343,9 +2136,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%LookupType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') ('Related Field')
+%LookupType DEPEND %Control DEPEND %ControlField DEFAULT TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') ('Related Field')
@@ -2375,9 +2166,7 @@ WHEN  ('ORD:OrderNumber') ('Related Field')
 %EIPThisObjectName DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
 %UpdateProcedureParameters DEFAULT  ('')
-%EditInPlaceFEQRequired DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQRequired DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2386,9 +2175,7 @@ WHEN  ('ORD:OrderDate') (0)
 WHEN  ('ORD:OrderNote') (0)
 WHEN  ('ORD:OrderNumber') (0)
 
-%EditInPlaceFEQAutoSerializeField DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQAutoSerializeField DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2399,9 +2186,7 @@ WHEN  ('ORD:OrderNumber') (0)
 
 %EditInPlaceFEQAutoSerializeFieldDelimiter DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQImmediate DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQImmediate DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2413,9 +2198,7 @@ WHEN  ('ORD:OrderNumber') (0)
 %EditViaPopup LONG  (1)
 %EditInPlaceFEQColumnFrom DEPEND %Control DEPEND %ControlField DEFAULT TIMES 0
 
-%EditInPlaceFEQEntryCompletion DEPEND %Control DEPEND %ControlField LONG TIMES 3
-WHEN  ('')TIMES 1
-WHEN  ('') (0)
+%EditInPlaceFEQEntryCompletion DEPEND %Control DEPEND %ControlField LONG TIMES 2
 WHEN  ('?Close')TIMES 0
 WHEN  ('?List')TIMES 5
 WHEN  ('ORD:CustNumber') (0)
@@ -2602,24 +2385,24 @@ WHEN  (6) (0)
 WHEN  ('Default') ('NO')
 
 [WINDOW]
-window  WINDOW('Orders'),AT(,,231,148),FONT('Microsoft Sans Serif',10,,FONT:regular,CHARSET:DEFAULT), |
-          RESIZE,GRAY,MAX,MDI,SYSTEM
-          LIST,AT(4,5,221,56),USE(?List),FONT('Times New Roman',8,COLOR:Black,FONT:regular), |
-            HVSCROLL,FORMAT('45C(2)~Cust Number~L(0)@n4@47C(1)~Order Number~L(0)@n-7@52' & |
+window  WINDOW('Orders'),AT(,,381,240),FONT('Segoe UI',12,,FONT:regular,CHARSET:DEFAULT),RESIZE, |
+          GRAY,MAX,MDI,SYSTEM
+          LIST,AT(4,5,330,144),USE(?List),FONT('Times New Roman',8,COLOR:Black,FONT:regular), |
+            HVSCROLL,FORMAT('45C(2)~Cust Number~L(2)@n4@47C(1)~Order Number~L(0)@n-7@52' & |
             'D(12)~Invoice Amount~L(0)@n-10.2@40C(1)~Order Date~L(0)@d1@320L(5)~Order N' & |
             'ote~L(0)@s80@'),FROM(Queue:Browse),IMM,MSG('Browsing Records'),#FIELDS(ORD:CustNumber, |
             ORD:OrderNumber,ORD:InvoiceAmount,ORD:OrderDate,ORD:OrderNote),#ORIG(?List),#SEQ(1), |
             #ORDINAL(1)
-          BUTTON('&Insert'),AT(4,65,42,12),USE(?Insert),#ORIG(?Insert),#SEQ(2),#ORDINAL(2)
-          BUTTON('&Change'),AT(46,65,42,12),USE(?Change),#ORIG(?Change),#SEQ(2),#ORDINAL(3)
-          BUTTON('&Delete'),AT(88,65,42,12),USE(?Delete),#ORIG(?Delete),#SEQ(2),#ORDINAL(4)
-          BUTTON('Print Invoice'),AT(188,116,42,12),USE(?PrintInvoice),#ORIG(?Button5),#ORDINAL(5)
-          LIST,AT(4,80,178,65),USE(?List:2),FONT('Times New Roman',8,COLOR:Black,FONT:regular), |
+          BUTTON('&Insert'),AT(338,4,42,12),USE(?Insert),#ORIG(?Insert),#SEQ(2),#ORDINAL(2)
+          BUTTON('&Change'),AT(338,20,42,12),USE(?Change),#ORIG(?Change),#SEQ(2),#ORDINAL(3)
+          BUTTON('&Delete'),AT(338,34,42,12),USE(?Delete),#ORIG(?Delete),#SEQ(2),#ORDINAL(4)
+          BUTTON('Print Invoice'),AT(338,207,42,12),USE(?PrintInvoice),#ORIG(?Button5),#ORDINAL(5)
+          LIST,AT(4,168,330,65),USE(?List:2),FONT('Times New Roman',8,COLOR:Black,FONT:regular), |
             HVSCROLL,FORMAT('47R(1)~Order Number~L(0)@n-7@44R(1)~Prod Number~L(0)@n-7@3' & |
             '4R(1)~Quantity~L(0)@n-7@46D(12)~Prod Amount~L(0)@n-7.2@'),FROM(Queue:Browse:1), |
             IMM,MSG('Browsing Records'),#FIELDS(DTL:OrderNumber,DTL:ProdNumber,DTL:Quantity, |
             DTL:ProdAmount),#ORIG(?List),#SEQ(3),#ORDINAL(6)
-          BUTTON('Close'),AT(196,131),USE(?Close),#ORIG(?Close),#SEQ(4),#ORDINAL(7)
+          BUTTON('Close'),AT(346,222),USE(?Close),#ORIG(?Close),#SEQ(4),#ORDINAL(7)
         END
 
 [END]
