@@ -17,7 +17,7 @@ EMBED %ProcessedCode
 PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
-  message('New procedure')
+  message('New non conflict')
 
 [END]
 [END]
