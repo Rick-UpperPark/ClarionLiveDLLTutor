@@ -16,7 +16,8 @@ EMBED %ProcessedCode
 PROPERTY:BEGIN
 PRIORITY 5000
 PROPERTY:END
-  Message('Hi Ron - and the rest of CLive group')
+  Message('Hi Ted - and the rest of CLive group')
+
 [END]
 [END]
 [END]
