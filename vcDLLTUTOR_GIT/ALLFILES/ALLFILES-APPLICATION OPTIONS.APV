@@ -5073,11 +5073,11 @@ INSTANCE 1
 %LastApplicationLocalLibrary DEFAULT  ('')
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 5
-WHEN  ('ALLFILES.clw') ('1')
-WHEN  ('ALLFILES_NewProcedure.clw') ('1')
-WHEN  ('ALLFILES_NewProcedureToName.clw') ('1')
-WHEN  ('Main_ALLFILES.clw') ('1')
-WHEN  ('TestAPVExtension_ALLFILES.clw') ('1')
+WHEN  ('ALLFILES.clw') ('')
+WHEN  ('ALLFILES_NewProcedure.clw') ('')
+WHEN  ('ALLFILES_NewProcedureToName.clw') ('')
+WHEN  ('Main_ALLFILES.clw') ('')
+WHEN  ('TestAPVExtension_ALLFILES.clw') ('')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('DLL')
@@ -5090,7 +5090,4 @@ WHEN  ('TestAPVExtension_ALLFILES.clw') ('1')
 #compile "Main_ALLFILES.clw" -- GENERATED
 #compile "TestAPVExtension_ALLFILES.clw" -- GENERATED
 #pragma link("C%V%asc%X%%L%.lib") -- GENERATED
-#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
-#pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
-#pragma link("ALLFILES.Version") -- GENERATED
 #link "ALLFILES.DLL"

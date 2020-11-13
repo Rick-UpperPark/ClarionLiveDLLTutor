@@ -19,7 +19,7 @@ PRIORITY 5000
 PROPERTY:END
   message('New non conflict')
 
-  message('simple change to proc 2')
+  message('simple change to proc 2dd')
 
 
 [END]
