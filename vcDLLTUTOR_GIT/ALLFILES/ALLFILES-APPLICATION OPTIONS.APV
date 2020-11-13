@@ -5084,16 +5084,11 @@ WHEN  ('TestAPVExtension_ALLFILES.clw') ('1')
 [PROJECT]
 #system win32 dll
 #model clarion dll
-#pragma define(_ABCDllMode_=>0) -- GENERATED
-#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "ALLFILES.clw" -- GENERATED
 #compile "ALLFILES_NewProcedure.clw" -- GENERATED
 #compile "ALLFILES_NewProcedureToName.clw" -- GENERATED
 #compile "Main_ALLFILES.clw" -- GENERATED
 #compile "TestAPVExtension_ALLFILES.clw" -- GENERATED
-#compile "CWUtil.CLW" -- GENERATED
-#compile "ALLFILES_BC0.CLW" -- GENERATED
-#compile "ALLFILES_BC.CLW" -- GENERATED
 #pragma link("C%V%asc%X%%L%.lib") -- GENERATED
 #pragma link("C%V%tps%X%%L%.lib") -- GENERATED
 #pragma link("C%V%sqa%X%%L%.lib") -- GENERATED
