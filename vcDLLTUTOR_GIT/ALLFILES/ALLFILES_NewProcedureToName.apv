@@ -19,6 +19,9 @@ PRIORITY 5000
 PROPERTY:END
   message('New procedure')
 
+  message('simple change to proc 2')
+
+
 [END]
 [END]
 [END]
